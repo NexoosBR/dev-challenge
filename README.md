@@ -24,7 +24,7 @@ Exemplo:
 Construa uma aplicação web, utilizando a linguagem e frameworks de sua preferência, que seja capaz de:
 - Cadastrar um solicitante(razão social, cnpj, endereço(s) e telefone(s));
 - Criar uma solicitação de crédito(valor);
-- Calcular prazo e taxa de juros.
+- Pedir um empréstimo informando valor, prazo e taxa de juros.
 - Gerar automaticamente as respectivas parcelas com intervalos regulares de um mês entre os vencimentos. 
 
 ## Requisitos:
