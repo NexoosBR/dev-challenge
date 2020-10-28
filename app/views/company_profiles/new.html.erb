@@ -1,0 +1,58 @@
+<% if @company_profile.errors.any? %>
+  <p>Você deve corrigir os seguintes erros: </p>
+  <ul>
+  <% @company_profile.errors.full_messages.each do |message| %>
+      <li><%= message %></li>
+  <% end %>
+  </ul><br><br>
+<% end %>
+
+<%= form_with model: @company_profile, local: true do |form| %>
+    <h4>Dados Pessoais</h4>
+    <hr>
+    <div class="form-group">
+        <%= form.label :name %>
+        <%= form.text_field :name, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+        <%= form.label :document %>
+        <%= form.text_area :document, class: 'form-control' %>
+    </div>
+    <h4>Endereço</h4>
+    <hr>
+    <%= form.fields_for :addresses do |address_form| %>
+      <div class="form-group">
+        <%= address_form.label :address %>
+        <%= address_form.text_field :address, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :city %>
+        <%= address_form.text_field :city, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :state %>
+        <%= address_form.text_field :state, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :country %>
+        <%= address_form.text_field :country, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= address_form.label :zipcode %>
+        <%= address_form.text_field :zipcode, class: 'form-control' %>
+      </div>
+    <% end %>
+    <%= form.fields_for :contacts do |contacts_form| %>
+      <div class="form-group">
+        <%= contacts_form.label :contact %>
+        <%= contacts_form.text_field :contact, class: 'form-control' %>
+      </div>
+      <div class="form-group">
+        <%= contacts_form.label :contact_type, 'Tipo' %>
+        <%= contacts_form.select :contact_type, Contact.contact_types.keys.map { |type| [type.humanize, type] } %>
+      </div>
+    <% end %>
+  <div class="col-md-6 p-3">
+    <%= form.submit 'Enviar', class: 'btn btn-primary' %>
+  </div>
+<% end %>

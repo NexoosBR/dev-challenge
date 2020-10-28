@@ -1,0 +1,17 @@
+pt-BR:
+  addresses:
+    address: 'Endereço'
+    city: 'Cidade'
+    state: 'Estado'
+    country: 'País'
+    zipcode: 'CEP'
+  activerecord:
+    attributes:
+      address:
+        address: 'Endereço'
+        city: 'Cidade'
+        state: 'Estado'
+        country: 'País'
+        zipcode: 'CEP'
+    model:
+      address: 'Endereço'

@@ -10,6 +10,13 @@
   </head>
 
   <body>
+    <% if company_signed_in? %>
+      <%= link_to 'Perfil', company_profile_path(current_company) %>
+      <%= link_to 'Sair', destroy_company_session_path %>
+    <% end %>
+    <%= link_to 'Login', new_company_session_path %>
+    <%= alert %>
+    <%= notice %>
     <%= yield %>
   </body>
 </html>

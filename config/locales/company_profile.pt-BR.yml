@@ -1,0 +1,20 @@
+pt-BR:
+  company_profiles:
+    name: 'Nome'
+    document: 'CNPJ'
+  activerecord:
+    attributes:
+      company_profile:
+        name: 'Nome'
+        document: 'CNPJ'
+      company_profile/addresses:
+        address: 'Endereço'
+        zipcode: 'CEP'
+        city: 'Cidade'
+        state: 'Estado'
+        country: 'País'
+      company_profile/contacts:
+        contact: 'Contato'
+        contact_type: 'Tipo'
+    model:
+      company_profile: 'Perfil da Empresa'

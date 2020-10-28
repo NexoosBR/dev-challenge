@@ -1,0 +1,14 @@
+pt-BR:
+  contacts:
+    contact: 'Contato'
+    contact_type: 'Tipo'
+  activerecord:
+    attributes:
+      contact:
+        contact_types:
+          phone: 'Telefone'
+          email: 'Email'
+        contact: 'Contato'
+        contact_type: 'Tipo'
+    model:
+      contact: 'Contato'
