@@ -18,7 +18,7 @@ class TaxCalcus
       Installment.create(installment_index: index, value: pmt,
                          expiration: expiration, proposal: proposal)
       index = index + 1
-      expiration = expiration.next
+      expiration = expiration.next_month
     end
   end
 end

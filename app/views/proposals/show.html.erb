@@ -1,33 +1,35 @@
-<h1>Solicitação de Empréstimo</h1>
+<div class="container">
+  <h1>Solicitação de Crédito</h1>
 
-<dl>
-  <dt><%= t('proposals.value' )%>:</dt>
-  <dd><%= number_to_currency(@proposal.value, locale: :'pt-BR') %></dt>
-  <dt><%= t('proposals.installments' )%>:</dt>
-  <dd><%= @proposal.installments %></dt>
-  <dt><%= t('proposals.expiration' )%>:</dt>
-  <dd><%= I18n.localize(@proposal.expiration) %></dt>
-</dl>
+  <dl>
+    <dt><%= t('proposals.value' )%>:</dt>
+    <dd><%= number_to_currency(@proposal.value, locale: :'pt-BR') %></dt>
+    <dt><%= t('proposals.installments' )%>:</dt>
+    <dd><%= @proposal.installments %></dt>
+    <dt><%= t('proposals.expiration' )%>:</dt>
+    <dd><%= I18n.localize(@proposal.expiration) %></dt>
+  </dl>
 
-<p class="h3">
+  <p class="h3">
 
-<table class="table">
-  <thead>
-    <tr>
-      <th scope="col">Parcela Nº</th>
-      <th scope="col">Valor</th>
-      <th scope="col">Data de Vencimento</th>
-      <th scope="col">Status</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @proposal.montly_installments.each do |installment| %>
+  <table class="table">
+    <thead>
       <tr>
-        <td><%= installment.installment_index %></td>
-        <td><%= number_to_currency(installment.value, locale: :'pt-BR') %></td>
-        <td><%= I18n.localize(installment.expiration) %></td>
-        <td><%= t(installment.status, scope: [:activerecord, :attributes, :proposal]) %></td>
+        <th scope="col">Parcela Nº</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Data de Vencimento</th>
+        <th scope="col">Status</th>
       </tr>
-    <% end %>
-  </tbody>
-</table>
+    </thead>
+    <tbody>
+      <% @proposal.montly_installments.each do |installment| %>
+        <tr>
+          <td><%= installment.installment_index %></td>
+          <td><%= number_to_currency(installment.value, locale: :'pt-BR') %></td>
+          <td><%= I18n.localize(installment.expiration) %></td>
+          <td><%= t(installment.status, scope: [:activerecord, :attributes, :proposal]) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

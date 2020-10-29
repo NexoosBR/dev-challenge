@@ -3,9 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'home#index'
 
-  resources :company_profiles, only: %i[show new create] do
-    resources :proposals, only: %i[new create]
-  end
+  resources :company_profiles, only: %i[show new create]
 
-  resources :proposals, only: %i[show]
+  resources :proposals, only: %i[show new create]
 end
