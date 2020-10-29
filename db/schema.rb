@@ -63,7 +63,7 @@ ActiveRecord::Schema.define(version: 2020_10_28_020541) do
     t.integer "installment_index"
     t.decimal "value"
     t.date "expiration"
-    t.integer "status"
+    t.integer "status", default: 0, null: false
     t.bigint "proposal_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

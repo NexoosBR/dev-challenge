@@ -1,0 +1,19 @@
+pt-BR:
+  proposals:
+    value: 'Valor'
+    installments: 'Parcelas'
+    tax: 'Taxa'
+    expiration: 'Vencimento'
+    pending: 'Pendente'
+    paid: 'Paga'
+  activerecord:
+    attributes:
+      proposal:
+        value: 'Valor'
+        installments: 'Parcelas'
+        tax: 'Taxa'
+        expiration: 'Vencimento'
+        pending: 'Pendente'
+        paid: 'Paga'
+    model:
+      proposal: 'Posposta'

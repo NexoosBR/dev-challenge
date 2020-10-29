@@ -4,7 +4,7 @@ class CreateInstallments < ActiveRecord::Migration[6.0]
       t.integer :installment_index
       t.decimal :value
       t.date :expiration
-      t.integer :status
+      t.integer :status, null: false, default: 0
       t.references :proposal, null: false, foreign_key: true
 
       t.timestamps

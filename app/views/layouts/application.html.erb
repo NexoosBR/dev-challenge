@@ -11,6 +11,7 @@
 
   <body>
     <% if company_signed_in? %>
+      <%= link_to 'Solicitação de Empréstimo', new_company_profile_proposal_path(current_company.company_profile) %>
       <%= link_to 'Perfil', company_profile_path(current_company) %>
       <%= link_to 'Sair', destroy_company_session_path %>
     <% end %>
