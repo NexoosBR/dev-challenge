@@ -2,7 +2,6 @@ pt-BR:
   are_you_sure: "Tem certeza"
   company_slogan: "Nexoos"
   profile: "Perfil"
-  without_authorization: "Sem autorização"
 
   nope: "Não"
   none: "nenhuma"
@@ -38,3 +37,5 @@ pt-BR:
 
   sign_in: "Entrar"
   sign_out: "Sair"
+
+  invalid_cnpj: "CNPJ inválido"
