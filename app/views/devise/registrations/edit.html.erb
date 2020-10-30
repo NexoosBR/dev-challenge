@@ -8,15 +8,13 @@
 
     <%= f.input :name,
                 required: true,
-                autofocus: true,
                 input_html: { autocomplete: "email" } %>
     <%= f.input :cnpj,
                 required: true,
-                autofocus: true,
                 input_html: { autocomplete: "email" } %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+    <%= f.simple_fields_for :phone_numbers do |p| %>
+      <%= p.input :number %>
     <% end %>
 
     <%= f.input :password,

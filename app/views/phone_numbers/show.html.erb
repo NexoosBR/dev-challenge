@@ -1,0 +1,23 @@
+<%= title t("phone_number", scope: "activerecord.models") %>
+
+<%= link_to_back(phone_numbers_path) %>
+<%= link_to_edit_resource(edit_phone_number_path(@phone_number), t(:edit_model, model: t("phone_number", scope: 'activerecord.models'))) %>
+
+<div class="kt-portlet kt-portlet--mobile table">
+	<div class="kt-portlet__body">
+		<div class="row">
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:number, scope: "activerecord.attributes.phone_number") %>:</small>
+						<h3><%= @phone_number.number %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:company, scope: "activerecord.attributes.phone_number") %>:</small>
+						<h3><%= @phone_number.company %></h3>
+					</p>
+				</div>
+					</div>
+	</div>
+</div>

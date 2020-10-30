@@ -1,0 +1,13 @@
+
+<%= simple_form_for(@phone_number) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+        <%= f.input :number, class: 'form-control', wrapper: false %>
+        <%= f.association :company, class: 'form-control', wrapper: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

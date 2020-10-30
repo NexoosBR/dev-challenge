@@ -1,0 +1,42 @@
+<%= title t("phone_number", scope: "activerecord.models").pluralize %>
+
+<%= link_to_new_resource(new_phone_number_path, t(:create_model, model: t("phone_number", scope: 'activerecord.models'))) %>
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"><%= t(:id, scope: "activerecord.attributes") %></th>
+                  <th scope="col"><%= t(:number, scope: "activerecord.attributes.phone_number") %></th>
+                  <th scope="col"><%= t(:company, scope: "activerecord.attributes.phone_number") %></th>
+                <th colspan="3" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @phone_numbers.each do |phone_number| %>
+        <tr>
+          <td class="align-middle"><%= phone_number.id %></td>
+                      <td class="align-middle"><%= phone_number.number %></td>
+                      <td class="align-middle"><%= phone_number.company %></td>
+                    <td class="align-middle">
+            <%= link_to phone_number, title: t(:show), class: 'btn btn-default' do %>
+              <i class="fas fa-file-alt"></i>
+            <% end -%>
+          </td>
+          <td class="align-middle">
+            <%= link_to edit_phone_number_path(phone_number), title: t(:edit), class: 'btn btn-default' do %>
+              <i class="fas fa-edit"></i>
+            <% end -%>
+          </td>
+          <td class="align-middle">
+            <%= link_to phone_number, method: :delete, data: { confirm: "#{t(:are_you_sure)}?" }, title: t(:destroy), class: 'btn btn-danger' do %>
+              <i class="fas fa-trash"></i>
+            <% end -%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br/>
