@@ -1,0 +1,19 @@
+version: '3.7'
+services:
+  db:
+    image: postgres:10.10
+    volumes:
+      - postgres:/var/lib/postgresql/data
+  web:
+    build: .
+    depends_on:
+      - db
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/myapp
+    env_file: .env
+    command: bash -c "rm -f tmp/pids/server.pid && sleep 100000"
+
+volumes:
+  postgres:

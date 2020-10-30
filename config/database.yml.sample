@@ -1,0 +1,20 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  host: db
+  pool: 5
+  username: postgres
+  password:
+  template: template0
+
+development:
+  <<: *default
+  database: nexoos_development
+
+test:
+  <<: *default
+  database: nexoos_test
+
+production:
+  <<: *default
+  database: nexoos_production

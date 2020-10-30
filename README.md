@@ -3,6 +3,32 @@
 A Nexoos é uma plataforma online sem burocracia e sem taxas abusivas que conecta empresas
 que necessitam de empréstimos a investidores pessoa Física tornando este processo mais rápido, eficiente e justo no modelo marketplace lending.
 
+## Setup project with docker
+
+1. `$ git clone https://bitbucket.org/lukaspol/dev-challenge`
+1. `$ cd dev-challenge`
+1. `$ cp config/database.yml.sample config/database.yml`
+1. `$ cp .env.sample .env`
+1. `$ docker-compose build`
+1. `$ docker-compose up` (you can use the flag `-d`)
+1. `$ docker-compose exec web bash`
+1. `$ rake db:create`
+1. `$ rake db:migrate`
+1. `$ rake db:seed`
+1. `$ rails s -b 0.0.0.0`
+
+## Setup project without docker
+1. `$ git clone https://bitbucket.org/insight-sistemas/admdoc-web/`
+1. `$ cd admdoc-web`
+1. `$ cp config/database.yml.sample config/database.yml`
+1. `$ cp .env.sample .env`
+1. `$ bundle install`
+1. `$ yarn install`
+1. `$ rake db:create`
+1. `$ rake db:migrate`
+1. `$ rake db:seed`
+1. `$ rails s`
+
 ## Desafio
 
 Cenário: Na Nexoos, um empréstimo de R$ 100.000,00 pode ser financiado por até 200 pessoas e cada um recebe uma fatia proporcional das parcelas pagas.
