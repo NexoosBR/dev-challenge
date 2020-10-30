@@ -1,0 +1,19 @@
+<%%= title t("<%= singular_table_name %>", scope: "activerecord.models") %>
+
+<%%= link_to_back(<%= index_helper %>_path) %>
+<%%= link_to_edit_resource(edit_<%= singular_table_name %>_path(@<%= singular_table_name %>), t(:edit_model, model: t("<%= singular_table_name %>", scope: 'activerecord.models'))) %>
+
+<div class="kt-portlet kt-portlet--mobile table">
+	<div class="kt-portlet__body">
+		<div class="row">
+			<% attributes.each do |attribute| -%>
+				<div class="col-lg-4">
+					<p>
+						<small><%%= t(:<%= attribute.name %>, scope: "activerecord.attributes.<%= singular_table_name %>") %>:</small>
+						<h3><%%= @<%= singular_table_name %>.<%= attribute.name %> %></h3>
+					</p>
+				</div>
+			<% end -%>
+		</div>
+	</div>
+</div>

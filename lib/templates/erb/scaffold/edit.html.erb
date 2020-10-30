@@ -1,0 +1,6 @@
+<%%= title t(:editing_model, model: t("<%= singular_table_name %>", scope: "activerecord.models"))  %>
+
+<%%= link_to_back(<%= index_helper %>_path) %>
+<%%= link_to_detail_resource(@<%= singular_table_name %>, t(:show_model, model: t("<%= singular_table_name %>", scope: 'activerecord.models'))) %>
+	
+<%%= render 'form' %>

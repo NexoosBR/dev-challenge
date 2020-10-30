@@ -1,0 +1,5 @@
+<%%= title t(:creating_model, model: t("<%= singular_table_name %>", scope: "activerecord.models")) %>
+
+<%%= link_to_back(<%= index_helper %>_path) %>
+
+<%%= render 'form' %>
