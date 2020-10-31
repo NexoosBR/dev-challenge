@@ -1,0 +1,46 @@
+<%= title t("loan", scope: "activerecord.models").pluralize %>
+
+<%= link_to_new_resource(new_loan_path, t(:create_model, model: t("loan", scope: 'activerecord.models'))) %>
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"><%= t(:id, scope: "activerecord.attributes") %></th>
+                  <th scope="col"><%= t(:value, scope: "activerecord.attributes.loan") %></th>
+                  <th scope="col"><%= t(:rate, scope: "activerecord.attributes.loan") %></th>
+                  <th scope="col"><%= t(:number_installments, scope: "activerecord.attributes.loan") %></th>
+                  <th scope="col"><%= t(:company, scope: "activerecord.attributes.loan") %></th>
+                <th colspan="3" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @loans.each do |loan| %>
+        <tr>
+          <td class="align-middle"><%= loan.id %></td>
+                      <td class="align-middle"><%= loan.value %></td>
+                      <td class="align-middle"><%= loan.rate %></td>
+                      <td class="align-middle"><%= loan.number_installments %></td>
+                      <td class="align-middle"><%= loan.company %></td>
+                    <td class="align-middle">
+            <%= link_to loan, title: t(:show), class: 'btn btn-default' do %>
+              <i class="fas fa-file-alt"></i>
+            <% end -%>
+          </td>
+          <td class="align-middle">
+            <%= link_to edit_loan_path(loan), title: t(:edit), class: 'btn btn-default' do %>
+              <i class="fas fa-edit"></i>
+            <% end -%>
+          </td>
+          <td class="align-middle">
+            <%= link_to loan, method: :delete, data: { confirm: "#{t(:are_you_sure)}?" }, title: t(:destroy), class: 'btn btn-danger' do %>
+              <i class="fas fa-trash"></i>
+            <% end -%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br/>

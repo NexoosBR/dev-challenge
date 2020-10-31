@@ -1,0 +1,6 @@
+<%= title t(:editing_model, model: t("loan", scope: "activerecord.models"))  %>
+
+<%= link_to_back(loans_path) %>
+<%= link_to_detail_resource(@loan, t(:show_model, model: t("loan", scope: 'activerecord.models'))) %>
+	
+<%= render 'form' %>

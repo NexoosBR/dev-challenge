@@ -1,0 +1,13 @@
+
+<%= simple_form_for(@loan) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.input :value, class: 'form-control', wrapper: false %>
+    <%= f.input :number_installments, class: 'form-control', wrapper: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

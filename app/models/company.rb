@@ -5,6 +5,8 @@ class Company < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :phone_numbers, dependent: :destroy
+  has_many :loans
+
   validate :check_cnpj
 
   private

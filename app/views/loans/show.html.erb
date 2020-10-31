@@ -1,0 +1,29 @@
+<%= title t("loan", scope: "activerecord.models") %>
+
+<%= link_to_back(loans_path) %>
+<%= link_to_edit_resource(edit_loan_path(@loan), t(:edit_model, model: t("loan", scope: 'activerecord.models'))) %>
+
+<div class="kt-portlet kt-portlet--mobile table">
+	<div class="kt-portlet__body">
+		<div class="row">
+			<div class="col-lg-4">
+				<p>
+					<small><%= t(:value, scope: "activerecord.attributes.loan") %>:</small>
+					<h3><%= @loan.value %></h3>
+				</p>
+			</div>
+			<div class="col-lg-4">
+				<p>
+					<small><%= t(:number_installments, scope: "activerecord.attributes.loan") %>:</small>
+					<h3><%= @loan.number_installments %></h3>
+				</p>
+			</div>
+			<div class="col-lg-4">
+				<p>
+					<small><%= t(:company, scope: "activerecord.attributes.loan") %>:</small>
+					<h3><%= @loan.company.name %></h3>
+				</p>
+			</div>
+		</div>
+	</div>
+</div>
