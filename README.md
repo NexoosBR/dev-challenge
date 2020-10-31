@@ -1,5 +1,49 @@
 # Nexoos Challenge
 
+## Pré-Requisitos
+
+`Ruby >= 2.6.3`
+
+`node >= 13.12.0`
+
+`yarn >= 1.22.5`
+
+`Postgres >= 9.2`
+
+Sistema operacional recomendado: `Linux`
+
+## Iniciando o Projeto
+
+Clone o repositório:
+
+```bash
+git clone git@github.com:yosh1tsune/dev-challenge.git
+```bash
+
+Acesse a pasta raiz:
+
+```bash
+cd dev-challenge
+```
+
+Rode o seguinte comando para installar as dependencias e inicializar o banco de dados:
+
+```bash
+bin/setup
+```
+
+Para visualizar o projeto, rode o comando:
+
+```bash
+rails server
+```
+
+Por padrão, ele será hospedado em http://localhost:3000/
+
+O projeto conta com dados pré-editados no arquivo db/seeds.rb
+
+## Nexoos
+
 A Nexoos é uma plataforma online sem burocracia e sem taxas abusivas que conecta empresas
 que necessitam de empréstimos a investidores pessoa Física tornando este processo mais rápido, eficiente e justo no modelo marketplace lending.
 
