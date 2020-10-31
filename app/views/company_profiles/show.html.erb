@@ -1,27 +1,43 @@
-<div class="container">
-  <h1>Meu Pefil</h1>
-  <dl>
-    <dt><%= t('company_profiles.name') %>: </dt>
-    <dd><%= @company_profile.name %></dd>
-    <dt><%= t('company_profiles.document') %>: </dt>
-    <dd><%= @company_profile.document %></dd>
-    <% @company_profile.addresses.each do |address| %>
-        <dt><%= t('addresses.address') %>:</dt>
-        <dd><%= address.address %></dd>
-        <dt><%= t('addresses.zipcode') %>:</dt>
-        <dd><%= address.zipcode %></dd>
-        <dt><%= t('addresses.city') %>:</dt>
-        <dd><%= address.city %></dd>
-        <dt><%= t('addresses.state') %>:</dt>
-        <dd><%= address.state %></dd>
-        <dt><%= t('addresses.country') %>:</dt>
-        <dd><%= address.country %></dd>
-    <% end %>
-    <% @company_profile.contacts.each do |contact| %>
-        <dt><%= t('contacts.contact') %>:</dt>
-        <dd><%= contact.contact %></dd>
-        <dt><%= t('contacts.contact_type') %>:</dt>
-        <dd><%= t(contact.contact_type) %></dd>
-    <% end %>
-  </dl>
-</div>
+<h1>Meu Perfil</h1>
+
+<hr class="my-4">
+
+<dl>
+  <dt><%= t('company_profiles.name') %>: </dt>
+  <dd><%= @company_profile.name %></dd>
+  <dt><%= t('company_profiles.document') %>: </dt>
+  <dd><%= @company_profile.document %></dd>
+  <% @company_profile.addresses.each do |address| %>
+      <dt><%= t('addresses.address') %>:</dt>
+      <dd><%= address.address %></dd>
+      <dt><%= t('addresses.zipcode') %>:</dt>
+      <dd><%= address.zipcode %></dd>
+      <dt><%= t('addresses.city') %>:</dt>
+      <dd><%= address.city %></dd>
+      <dt><%= t('addresses.state') %>:</dt>
+      <dd><%= address.state %></dd>
+      <dt><%= t('addresses.country') %>:</dt>
+      <dd><%= address.country %></dd>
+  <% end %>
+  <% @company_profile.contacts.each do |contact| %>
+      <dt><%= t('contacts.contact') %>:</dt>
+      <dd><%= contact.contact %></dd>
+      <dt><%= t('contacts.contact_type') %>:</dt>
+      <dd><%= t(contact.contact_type) %></dd>
+  <% end %>
+</dl>
+
+<% if @company_profile.proposals %>
+  <p class="h3">Solitações de Crédito</h1>
+
+  <hr class="my-4">
+
+  <% @company_profile.proposals.each do |proposal| %>
+    <dl>
+      <dt><%= t('proposals.id') %></dt>
+      <dd><%= link_to proposal.id, proposal_path(proposal) %>
+      <dt><%= t('proposals.value') %></dt>
+      <dd><%= number_to_currency(proposal.value, locale: :'pt-BR') %>
+    </dl>
+  <% end %>
+<% end %>

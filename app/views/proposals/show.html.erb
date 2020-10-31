@@ -1,7 +1,11 @@
 <div class="container">
   <h1>Solicitação de Crédito</h1>
 
+  <hr class="my-4">
+
   <dl>
+    <dt>Solicitante</dt>
+    <dd><%= link_to @proposal.company_profile.name, company_profile_path(@proposal.company_profile) %>
     <dt><%= t('proposals.value' )%>:</dt>
     <dd><%= number_to_currency(@proposal.value, locale: :'pt-BR') %></dt>
     <dt><%= t('proposals.installments' )%>:</dt>
