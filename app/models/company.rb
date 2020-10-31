@@ -6,6 +6,7 @@ class Company < ApplicationRecord
 
   has_many :phone_numbers, dependent: :destroy
   has_many :loans
+  has_many :installments
 
   validate :check_cnpj
 
