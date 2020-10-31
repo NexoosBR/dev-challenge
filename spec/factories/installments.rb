@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :installment do
-    value { "9.99" }
-    due_date { "2020-10-31" }
-    company { nil }
-    loan { nil }
+    value { '' }
+    due_date { '' }
+    company { create(:company) }
+    loan { create(:loan) }
   end
 end

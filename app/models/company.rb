@@ -8,6 +8,7 @@ class Company < ApplicationRecord
   has_many :loans
   has_many :installments
 
+  validates :name, presence: true
   validate :check_cnpj
 
   private

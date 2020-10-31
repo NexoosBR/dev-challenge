@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_31_141259) do
+ActiveRecord::Schema.define(version: 2020_10_31_144434) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,17 @@ ActiveRecord::Schema.define(version: 2020_10_31_141259) do
     t.string "cnpj"
     t.index ["email"], name: "index_companies_on_email", unique: true
     t.index ["reset_password_token"], name: "index_companies_on_reset_password_token", unique: true
+  end
+
+  create_table "installments", force: :cascade do |t|
+    t.decimal "value"
+    t.date "due_date"
+    t.bigint "company_id", null: false
+    t.bigint "loan_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["company_id"], name: "index_installments_on_company_id"
+    t.index ["loan_id"], name: "index_installments_on_loan_id"
   end
 
   create_table "loans", force: :cascade do |t|
@@ -48,6 +59,8 @@ ActiveRecord::Schema.define(version: 2020_10_31_141259) do
     t.index ["company_id"], name: "index_phone_numbers_on_company_id"
   end
 
+  add_foreign_key "installments", "companies"
+  add_foreign_key "installments", "loans"
   add_foreign_key "loans", "companies"
   add_foreign_key "phone_numbers", "companies"
 end

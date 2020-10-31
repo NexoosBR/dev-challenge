@@ -6,8 +6,8 @@ FactoryBot.define do
     name { FFaker::Name.name }
     cnpj { FFaker::IdentificationBR.cnpj }
 
-    after(:create) do |company|
-      company.confirm
-    end
+    # after(:create) do |company|
+    #   company.confirm
+    # end
   end
 end
