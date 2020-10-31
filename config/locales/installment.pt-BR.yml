@@ -1,0 +1,16 @@
+pt-BR:
+  installments:
+    value: 'Valor'
+    installment_index: 'Parcela'
+    expiration: 'Vencimento'
+    proposal_id: 'Proposta'
+  activerecord:
+    models:
+      installment: 'Parcela'
+      proposal: 'Proposta'
+    attributes:
+      installment:
+        value: 'Valor'
+        installment_index: 'Parcela'
+        expiration: 'Vencimento'
+        proposal_id: 'Proposta'

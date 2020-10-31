@@ -7,6 +7,8 @@ pt-BR:
     pending: 'Pendente'
     paid: 'Paga'
   activerecord:
+    models:
+      proposal: 'Proposta'
     attributes:
       proposal:
         value: 'Valor'
@@ -15,5 +17,3 @@ pt-BR:
         expiration: 'Vencimento'
         pending: 'Pendente'
         paid: 'Paga'
-    model:
-      proposal: 'Posposta'

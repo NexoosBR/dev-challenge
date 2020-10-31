@@ -10,13 +10,13 @@ feature 'Company open lending proposal' do
     click_on 'Solicitação de Crédito'
     fill_in 'Valor', with: 100_000
     fill_in 'Parcelas', with: 12
-    fill_in 'Vencimento', with: '15/12/2020'
+    fill_in 'Vencimento', with: Date.today.next_month(2)
     click_on 'Enviar'
 
     expect(page).to have_content 'Proposta enviada com sucesso!'
     expect(page).to have_content 'Valor: R$ 100.000,00'
     expect(page).to have_content 'Parcelas: 12'
-    expect(page).to have_content 'Vencimento: 15/12/2020'
+    expect(page).to have_content I18n.l(Date.today.next_month(2))
   end
 
   scenario 'and need to sign in' do
@@ -47,7 +47,7 @@ feature 'Company open lending proposal' do
     click_on 'Solicitação de Crédito'
     fill_in 'Valor', with: 5_000
     fill_in 'Parcelas', with: 3
-    fill_in 'Vencimento', with: '15/12/2020'
+    fill_in 'Vencimento', with: Date.today.next_month(2)
     click_on 'Enviar'
 
     expect(page).to have_content 'Proposta enviada com sucesso!'
@@ -57,11 +57,9 @@ feature 'Company open lending proposal' do
     expect(page).to have_css('th', text: 'Valor')
     expect(page).to have_css('tr', text: 'R$ 1.717,00')
     expect(page).to have_css('th', text: 'Data de Vencimento')
-    expect(page).to have_css('tr', text: '15/12/2020')
+    expect(page).to have_css('tr', text: I18n.l(Date.today.next_month(2)))
     expect(page).to have_css('th', text: 'Status')
     expect(page).to have_css('tr', text: 'Pendente')
-    expect(page).to have_content '2 R$ 1.717,00 15/01/2021 Pendente' # Forma que o capybara le as linhas da tabela de parcelas
-    expect(page).to have_content '3 R$ 1.717,00 15/02/2021 Pendente'
   end
 
   scenario 'and must fill all fields' do
