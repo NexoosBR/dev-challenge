@@ -18,7 +18,7 @@ Clone o repositório:
 
 ```bash
 git clone git@github.com:yosh1tsune/dev-challenge.git
-```bash
+```
 
 Acesse a pasta raiz:
 
