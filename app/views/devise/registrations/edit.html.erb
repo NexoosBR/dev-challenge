@@ -14,7 +14,7 @@
                 input_html: { autocomplete: "email" } %>
 
     <%= f.simple_fields_for :phone_numbers do |p| %>
-      <%= p.input :number %>
+      <%= p.input :number, required: true, label: t(:number, scope: 'activerecord.attributes.company') %>
     <% end %>
 
     <%= f.input :password,
@@ -31,7 +31,7 @@
   </div>
 
   <div class="form-actions">
-    <%= f.button :submit, "Update" %>
+    <%= f.button :submit, t(:update, scope: 'devise.links'), class: 'btn btn-primary btn-block mb-2' %>
   </div>
 <% end %>
 <br/>

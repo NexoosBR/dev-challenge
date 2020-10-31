@@ -46,8 +46,11 @@ pt-BR:
         name: "Nome"
         cpnj: "CPNJ"
         email: "Email"
+        current_password: "Senha atual"
+        number: "Número"
         password: "Senha"
-        phone_number: "Números de telefone"
+        password_confirmation: "Digite novamente a senha"
+        phone_numbers: "Números de telefone"
         loans: "Emprestimos"
       loan:
         company: "Empresa"
@@ -58,6 +61,9 @@ pt-BR:
       phone_number:
         number: "Número"
         company: "Empresa"
+      phone_numbers:
+        number: "Número"
+
     models:
       company: "Empresa"
       loan: "Emprestimo"
