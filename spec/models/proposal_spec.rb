@@ -1,6 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe Proposal, type: :model do
+  describe '.create_installments' do
+    it 'successfully' do
+      company = build(:company)
+      company_profile = build(:company_profile, company: company)
+      proposal = Proposal.create(company_profile: company_profile, value: 5_000,
+                                installments: 3, tax: 0.015,
+                                expiration: 3.months.from_now)
+      installments = proposal.monthly_installments
+
+      expect(installments.count).to eq proposal.installments
+      expect(installments.first.expiration).
+        to eq Date.parse(3.months.from_now.to_s)
+    end
+  end
+
   describe '.value_valid?' do
     it 'is valid' do
       company = build(:company)

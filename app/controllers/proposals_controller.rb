@@ -15,7 +15,6 @@ class ProposalsController < ApplicationController
     @company_profile = CompanyProfile.find_by(company: current_company)
     @proposal = @company_profile.proposals.new(proposal_params)
     if @proposal.save
-      TaxCalcus.new(@proposal).calculate
       flash[:notice] = 'Proposta enviada com sucesso!'
       redirect_to @proposal
     else

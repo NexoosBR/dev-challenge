@@ -5,10 +5,15 @@ class Proposal < ApplicationRecord
   validates :installments, numericality: { less_than_or_equal_to: 60 }
   belongs_to :company_profile
   before_create :default_tax
-  has_many :montly_installments, foreign_key: :proposal_id,
-                                 class_name: 'Installment'
+  after_create :create_installments
+  has_many :monthly_installments, foreign_key: :proposal_id,
+                                  class_name: 'Installment'
 
   private
+
+  def create_installments
+    TaxCalcus.new(self).calculate
+  end
 
   def default_tax
     self.tax ||= 0.015

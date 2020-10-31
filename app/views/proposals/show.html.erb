@@ -26,7 +26,7 @@
       </tr>
     </thead>
     <tbody>
-      <% @proposal.montly_installments.each do |installment| %>
+      <% @proposal.monthly_installments.each do |installment| %>
         <tr>
           <td><%= installment.installment_index %></td>
           <td><%= number_to_currency(installment.value, locale: :'pt-BR') %></td>
