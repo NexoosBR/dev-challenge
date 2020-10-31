@@ -39,3 +39,26 @@ pt-BR:
   sign_out: "Sair"
 
   invalid_cnpj: "CNPJ inválido"
+
+  activerecord:
+    attributes:
+      company:
+        name: "Nome"
+        cpnj: "CPNJ"
+        email: "Email"
+        password: "Senha"
+        phone_number: "Números de telefone"
+        loans: "Emprestimos"
+      loan:
+        company: "Empresa"
+        rate: "Taxa"
+        value: "Valor"
+        number_installments: "Número de parcelas"
+        value_installments: "Valor das parcelas"
+      phone_number:
+        number: "Número"
+        company: "Empresa"
+    models:
+      company: "Empresa"
+      loan: "Emprestimo"
+      phone_number: "Número de telefone"
