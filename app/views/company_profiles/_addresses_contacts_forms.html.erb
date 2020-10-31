@@ -1,0 +1,63 @@
+<div id="accordion">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h5 class="mb-0">
+        <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+          Adicionar Novo Endereço
+        </button>
+      </h5>
+    </div>
+
+    <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+      <div class="card-body">
+        <%= form_for ([@company_profile, @address]) do |form| %>
+          <div class="form-group">
+            <%= form.label :address %>
+            <%= form.text_field :address, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :city %>
+            <%= form.text_field :city, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :state %>
+            <%= form.text_field :state, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :country %>
+            <%= form.text_field :country, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :zipcode %>
+            <%= form.text_field :zipcode, class: 'form-control' %>
+          </div>
+          <%= form.submit 'Salvar Endereço', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h5 class="mb-0">
+        <button class="btn btn-link collapsed" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+          Adicionar Novo Contato
+        </button>
+      </h5>
+    </div>
+    <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+      <div class="card-body">
+        <%= form_for ([@company_profile, @contact]) do |form| %>
+          <div class="form-group">
+            <%= form.label :contact %>
+            <%= form.text_field :contact, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= form.label :contact_type, 'Tipo' %>
+            <%= form.select :contact_type, Contact.contact_types.keys.map { |type| [type.humanize, type] }, {}, class: 'form-control' %>
+          </div>
+          <%= form.submit 'Salvar Contato', class: 'btn btn-primary' %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

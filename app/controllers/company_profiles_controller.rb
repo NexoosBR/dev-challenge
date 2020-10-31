@@ -4,6 +4,8 @@ class CompanyProfilesController < ApplicationController
   def show
     if company_signed_in?
       @company_profile = CompanyProfile.find_by(company_id: current_company.id)
+      @address = Address.new
+      @contact = Contact.new
       if @company_profile.nil?
         redirect_to new_company_profile_path
       end
@@ -26,13 +28,28 @@ class CompanyProfilesController < ApplicationController
     end
   end
 
+  def edit
+    @company_profile = CompanyProfile.find(params[:id])
+    @addresses = @company_profile.addresses
+  end
+
+  def update
+    @company_profile = CompanyProfile.find(params[:id])
+    if @company_profile.update(company_profile_params)
+      flash[:notice] = 'Perfil atualizado com sucesso!'
+      redirect_to @company_profile
+    else
+      render :edit
+    end
+  end
+
   private
 
   def company_profile_params
     params.require(:company_profile).permit(:name, :document,
-                                            addresses_attributes: %i[address
+                                            addresses_attributes: %i[id address
                                               zipcode city state country],
-                                            contacts_attributes: %i[contact
+                                            contacts_attributes: %i[id contact
                                               contact_type])
   end
 end

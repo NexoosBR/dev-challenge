@@ -2,6 +2,8 @@
 
 <hr class="my-4">
 
+<%= link_to 'Editar Perfil', edit_company_profile_path(@company_profile) %>
+
 <dl>
   <dt><%= t('company_profiles.name') %>: </dt>
   <dd><%= @company_profile.name %></dd>
@@ -27,8 +29,10 @@
   <% end %>
 </dl>
 
+<%= render partial: 'addresses_contacts_forms' %>
+
 <% if @company_profile.proposals %>
-  <p class="h3">Solitações de Crédito</h1>
+  <p class="h3 mt-3">Solitações de Crédito</h1>
 
   <hr class="my-4">
 
