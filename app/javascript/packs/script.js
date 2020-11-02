@@ -1,5 +1,8 @@
 window.jQuery = window.$ = require('jquery');
-require('popper.js/dist/umd/popper');
-window.Popper = require('popper.js').default;
-// require('@popperjs/core')
+require('jquery-ujs');
+window.Popper = require('popper.js');
 import 'bootstrap'
+
+require('@fortawesome/fontawesome-free/js/all');
+
+require('../scripts/flashMessages');

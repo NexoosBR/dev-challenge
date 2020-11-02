@@ -2,6 +2,8 @@ pt-BR:
   are_you_sure: "Tem certeza"
   company_slogan: "Nexoos"
   profile: "Perfil"
+  welcome: "Seja Bem-vindo"
+  click_here: "Clica aqui"
 
   nope: "Não"
   none: "nenhuma"
@@ -68,3 +70,12 @@ pt-BR:
       company: "Empresa"
       loan: "Emprestimo"
       phone_number: "Número de telefone"
+
+  text_home: "Seja Bem vindo"
+
+  menu:
+    home: "Home"
+    loan: "Emprestimo"
+    dropdown:
+      profile: "Perfil"
+      logout: "Sair"

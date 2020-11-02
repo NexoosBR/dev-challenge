@@ -1,0 +1,27 @@
+<nav class="navbar navbar-expand-md d-flex navbar-dark bg-primary">
+  <a class="navbar-brand" href="#"><%= t(:company_slogan) %></a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+    <ul class="navbar-nav ml-auto">
+      <li class="nav-item">
+        <%= link_to t(:home, scope: 'menu'), root_path, class: "nav-link #{'active' if controller_path == 'home'}" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to t(:loan, scope: 'menu'), loans_path, class: "nav-link #{'active' if controller_path == 'loans'}" %>
+      </li>
+      <li class="nav-item dropdown">
+        <%= link_to '#', class: 'nav-link dropdown-toggle', id: 'navbarDropdownMenuLink', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } do %>
+          <%= current_company.name %>
+        <% end %>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <%= link_to t(:profile, scope: 'menu.dropdown'), '#', class: 'dropdown-item' %>
+          <%= link_to destroy_company_session_path, method: :delete, class: 'dropdown-item' do %>
+            <%= t(:logout, scope: 'menu.dropdown') %>
+          <% end %>
+        </div>
+      </li>
+    </ul>
+  </div>
+</nav>

@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root to: 'loans#index'
+  root to: 'home#index'
+  get 'home/index'
 
   devise_for :companies
 

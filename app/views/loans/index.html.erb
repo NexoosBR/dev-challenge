@@ -21,14 +21,14 @@
                       <td class="align-middle"><%= loan.value %></td>
                       <td class="align-middle"><%= loan.rate %></td>
                       <td class="align-middle"><%= loan.number_installments %></td>
-                      <td class="align-middle"><%= loan.company %></td>
+                      <td class="align-middle"><%= loan.company.try(:name) %></td>
                     <td class="align-middle">
-            <%= link_to loan, title: t(:show), class: 'btn btn-default' do %>
+            <%= link_to loan, title: t(:show), class: 'btn btn-primary' do %>
               <i class="fas fa-file-alt"></i>
             <% end -%>
           </td>
           <td class="align-middle">
-            <%= link_to edit_loan_path(loan), title: t(:edit), class: 'btn btn-default' do %>
+            <%= link_to edit_loan_path(loan), title: t(:edit), class: 'btn btn-info' do %>
               <i class="fas fa-edit"></i>
             <% end -%>
           </td>
