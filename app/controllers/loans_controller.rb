@@ -21,21 +21,20 @@ class LoansController < ApplicationController
 
   # POST /loans
   def create
-    @loan = Loan.new(loan_params)
-    @loan.company = current_company
+    @loan = current_company.loans.new(loan_params)
     @loan.rate = 0.015
 
-      if @loan.save
-        redirect_to @loan, notice: 'Loan was successfully created.'
-      else
-        render :new
-      end
+    if @loan.save
+      redirect_to @loan, notice: t(:created, model: t(:loan, scope: 'activerecord.models'))
+    else
+      render :new
+    end
   end
 
   # PATCH/PUT /loans/1
   def update
     if @loan.update(loan_params)
-      redirect_to @loan, notice: 'Loan was successfully updated.'
+      redirect_to @loan, notice: t(:updated, model: t(:loan, scope: 'activerecord.models'))
     else
       render :edit
     end
@@ -44,7 +43,7 @@ class LoansController < ApplicationController
   # DELETE /loans/1
   def destroy
     @loan.destroy
-    redirect_to loans_url, notice: 'Loan was successfully destroyed.'
+    redirect_to loans_url, notice: t(:deleted, model: t(:loan, scope: 'activerecord.models'))
   end
 
   private
@@ -55,6 +54,6 @@ class LoansController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def loan_params
-      params.require(:loan).permit(:value, :rate, :number_installments, :company_id)
+      params.require(:loan).permit(:value, :rate, :number_installments)
     end
 end
