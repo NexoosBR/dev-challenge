@@ -7,22 +7,22 @@
     <thead>
       <tr>
         <th scope="col"><%= t(:id, scope: "activerecord.attributes") %></th>
-                  <th scope="col"><%= t(:value, scope: "activerecord.attributes.loan") %></th>
-                  <th scope="col"><%= t(:rate, scope: "activerecord.attributes.loan") %></th>
-                  <th scope="col"><%= t(:number_installments, scope: "activerecord.attributes.loan") %></th>
-                  <th scope="col"><%= t(:company, scope: "activerecord.attributes.loan") %></th>
-                <th colspan="3" scope="col"></th>
+        <th scope="col"><%= t(:value, scope: "activerecord.attributes.loan") %></th>
+        <th scope="col"><%= t(:rate, scope: "activerecord.attributes.loan") %></th>
+        <th scope="col"><%= t(:number_installments, scope: "activerecord.attributes.loan") %></th>
+        <th scope="col"><%= t(:company, scope: "activerecord.attributes.loan") %></th>
+        <th colspan="3" scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <% @loans.each do |loan| %>
         <tr>
           <td class="align-middle"><%= loan.id %></td>
-                      <td class="align-middle"><%= loan.value %></td>
-                      <td class="align-middle"><%= loan.rate %></td>
-                      <td class="align-middle"><%= loan.number_installments %></td>
-                      <td class="align-middle"><%= loan.company.try(:name) %></td>
-                    <td class="align-middle">
+          <td class="align-middle"><%= loan.value %></td>
+          <td class="align-middle"><%= loan.rate %></td>
+          <td class="align-middle"><%= loan.number_installments %></td>
+          <td class="align-middle"><%= loan.company.try(:name) %></td>
+          <td class="align-middle">
             <%= link_to loan, title: t(:show), class: 'btn btn-primary' do %>
               <i class="fas fa-file-alt"></i>
             <% end -%>

@@ -21,7 +21,7 @@
 			<div class="col-lg-4">
 				<p>
 					<small><%= t(:company, scope: "activerecord.attributes.loan") %>:</small>
-					<h3><%= @loan.company.name %></h3>
+					<h3><%= @loan.company.try(:name) %></h3>
 				</p>
 			</div>
 		</div>

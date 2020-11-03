@@ -21,12 +21,12 @@
             <td class="align-middle"><%%= <%= singular_table_name %>.<%= attribute.name %> %></td>
           <% end -%>
           <td class="align-middle">
-            <%%= link_to <%= singular_table_name %>, title: t(:show), class: 'btn btn-default' do %>
+            <%%= link_to <%= singular_table_name %>, title: t(:show), class: 'btn btn-primary' do %>
               <i class="fas fa-file-alt"></i>
             <%% end -%>
           </td>
           <td class="align-middle">
-            <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), title: t(:edit), class: 'btn btn-default' do %>
+            <%%= link_to edit_<%= singular_table_name %>_path(<%= singular_table_name %>), title: t(:edit), class: 'btn btn-info' do %>
               <i class="fas fa-edit"></i>
             <%% end -%>
           </td>

@@ -24,7 +24,7 @@ class AddressesController < ApplicationController
     @address = current_company.addresses.new(address_params)
 
     if @address.save
-      redirect_to @address, notice: t(:created, model: t(:addresses, scope: 'activerecord.models'))
+      redirect_to @address, notice: t(:created, model: t(:address, scope: 'activerecord.models'))
     else
       render :new
     end
@@ -33,7 +33,7 @@ class AddressesController < ApplicationController
   # PATCH/PUT /addresses/1
   def update
     if @address.update(address_params)
-      redirect_to @address, notice: t(:updated, model: t(:addresses, scope: 'activerecord.models'))
+      redirect_to @address, notice: t(:updated, model: t(:address, scope: 'activerecord.models'))
     else
       render :edit
     end
@@ -42,7 +42,7 @@ class AddressesController < ApplicationController
   # DELETE /addresses/1
   def destroy
     @address.destroy
-    redirect_to addresses_url, notice: t(:deleted, model: t(:addresses, scope: 'activerecord.models'))
+    redirect_to addresses_url, notice: t(:deleted, model: t(:address, scope: 'activerecord.models'))
   end
 
   private

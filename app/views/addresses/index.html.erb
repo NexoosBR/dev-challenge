@@ -31,12 +31,12 @@
           <td class="align-middle"><%= address.zipcode %></td>
           <td class="align-middle"><%= address.company.try(:name) %></td>
           <td class="align-middle">
-            <%= link_to address, title: t(:show), class: 'btn btn-default' do %>
+            <%= link_to address, title: t(:show), class: 'btn btn-primary' do %>
               <i class="fas fa-file-alt"></i>
             <% end -%>
           </td>
           <td class="align-middle">
-            <%= link_to edit_address_path(address), title: t(:edit), class: 'btn btn-default' do %>
+            <%= link_to edit_address_path(address), title: t(:edit), class: 'btn btn-info' do %>
               <i class="fas fa-edit"></i>
             <% end -%>
           </td>

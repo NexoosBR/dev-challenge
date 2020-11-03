@@ -7,18 +7,18 @@
     <thead>
       <tr>
         <th scope="col"><%= t(:id, scope: "activerecord.attributes") %></th>
-                  <th scope="col"><%= t(:number, scope: "activerecord.attributes.phone_number") %></th>
-                  <th scope="col"><%= t(:company, scope: "activerecord.attributes.phone_number") %></th>
-                <th colspan="3" scope="col"></th>
+        <th scope="col"><%= t(:number, scope: "activerecord.attributes.phone_number") %></th>
+        <th scope="col"><%= t(:company, scope: "activerecord.attributes.phone_number") %></th>
+        <th colspan="3" scope="col"></th>
       </tr>
     </thead>
     <tbody>
       <% @phone_numbers.each do |phone_number| %>
         <tr>
           <td class="align-middle"><%= phone_number.id %></td>
-                      <td class="align-middle"><%= phone_number.number %></td>
-                      <td class="align-middle"><%= phone_number.company %></td>
-                    <td class="align-middle">
+          <td class="align-middle"><%= phone_number.number %></td>
+          <td class="align-middle"><%= phone_number.company.try(:name) %></td>
+          <td class="align-middle">
             <%= link_to phone_number, title: t(:show), class: 'btn btn-default' do %>
               <i class="fas fa-file-alt"></i>
             <% end -%>
