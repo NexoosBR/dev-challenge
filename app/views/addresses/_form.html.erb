@@ -1,0 +1,18 @@
+
+<%= simple_form_for(@address) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-group">
+    <%= f.input :country, as: :string, class: 'form-control', wrapper: false %>
+    <%= f.input :state, class: 'form-control', wrapper: false %>
+    <%= f.input :city, class: 'form-control', wrapper: false %>
+    <%= f.input :neighborhood, class: 'form-control', wrapper: false %>
+    <%= f.input :street, class: 'form-control', wrapper: false %>
+    <%= f.input :number, class: 'form-control', wrapper: false %>
+    <%= f.input :zipcode, class: 'form-control', wrapper: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, class: "btn btn-primary" %>
+  </div>
+<% end %>

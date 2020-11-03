@@ -1,0 +1,6 @@
+<%= title t(:editing_model, model: t("address", scope: "activerecord.models"))  %>
+
+<%= link_to_back(addresses_path) %>
+<%= link_to_detail_resource(@address, t(:show_model, model: t("address", scope: 'activerecord.models'))) %>
+	
+<%= render 'form' %>

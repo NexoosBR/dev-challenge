@@ -1,6 +1,6 @@
 class Loan < ApplicationRecord
   belongs_to :company
-  has_many :installments
+  has_many :installments, dependent: :destroy
 
   validates :value, :number_installments, presence: true
 

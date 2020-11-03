@@ -1,0 +1,59 @@
+<%= title t("address", scope: "activerecord.models") %>
+
+<%= link_to_back(addresses_path) %>
+<%= link_to_edit_resource(edit_address_path(@address), t(:edit_model, model: t("address", scope: 'activerecord.models'))) %>
+
+<div class="kt-portlet kt-portlet--mobile table">
+	<div class="kt-portlet__body">
+		<div class="row">
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:country, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.country %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:state, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.state %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:city, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.city %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:neighborhood, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.neighborhood %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:street, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.street %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:number, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.number %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:zipcode, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.zipcode %></h3>
+					</p>
+				</div>
+							<div class="col-lg-4">
+					<p>
+						<small><%= t(:company, scope: "activerecord.attributes.address") %>:</small>
+						<h3><%= @address.company.try(:name) %></h3>
+					</p>
+				</div>
+					</div>
+	</div>
+</div>

@@ -15,4 +15,14 @@ company = Company.create!(
 
 PhoneNumber.create(number: '1111-1111', company: company)
 
+Address.create(country: 'Pais', 
+  state: 'Estado',
+  city: 'Cidade',
+  neighborhood: 'bairro',
+  street: 'Rua do bobo',
+  number: '0',
+  zipcode: '00000-000',
+  company: company
+)
+
 Loan.create(value: 15000, number_installments: 24, company: company)

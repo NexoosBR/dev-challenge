@@ -5,5 +5,7 @@ Rails.application.routes.draw do
   devise_for :companies
 
   resources :loans
+
   resources :phone_numbers
+  resources  :addresses
 end

@@ -1,0 +1,54 @@
+<%= title t("address", scope: "activerecord.models").pluralize %>
+
+<%= link_to_new_resource(new_address_path, t(:create_model, model: t("address", scope: 'activerecord.models'))) %>
+
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"><%= t(:id, scope: "activerecord.attributes") %></th>
+        <th scope="col"><%= t(:country, scope: "activerecord.attributes.address") %></th>
+        <th scope="col"><%= t(:state, scope: "activerecord.attributes.address") %></th>
+        <th scope="col"><%= t(:city, scope: "activerecord.attributes.address") %></th>
+        <th scope="col"><%= t(:neighborhood, scope: "activerecord.attributes.address") %></th>
+        <th scope="col"><%= t(:street, scope: "activerecord.attributes.address") %></th>
+        <th scope="col"><%= t(:number, scope: "activerecord.attributes.address") %></th>
+        <th scope="col"><%= t(:zipcode, scope: "activerecord.attributes.address") %></th>
+        <th scope="col"><%= t(:company, scope: "activerecord.attributes.address") %></th>
+        <th colspan="3" scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @addresses.each do |address| %>
+        <tr>
+          <td class="align-middle"><%= address.id %></td>
+          <td class="align-middle"><%= address.country %></td>
+          <td class="align-middle"><%= address.state %></td>
+          <td class="align-middle"><%= address.city %></td>
+          <td class="align-middle"><%= address.neighborhood %></td>
+          <td class="align-middle"><%= address.street %></td>
+          <td class="align-middle"><%= address.number %></td>
+          <td class="align-middle"><%= address.zipcode %></td>
+          <td class="align-middle"><%= address.company.try(:name) %></td>
+          <td class="align-middle">
+            <%= link_to address, title: t(:show), class: 'btn btn-default' do %>
+              <i class="fas fa-file-alt"></i>
+            <% end -%>
+          </td>
+          <td class="align-middle">
+            <%= link_to edit_address_path(address), title: t(:edit), class: 'btn btn-default' do %>
+              <i class="fas fa-edit"></i>
+            <% end -%>
+          </td>
+          <td class="align-middle">
+            <%= link_to address, method: :delete, data: { confirm: "#{t(:are_you_sure)}?" }, title: t(:destroy), class: 'btn btn-danger' do %>
+              <i class="fas fa-trash"></i>
+            <% end -%>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>
+
+<br/>
