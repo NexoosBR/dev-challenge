@@ -12,11 +12,6 @@
     <%= f.input :cnpj,
                 required: true,
                 input_html: { autocomplete: "email" } %>
-
-    <%= f.simple_fields_for :phone_numbers do |p| %>
-      <%= p.input :number, required: true, label: t(:number, scope: 'activerecord.attributes.company') %>
-    <% end %>
-
     <%= f.input :password,
                 hint: t(:leave_it_blank_if_you_dont_want_to_change_it),
                 required: false,
@@ -28,6 +23,8 @@
                 hint: t(:we_need_your_current_password_to_confirm_your_changes),
                 required: true,
                 input_html: { autocomplete: "current-password" } %>
+
+    <%= link_to t(:list_model, model: t(:phone_numbers, scope: 'activerecord.models')), phone_numbers_path, class:"btn btn-info mb-3" %>
   </div>
 
   <div class="form-actions">

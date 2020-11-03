@@ -34,6 +34,7 @@ pt-BR:
   details: "Visualizar"
   edit: "Editar"
   exit: "Sair"
+  list_model: "Listar %{model}"
   show: "Visualizar"
   show_model: "Visualizar %{model}"
 
@@ -70,6 +71,7 @@ pt-BR:
       company: "Empresa"
       loan: "Emprestimo"
       phone_number: "Número de telefone"
+      phone_numbers: "Números de telefones"
 
   text_home: "Seja Bem vindo"
 
