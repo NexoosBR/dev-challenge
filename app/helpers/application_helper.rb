@@ -20,8 +20,4 @@ module ApplicationHelper
   def link_to_detail_resource(path, title = nil)
     render 'shared/link_to_detail_resource', title: title, path: path
   end
-
-  def boolean_label(boolean)
-    boolean == true ? t(:yep) : t(:nope)
-  end
 end

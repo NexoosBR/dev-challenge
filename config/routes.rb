@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   devise_for :companies
 
   resources :loans
+  get 'profile', to: 'profile#show', as: :profile
 
   resources :phone_numbers
   resources  :addresses

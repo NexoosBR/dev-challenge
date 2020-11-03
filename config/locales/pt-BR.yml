@@ -45,6 +45,15 @@ pt-BR:
 
   activerecord:
     attributes:
+      address:
+        city: "Cidade"
+        country: "País"
+        company: "Empresa"
+        neighborhood: "Bairro"
+        number: "Número"
+        state: "Estado"
+        street: "Rua"
+        zipcode: "CEP"
       company:
         name: "Nome"
         cpnj: "CPNJ"

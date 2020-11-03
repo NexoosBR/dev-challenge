@@ -1,0 +1,48 @@
+<% title t(:profile) %>
+
+<%= link_to_edit_resource(edit_company_registration_path, t(:edit)) %>
+<%= content_for :right do -%>
+  <%= link_to t(:phone_numbers, scope: 'activerecord.models'), phone_numbers_path, class: 'btn btn-outline-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2' %>
+  <%= link_to t(:address, scope: 'activerecord.models'), addresses_path, class: 'btn btn-outline-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2' %>
+<% end %>
+
+<div class="d-flex justify-content-around p-4 border rounded mx-auto">
+  <div>
+    <h2><%= current_company.name %></h2>
+    <p>
+      <%= t(:cnpj, scope: 'activerecord.attributes.company') %>:
+      <span><%= current_company.cnpj %></span>
+    </p>
+    <h4><%= t(:phone_numbers, scope: 'activerecord.models') %></h4>
+    <% current_company.phone_numbers.each do |contact| %>
+      <p><%= t('contacts.number') %>:
+      <%= contact.number %></p>
+    <% end %>
+  </div>
+  <% current_company.addresses.each do |address| %>
+    <div>
+      <h4><%= "#{t(:address, scope: 'activerecord.models')} #{address.id}" %></h4>
+      <p><%= t(:street, scope: 'activerecord.attributes.address') %>:
+        <%= address.street %>
+      </p>
+      <p><%= t(:number, scope: 'activerecord.attributes.address') %>:
+        <%= address.number %>
+      </p>
+      <p><%= t(:zipcode, scope: 'activerecord.attributes.address') %>:
+        <%= address.zipcode %>
+      </p>
+      <p><%= t(:state, scope: 'activerecord.attributes.address') %>:
+        <%= address.state %>
+      </p>
+      <p><%= t(:city, scope: 'activerecord.attributes.address') %>:
+        <%= address.city %>
+      </p>
+      <p><%= t(:country, scope: 'activerecord.attributes.address') %>:
+        <%= address.country %>
+      </p>
+      <p><%= t(:neighborhood, scope: 'activerecord.attributes.address') %>:
+        <%= address.neighborhood %>
+      </p>
+    </div>
+  <% end %>
+</div>

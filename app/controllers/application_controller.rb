@@ -12,14 +12,10 @@ class ApplicationController < ActionController::Base
 
   private
     def layout_by_resource
-      if devise_controller? && !devise_registration_edit_view?
+      if devise_controller? &&  !request.fullpath.match?('/companies/edit')
         'login'
       else
         'application'
       end
-    end
-
-    def devise_registration_edit_view?
-      request.fullpath.match?('/managers/edit') || (request.fullpath.match('/managers') && params[:action] == 'update')
     end
 end
