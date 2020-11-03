@@ -8,14 +8,14 @@
 
 company = Company.create!(
   name: 'Company Test',
-  cnpj: '98875340155520', 
-  email: 'company@example.com', 
+  cnpj: '98875340155520',
+  email: 'company@example.com',
   password: 'changeme'
 )
 
 PhoneNumber.create(number: '1111-1111', company: company)
 
-Address.create(country: 'Pais', 
+Address.create(country: 'Pais',
   state: 'Estado',
   city: 'Cidade',
   neighborhood: 'bairro',

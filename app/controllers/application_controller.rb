@@ -12,7 +12,7 @@ class ApplicationController < ActionController::Base
 
   private
     def layout_by_resource
-      if devise_controller? &&  !request.fullpath.match?('/companies/edit')
+      if devise_controller? && !request.fullpath.match?('/companies/edit')
         'login'
       else
         'application'

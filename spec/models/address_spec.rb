@@ -20,13 +20,13 @@ RSpec.describe Address, type: :model do
       address.reload
       expect(address.number).to_not be_nil
     end
-    
+
     it 'is not valid without street' do
       address.update(street: nil)
       address.reload
       expect(address.street).to_not be_nil
     end
-    
+
     it 'is not valid without city' do
       address.update(city: nil)
       address.reload
