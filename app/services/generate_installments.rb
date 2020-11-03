@@ -14,7 +14,7 @@ class GenerateInstallments
     pmt = calculate_pmt()
     @loan.update_attribute(:pmt, pmt)
     today = Date.today
-    for i in 0..@loan.number_installments
+    for i in 0..(@loan.number_installments-1)
       Installment.create(value: pmt,
                         loan: @loan,
                         company: @loan.company,
