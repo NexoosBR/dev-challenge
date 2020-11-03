@@ -44,7 +44,7 @@ ActiveRecord::Schema.define(version: 2020_10_31_144434) do
     t.decimal "value"
     t.decimal "rate"
     t.integer "number_installments"
-    t.decimal "value_installments"
+    t.decimal "pmt"
     t.bigint "company_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false

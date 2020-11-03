@@ -7,4 +7,8 @@ class Loan < ApplicationRecord
   before_create do
     self.rate ||= 0.015
   end
+
+  after_create do
+    GenerateInstallments.new(self).generate_installments
+  end
 end
