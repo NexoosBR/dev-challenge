@@ -1,0 +1,24 @@
+<h3><%= t(:installment, scope: "activerecord.models").pluralize %></h3>
+
+<div class="table-responsive">
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col"><%= t(:id, scope: "activerecord.attributes") %></th>
+        <th scope="col"><%= t(:value, scope: "activerecord.attributes.installment") %></th>
+        <th scope="col"><%= t(:due_date, scope: "activerecord.attributes.installment") %></th>
+        <th scope="col"><%= t(:company, scope: "activerecord.attributes.installment") %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% installments.each do |installment| %>
+        <tr>
+          <td class="align-middle"><%= installment.id %></td>
+          <td class="align-middle"><%= number_with_precision(installment.value, precision: 2, separator: ',', delimiter: '.') %></td>
+          <td class="align-middle"><%= l(installment.due_date, format: :long) %></td>
+          <td class="align-middle"><%= installment.company.try(:name) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

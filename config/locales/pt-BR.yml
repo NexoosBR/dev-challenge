@@ -64,6 +64,11 @@ pt-BR:
         password_confirmation: "Digite novamente a senha"
         phone_numbers: "Números de telefone"
         loans: "Emprestimos"
+      installment:
+        value: "Valor"
+        due_date: "Vencimento"
+        loan: "Emprestimo"
+        company: "Empresa"
       loan:
         company: "Empresa"
         pmt: "Valor das parcelas"
@@ -83,6 +88,7 @@ pt-BR:
       phone_number: "Número de telefone"
       phone_numbers: "Números de telefones"
       address: "Endereço"
+      installment: "Parcela"
 
   text_home: "Seja Bem vindo"
 
