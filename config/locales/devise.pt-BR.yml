@@ -40,7 +40,7 @@ pt-BR:
         not_found_in_database: 'Conta inexistente'
       logistic_operator:
         not_found_in_database: 'Conta inexistente'
-      user:
+      company:
         not_found_in_database: 'Conta inexistente'
       manager:
         not_found_in_database: 'Conta inexistente'

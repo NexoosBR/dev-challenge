@@ -66,6 +66,7 @@ pt-BR:
         loans: "Emprestimos"
       loan:
         company: "Empresa"
+        pmt: "Valor das parcelas"
         rate: "Taxa"
         value: "Valor"
         number_installments: "Número de parcelas"

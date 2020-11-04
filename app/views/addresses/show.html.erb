@@ -6,54 +6,54 @@
 <div class="kt-portlet kt-portlet--mobile table">
 	<div class="kt-portlet__body">
 		<div class="row">
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:country, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.country %></h3>
-					</p>
-				</div>
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:state, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.state %></h3>
-					</p>
-				</div>
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:city, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.city %></h3>
-					</p>
-				</div>
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:neighborhood, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.neighborhood %></h3>
-					</p>
-				</div>
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:street, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.street %></h3>
-					</p>
-				</div>
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:number, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.number %></h3>
-					</p>
-				</div>
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:zipcode, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.zipcode %></h3>
-					</p>
-				</div>
-							<div class="col-lg-4">
-					<p>
-						<small><%= t(:company, scope: "activerecord.attributes.address") %>:</small>
-						<h3><%= @address.company.try(:name) %></h3>
-					</p>
-				</div>
-					</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:country, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= @address.country %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:state, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= @address.state %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:city, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= @address.city %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:neighborhood, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= @address.neighborhood %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:street, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= @address.street %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:number, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= @address.number %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:zipcode, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= @address.zipcode %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:company, scope: "activerecord.attributes.address") %>:</small>
+					<h3><%= link_to @address.company.try(:name), profile_path %></h3>
+				</p>
+			</div>
+		</div>
 	</div>
 </div>

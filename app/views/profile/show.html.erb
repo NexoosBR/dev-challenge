@@ -3,7 +3,7 @@
 <%= link_to_edit_resource(edit_company_registration_path, t(:edit)) %>
 <%= content_for :right do -%>
   <%= link_to t(:phone_numbers, scope: 'activerecord.models'), phone_numbers_path, class: 'btn btn-outline-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2' %>
-  <%= link_to t(:address, scope: 'activerecord.models'), addresses_path, class: 'btn btn-outline-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2' %>
+  <%= link_to t(:address, scope: 'activerecord.models').pluralize, addresses_path, class: 'btn btn-outline-primary btn-fixed-height font-weight-bold px-2 px-lg-5 mr-2' %>
 <% end %>
 
 <div class="d-flex justify-content-around p-4 border rounded mx-auto">

@@ -6,22 +6,28 @@
 <div class="kt-portlet kt-portlet--mobile table">
 	<div class="kt-portlet__body">
 		<div class="row">
-			<div class="col-lg-4">
+			<div class="col-sm-6 col-lg-3">
 				<p>
 					<small><%= t(:value, scope: "activerecord.attributes.loan") %>:</small>
-					<h3><%= @loan.value %></h3>
+					<h3><%= number_with_precision(@loan.value, precision: 2, separator: ',', delimiter: '.')  %></h3>
 				</p>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-sm-6 col-lg-3">
 				<p>
 					<small><%= t(:number_installments, scope: "activerecord.attributes.loan") %>:</small>
 					<h3><%= @loan.number_installments %></h3>
 				</p>
 			</div>
-			<div class="col-lg-4">
+			<div class="col-sm-6 col-lg-3">
+				<p>
+					<small><%= t(:pmt, scope: "activerecord.attributes.loan") %>:</small>
+					<h3><%= number_with_precision(@loan.pmt, precision: 2, separator: ',', delimiter: '.')  %></h3>
+				</p>
+			</div>
+			<div class="col-sm-6 col-lg-3">
 				<p>
 					<small><%= t(:company, scope: "activerecord.attributes.loan") %>:</small>
-					<h3><%= @loan.company.try(:name) %></h3>
+					<h3><%= link_to @loan.company.try(:name), profile_path %></h3>
 				</p>
 			</div>
 		</div>

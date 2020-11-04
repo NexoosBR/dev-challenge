@@ -2,7 +2,7 @@
 
 <%= link_to_new_resource(new_phone_number_path, t(:create_model, model: t("phone_number", scope: 'activerecord.models'))) %>
 
-<div>
+<div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
@@ -17,14 +17,14 @@
         <tr>
           <td class="align-middle"><%= phone_number.id %></td>
           <td class="align-middle"><%= phone_number.number %></td>
-          <td class="align-middle"><%= phone_number.company.try(:name) %></td>
+          <td class="align-middle"><%= link_to phone_number.company.try(:name), profile_path %></td>
           <td class="align-middle">
-            <%= link_to phone_number, title: t(:show), class: 'btn btn-default' do %>
+            <%= link_to phone_number, title: t(:show), class: 'btn btn-primary' do %>
               <i class="fas fa-file-alt"></i>
             <% end -%>
           </td>
           <td class="align-middle">
-            <%= link_to edit_phone_number_path(phone_number), title: t(:edit), class: 'btn btn-default' do %>
+            <%= link_to edit_phone_number_path(phone_number), title: t(:edit), class: 'btn btn-info' do %>
               <i class="fas fa-edit"></i>
             <% end -%>
           </td>

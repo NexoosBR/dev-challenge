@@ -13,7 +13,7 @@
       </li>
       <% if current_company %>
         <li class="nav-item dropdown">
-          <%= link_to '#', class: "nav-link dropdown-toggle #{'active' if controller_path == 'profile'}", id: 'navbarDropdownMenuLink', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } do %>
+          <%= link_to '#', class: "nav-link dropdown-toggle #{'active' if controller_path == 'profile' || controller_path == 'phone_numbers' || controller_path == 'addresses' }", id: 'navbarDropdownMenuLink', data: { toggle: 'dropdown' }, aria: { haspopup: 'true', expanded: 'false' } do %>
             <%= current_company.name %>
           <% end %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">

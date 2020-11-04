@@ -2,7 +2,7 @@
 
 <%= link_to_new_resource(new_address_path, t(:create_model, model: t("address", scope: 'activerecord.models'))) %>
 
-<div>
+<div class="table-responsive">
   <table class="table">
     <thead>
       <tr>
@@ -29,7 +29,7 @@
           <td class="align-middle"><%= address.street %></td>
           <td class="align-middle"><%= address.number %></td>
           <td class="align-middle"><%= address.zipcode %></td>
-          <td class="align-middle"><%= address.company.try(:name) %></td>
+          <td class="align-middle"><%= link_to address.company.try(:name), profile_path %></td>
           <td class="align-middle">
             <%= link_to address, title: t(:show), class: 'btn btn-primary' do %>
               <i class="fas fa-file-alt"></i>
