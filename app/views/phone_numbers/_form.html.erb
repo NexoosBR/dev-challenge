@@ -3,11 +3,16 @@
   <%= f.error_notification %>
 
   <div class="form-group">
-        <%= f.input :number, class: 'form-control', wrapper: false %>
-        <%= f.association :company, class: 'form-control', wrapper: false %>
+    <%= f.input :number, class: 'form-control', wrapper: false, input_html: { data: {inputmask:"'mask': '(99)9999-99999'" }} %>
   </div>
 
   <div class="form-actions">
     <%= f.button :submit, class: "btn btn-primary" %>
   </div>
+<% end %>
+
+<%= content_for :scripts do %>
+  <script type="text/javascript">
+    Inputmask().mask(document.querySelectorAll("input"));
+  </script>
 <% end %>

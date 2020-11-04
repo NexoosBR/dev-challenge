@@ -11,7 +11,7 @@
                 input_html: { autocomplete: "email" } %>
     <%= f.input :cnpj,
                 required: true,
-                input_html: { autocomplete: "email" } %>
+                input_html: { autocomplete: "email", data: { inputmask:"'mask': '99.999.999/9999-99'" } } %>
     <%= f.input :password,
                 hint: t(:leave_it_blank_if_you_dont_want_to_change_it),
                 required: false,
@@ -40,3 +40,9 @@
 <p><%= link_to t(:cancel_my_account), registration_path(resource_name), data: { confirm: t(:are_you_sure) }, method: :delete %></p>
 
 <%= link_to t(:back), :back %>
+
+<%= content_for :scripts do %>
+  <script type="text/javascript">
+    Inputmask().mask(document.querySelectorAll("input"));
+  </script>
+<% end %>
