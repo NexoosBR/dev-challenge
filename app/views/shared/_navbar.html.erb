@@ -18,6 +18,8 @@
           <% end %>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <%= link_to t(:profile, scope: 'menu.dropdown'), profile_path, class: 'dropdown-item' %>
+            <%= link_to t(:phones_numbers, scope: 'menu.dropdown'), phone_numbers_path, class: 'dropdown-item' %>
+            <%= link_to t(:addresses, scope: 'menu.dropdown'), addresses_path, class: 'dropdown-item' %>
             <%= link_to destroy_company_session_path, method: :delete, class: 'dropdown-item' do %>
               <%= t(:logout, scope: 'menu.dropdown') %>
             <% end %>

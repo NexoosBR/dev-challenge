@@ -96,5 +96,7 @@ pt-BR:
     home: "Home"
     loan: "Emprestimo"
     dropdown:
+      addresses: "Endereços"
+      phones_numbers: "Numeros de telefones"
       profile: "Perfil"
       logout: "Sair"
