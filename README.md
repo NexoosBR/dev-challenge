@@ -3,6 +3,15 @@
 A Nexoos é uma plataforma online sem burocracia e sem taxas abusivas que conecta empresas
 que necessitam de empréstimos a investidores pessoa Física tornando este processo mais rápido, eficiente e justo no modelo marketplace lending.
 
+## Pre-requisites
+
+- Docker and Docker Composer (optinal)
+- Ruby ~> 2.7.1
+- Rails ~> 6.0.3
+- Postgres ~> 10.10
+- Node ~> 13.12.0
+- Yarn ~> 1.22.5
+
 ## Setup project with docker
 
 1. `$ git clone https://bitbucket.org/lukaspol/dev-challenge`
@@ -17,6 +26,8 @@ que necessitam de empréstimos a investidores pessoa Física tornando este proce
 1. `$ rake db:seed`
 1. `$ rails s -b 0.0.0.0`
 
+Open in browser [http://localhost:3000](http://localhost:3000)
+
 ## Setup project without docker
 1. `$ git clone https://bitbucket.org/insight-sistemas/admdoc-web/`
 1. `$ cd admdoc-web`
@@ -28,6 +39,8 @@ que necessitam de empréstimos a investidores pessoa Física tornando este proce
 1. `$ rake db:migrate`
 1. `$ rake db:seed`
 1. `$ rails s`
+
+Open in browser [http://localhost:3000](http://localhost:3000)
 
 ## Desafio
 
