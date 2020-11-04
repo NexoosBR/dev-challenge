@@ -2,6 +2,7 @@ pt-BR:
   cancel_my_account: "Cancelar minha conta"
   leave_it_blank_if_you_dont_want_to_change_it: "Deixe em branco caso não queira alterar sua senha"
   we_need_your_current_password_to_confirm_your_changes: "Preencha sua atual senha para confirmar as mudanças"
+  characters_minimum: "caracteres mínimos"
 
   errors:
     messages:
@@ -53,6 +54,8 @@ pt-BR:
       updated_not_active: 'Sua senha foi alterada com sucesso.'
       send_paranoid_instructions: 'Caso seu e-mail esteja cadastrado, você receberá um link para recuperação de senha no seu e-mail em poucos minutos.'
       no_token: 'Você não pode acessar esta página sem que seja a partir de um e-mail de reinicialização de senha. Se você chegou aqui através de um e-mail de reinicialização de senha, por favor verifique se você usou a URL completa que foi informada.'
+      send_me_instructions: "Envia-me e-mail para restaurar minha senha"
+      change_my_password: "Atualizar minha senha"
     confirmations:
       send_instructions: 'Dentro de minutos você receberá um e-mail com instruções para confirmar a sua conta.'
       send_paranoid_instructions: 'Caso seu e-mail exista em nossa base, você receberá um e-mail em poucos minutos com instruções sobre como confirmar sua conta.'
