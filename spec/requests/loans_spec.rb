@@ -8,6 +8,8 @@
 
    let(:valid_attributes) { build(:loan, company: company).attributes }
 
+   let(:loan_without_company_and_rate) { { value: 30000, number_installments: 24 }}
+
    let(:invalid_attributes) { { value: nil, number_installments: nil } }
 
    describe 'GET /index' do
@@ -48,6 +50,22 @@
            post loans_url, params: { loan: valid_attributes }
          }.to change(Loan, :count).by(1)
        end
+
+      it 'creates a new Loan without company and rate' do
+        expect {
+          post loans_url, params: { loan: loan_without_company_and_rate }
+        }.to change(Loan, :count).by(1)
+      end
+
+      it 'creates a new Loan and verify rate' do
+        post loans_url, params: { loan: loan_without_company_and_rate }
+        expect(Loan.last.rate).to eq(0.015)
+      end
+
+      it 'creates a new Loan and verify rate' do
+        post loans_url, params: { loan: { loan_without_company_and_rate }
+        expect(Loan.last.company).to eq(company)
+      end
 
        it 'redirects to the created loan' do
          post loans_url, params: { loan: valid_attributes }
