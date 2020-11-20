@@ -1,0 +1,14 @@
+<%= form_with model: @request do |f| %>
+  <%= f.label :amount %>
+  <%= f.text_field :amount %>
+
+  <%= f.label :periods %>
+  <%= f.select :periods, options_for_select([6,12,13,24,48,72], 6) %>
+
+  <%= f.label :monthly_fee %>
+  <%= f.text_field :monthly_fee, value: "15%", disabled: true %>
+
+  <%= f.hidden_field :company_id, value: @company.id %>
+
+  <%= f.submit %>
+<% end %>
