@@ -1,23 +1,22 @@
 module CompaniesHelper
   def list_companies(companies)
-    return empty_content if companies.empty?
+    return render_no_company if companies.empty?
 
-    view_data = companies_list_title
-
-    companies.each do |company|
-      view_data += content_tag(:li, company.name)
-    end
-
-    view_data.html_safe
+    render('companies/companies_list')
   end
 
+  def show_company_requests(company)
+    return render_no_credit_requests if company.credit_requests.empty?
+
+    render('credit_requests')
+  end
   private
 
-  def empty_content
-    content_tag(:p, 'Nenhuma empresa cadastrada!')
+  def render_no_credit_requests
+    render('no_credit_request_found')
   end
 
-  def companies_list_title
-    content_tag(:h3, 'Empresas cadastradas')
+  def render_no_company
+    render('no_company_found')
   end
 end

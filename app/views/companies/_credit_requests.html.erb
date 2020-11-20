@@ -1,0 +1,20 @@
+<% @company.credit_requests.each do |request| %>
+  <table>
+    <tr>
+      <td>
+        <strong> Solicitação: </strong>
+      </td>
+      <td>
+        <%= request.id %>
+      </td>
+    </tr>
+    <tr>
+      <td>
+        <strong> Valor: </strong>
+      </td>
+      <td>
+        <%= request.amount %>
+      </td>
+    </tr>
+  </table>
+<% end %>
