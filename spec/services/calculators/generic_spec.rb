@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe GenericCalculator do
+RSpec.describe Calculators::Generic do
   context 'When there is a valid calculation data' do
     it 'does calculate successfully' do
       specific_calculator = double('SomeSpecificCalculator')
