@@ -5,7 +5,7 @@
         <strong> Solicitação: </strong>
       </td>
       <td>
-        <%= request.id %>
+        <%= link_to request.id, credit_request_path(request) %>
       </td>
     </tr>
     <tr>

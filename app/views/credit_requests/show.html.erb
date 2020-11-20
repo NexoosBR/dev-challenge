@@ -1,0 +1,24 @@
+<h2>Solicitação de crédito: <%= @credit_request.id %></h2>
+
+<table>
+  <tr>
+    <td>Empresa solicitante:</td>
+    <td><%= link_to @credit_request.company.name, company_path(@credit_request.company)%></td>
+  </tr>
+  <tr>
+    <td>Valor:</td>
+    <td><%= @credit_request.amount %></td>
+  </tr>
+  <tr>
+    <td>Períodos:</td>
+    <td><%= @credit_request.periods %></td>
+  </tr>
+  <tr>
+    <td>Status:</td>
+    <td><%= @credit_request.status %></td>
+  </tr>
+  <tr>
+    <td>Taxa mensal:</td>
+    <td><%= @credit_request.monthly_fee %></td>
+  </tr>
+</table>
