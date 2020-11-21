@@ -8,6 +8,9 @@
   <%= f.label :monthly_fee, 'Taxa mensal(%)'%>
   <%= f.text_field :monthly_fee, {readonly: true, id: 'monthly_fee'} %>
 
+  <%= f.label :monthly_payment, 'Valor das parcelas'%>
+  <%= f.text_field :monthly_payment, {readonly: true, id: 'monthly_payment'} %>
+
   <%= f.label :total, 'Total a pagar'%>
   <%= f.text_field :total, {readonly: true, id: 'total'} %>
 
@@ -19,7 +22,8 @@
 <%= javascript_tag do %>
   async function updateFields(){
     await getFee();
-    await getTotal();
+    await getMonthlyPayment();
+    await setTotal();
   }
 
   async function getFee() {
@@ -45,7 +49,7 @@
     $('#monthly_fee').val(readableFee);
   }
 
-  async function getTotal() {
+  async function getMonthlyPayment() {
     let currentAmount = $('#amount').val();
     let currentMonthlyFee = $('#monthly_fee').val();
     let currentPeriods = $('#period').val();
@@ -57,7 +61,7 @@
       type: "get",
       data: "",
       success: function(data) {
-        updateTotal(data.total);
+        updateMonthlyPayment(data.monthly_value);
       },
       error: function(data) {
         alert('Ocorreu um erro ao atualizar os dados.');
@@ -65,7 +69,16 @@
     })
   }
 
-  function updateTotal(total) {
-    $('#total').val(total);
+  function updateMonthlyPayment(monthly_value) {
+    $('#monthly_payment').val(monthly_value);
+  }
+
+  function setTotal() {
+    let monthly_value = $('#monthly_payment').val();
+    let periods = $('#period').val();
+
+    let payments = monthly_value * periods
+
+    $('#total').val(payments);
   }
 <% end %>

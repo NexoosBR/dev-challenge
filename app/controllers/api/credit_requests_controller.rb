@@ -2,7 +2,7 @@ module Api
   class CreditRequestsController < ApplicationController
     def calculate_pmt
       render json: {
-        total: Calculators::Generic.new(pmt_calculator).calculate
+        monthly_value: Calculators::Generic.new(pmt_calculator).calculate
       }
     end
 
