@@ -3,7 +3,7 @@
   <%= f.text_field :amount %>
 
   <%= f.label :periods %>
-  <%= f.select :periods, options_for_select([6,12,13,24,48,72], 6) %>
+  <%= f.select :periods, options_for_select(available_periods) %>
 
   <%= f.label :monthly_fee %>
   <%= f.text_field :monthly_fee, value: "15%", disabled: true %>
