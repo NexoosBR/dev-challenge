@@ -6,10 +6,10 @@
   <%= f.select :periods, options_for_select(available_periods),{}, { onchange: "updateFields()", id: 'period'} %>
 
   <%= f.label :monthly_fee, 'Taxa mensal(%)'%>
-  <%= f.text_field :monthly_fee, disabled: true, id: 'monthly_fee' %>
+  <%= f.text_field :monthly_fee, {readonly: true, id: 'monthly_fee'} %>
 
   <%= f.label :total, 'Total a pagar'%>
-  <%= f.text_field :total, disabled: true, id: 'total' %>
+  <%= f.text_field :total, {readonly: true, id: 'total'} %>
 
   <%= f.hidden_field :company_id, value: @company.id %>
 
@@ -17,7 +17,6 @@
 <% end %>
 
 <%= javascript_tag do %>
-
   async function updateFields(){
     await getFee();
     await getTotal();

@@ -12,6 +12,6 @@ class CreditRequestsController < ApplicationController
   private
 
   def credit_request_params
-    params.require(:credit_request).permit(:amount, :periods, :monthly_fee, :company_id)
+    params.require(:credit_request).permit(:amount, :periods, :monthly_fee, :company_id, :total)
   end
 end
