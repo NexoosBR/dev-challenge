@@ -26,4 +26,9 @@
     <td>Valor das parcelas:</td>
     <td><%= @credit_request.monthly_value %></td>
   </tr>
+  <tr>
+    <td>
+      <%= link_to 'Aprovar', approve_credit_request_path(@credit_request), method: :put %>
+    </td>
+  </tr>
 </table>
