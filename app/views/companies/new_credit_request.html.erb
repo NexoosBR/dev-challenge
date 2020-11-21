@@ -1,12 +1,15 @@
 <%= form_with model: @request do |f| %>
   <%= f.label :amount %>
-  <%= f.text_field :amount %>
+  <%= f.text_field :amount, {id: 'amount', onchange: "updateFields()"}%>
 
   <%= f.label :periods %>
-  <%= f.select :periods, options_for_select(available_periods),{}, { onchange: "changeFeeValue()", id: 'period'}%>
+  <%= f.select :periods, options_for_select(available_periods),{}, { onchange: "updateFields()", id: 'period'} %>
 
-  <%= f.label :monthly_fee %>
-  <%= f.text_field :monthly_fee, value: "15%", disabled: true, id: 'monthly_fee'%>
+  <%= f.label :monthly_fee, 'Taxa mensal(%)'%>
+  <%= f.text_field :monthly_fee, disabled: true, id: 'monthly_fee' %>
+
+  <%= f.label :total, 'Total a pagar'%>
+  <%= f.text_field :total, disabled: true, id: 'total' %>
 
   <%= f.hidden_field :company_id, value: @company.id %>
 
@@ -14,11 +17,56 @@
 <% end %>
 
 <%= javascript_tag do %>
-  //$('#monthly_fee').val('bunda')
-  //changeFeeValue();
 
-  function changeFeeValue() {
-    let period = $('#period').val();
-    alert(period);
+  async function updateFields(){
+    await getFee();
+    await getTotal();
+  }
+
+  async function getFee() {
+    let selectedPeriod = $('#period').val();
+
+    let url = "/api/fee_by_period?period=" + selectedPeriod;
+
+    await $.ajax({
+      url: url,
+      type: "get",
+      data: "",
+      success: function(data) {
+        updateFee(data.current_fee);
+      },
+      error: function(data) {
+        alert('Ocorreu um erro ao atualizar os dados.');
+      }
+    })
+  }
+
+  function updateFee(fee) {
+    let readableFee = (fee * 100)
+    $('#monthly_fee').val(readableFee);
+  }
+
+  async function getTotal() {
+    let currentAmount = $('#amount').val();
+    let currentMonthlyFee = $('#monthly_fee').val();
+    let currentPeriods = $('#period').val();
+
+    let url = "/api/calculate_pmt?amount="+currentAmount+"&monthly_fee="+currentMonthlyFee+"&periods="+currentPeriods;
+
+    await $.ajax({
+      url: url,
+      type: "get",
+      data: "",
+      success: function(data) {
+        updateTotal(data.total);
+      },
+      error: function(data) {
+        alert('Ocorreu um erro ao atualizar os dados.');
+      }
+    })
+  }
+
+  function updateTotal(total) {
+    $('#total').val(total);
   }
 <% end %>

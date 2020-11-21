@@ -6,7 +6,7 @@ class MonthlyFeeVerifier
     48 => 0.06,
   }
   def verify_by_period(period)
-    month_fee_by_periods[period]
+    month_fee_by_periods[period.to_i]
   end
 
   def available_periods

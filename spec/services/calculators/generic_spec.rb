@@ -5,9 +5,9 @@ RSpec.describe Calculators::Generic do
     it 'does calculate successfully' do
       specific_calculator = double('SomeSpecificCalculator')
       calculation_data = {fake_calculation_data: 'fake'}
-      allow(specific_calculator).to receive(:calculate).with(calculation_data).and_return(10)
+      allow(specific_calculator).to receive(:calculate).and_return(10)
 
-      subject = described_class.new(specific_calculator, calculation_data)
+      subject = described_class.new(specific_calculator)
 
       expect(subject.calculate).to eq(10)
     end
@@ -17,9 +17,9 @@ RSpec.describe Calculators::Generic do
     it 'does raise specific error' do
       specific_calculator = double('SomeSpecificCalculator')
       calculation_data = {fake_calculation_data: 'fake'}
-      allow(specific_calculator).to receive(:calculate).with(calculation_data).and_raise(ArgumentError)
+      allow(specific_calculator).to receive(:calculate).and_raise(ArgumentError)
 
-      subject = described_class.new(specific_calculator, calculation_data)
+      subject = described_class.new(specific_calculator)
 
       expect{ subject.calculate }.to raise_error(ArgumentError)
     end

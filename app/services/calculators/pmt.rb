@@ -9,7 +9,7 @@ module Calculators
     def calculate
       raise ArgumentError unless valid_calculation_data?
 
-      @amount * ((((1 + @monthly_fee) ** @periods) * @monthly_fee) / (((1 + @monthly_fee) ** @periods) - 1))
+      @amount * ((((1 + adapted_fee) ** @periods) * adapted_fee) / (((1 + adapted_fee) ** @periods) - 1))
     end
 
     private
@@ -28,6 +28,10 @@ module Calculators
 
     def valid_periods?
       @periods.present? && @periods.is_a?(Numeric)
+    end
+
+    def adapted_fee
+      @monthly_fee / 100
     end
   end
 end

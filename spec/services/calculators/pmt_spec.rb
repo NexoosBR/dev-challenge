@@ -5,7 +5,7 @@ RSpec.describe Calculators::Pmt do
     it 'does calculate successfully' do
       calculation_data = {
         amount: 100000,
-        monthly_fee: 0.015,
+        monthly_fee: 1.5,
         periods: 12,
       }
 
@@ -31,8 +31,8 @@ RSpec.describe Calculators::Pmt do
   context 'When there is a non numeric variable' do
     it 'does raise an error' do
       calculation_data = {
-        amount: 100000,
-        monthly_fee: 'not a number',
+        amount: 'not a number',
+        monthly_fee: 15,
         periods: 12,
       }
 

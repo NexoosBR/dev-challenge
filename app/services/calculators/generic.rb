@@ -1,12 +1,11 @@
 module Calculators
   class Generic
-    def initialize(specific_calculator, calculation_data)
+    def initialize(specific_calculator)
       @specific_calculator = specific_calculator
-      @calculation_data = calculation_data
     end
 
     def calculate
-      @specific_calculator.calculate(@calculation_data)
+      @specific_calculator.calculate
     end
   end
 end
