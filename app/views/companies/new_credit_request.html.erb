@@ -1,18 +1,15 @@
 <%= form_with model: @request do |f| %>
   <%= f.label :amount %>
-  <%= f.text_field :amount, {id: 'amount', onchange: "updateFields()"}%>
+  <%= f.text_field :amount, {id: 'amount', onchange: "updateData()"}%>
 
   <%= f.label :periods %>
-  <%= f.select :periods, options_for_select(available_periods),{}, { onchange: "updateFields()", id: 'period'} %>
+  <%= f.select :periods, options_for_select(available_periods),{}, { onchange: "updateData()", id: 'period'} %>
 
   <%= f.label :monthly_fee, 'Taxa mensal(%)'%>
   <%= f.text_field :monthly_fee, {readonly: true, id: 'monthly_fee'} %>
 
-  <%= f.label :monthly_payment, 'Valor das parcelas'%>
-  <%= f.text_field :monthly_payment, {readonly: true, id: 'monthly_payment'} %>
-
-  <%= f.label :total, 'Total a pagar'%>
-  <%= f.text_field :total, {readonly: true, id: 'total'} %>
+  <%= f.label :monthly_value, 'Valor das parcelas'%>
+  <%= f.text_field :monthly_value, {readonly: true, id: 'monthly_value'} %>
 
   <%= f.hidden_field :company_id, value: @company.id %>
 
@@ -20,23 +17,19 @@
 <% end %>
 
 <%= javascript_tag do %>
-  async function updateFields(){
-    await getFee();
-    await getMonthlyPayment();
-    await setTotal();
-  }
-
-  async function getFee() {
+  async function updateData() {
     let selectedPeriod = $('#period').val();
+    let currentAmount = $('#amount').val();
 
-    let url = "/api/fee_by_period?period=" + selectedPeriod;
+    let url = "/api/calculate_pmt?amount="+currentAmount+"&periods="+selectedPeriod;
 
     await $.ajax({
       url: url,
       type: "get",
       data: "",
       success: function(data) {
-        updateFee(data.current_fee);
+        updateFee(data.monthly_fee);
+        updateMonthlyValue(data.monthly_value);
       },
       error: function(data) {
         alert('Ocorreu um erro ao atualizar os dados.');
@@ -45,40 +38,10 @@
   }
 
   function updateFee(fee) {
-    let readableFee = (fee * 100)
-    $('#monthly_fee').val(readableFee);
+    $('#monthly_fee').val(fee);
   }
 
-  async function getMonthlyPayment() {
-    let currentAmount = $('#amount').val();
-    let currentMonthlyFee = $('#monthly_fee').val();
-    let currentPeriods = $('#period').val();
-
-    let url = "/api/calculate_pmt?amount="+currentAmount+"&monthly_fee="+currentMonthlyFee+"&periods="+currentPeriods;
-
-    await $.ajax({
-      url: url,
-      type: "get",
-      data: "",
-      success: function(data) {
-        updateMonthlyPayment(data.monthly_value);
-      },
-      error: function(data) {
-        alert('Ocorreu um erro ao atualizar os dados.');
-      }
-    })
-  }
-
-  function updateMonthlyPayment(monthly_value) {
-    $('#monthly_payment').val(monthly_value);
-  }
-
-  function setTotal() {
-    let monthly_value = $('#monthly_payment').val();
-    let periods = $('#period').val();
-
-    let payments = monthly_value * periods
-
-    $('#total').val(payments);
+  function updateMonthlyValue(value) {
+    $('#monthly_value').val(value);
   }
 <% end %>

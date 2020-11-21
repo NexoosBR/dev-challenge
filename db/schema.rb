@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_11_21_150306) do
+ActiveRecord::Schema.define(version: 2020_11_21_163258) do
 
   create_table "addresses", force: :cascade do |t|
     t.integer "company_id", null: false
@@ -36,7 +36,7 @@ ActiveRecord::Schema.define(version: 2020_11_21_150306) do
     t.integer "periods"
     t.float "monthly_fee"
     t.integer "status"
-    t.float "total"
+    t.float "monthly_value"
     t.index ["company_id"], name: "index_credit_requests_on_company_id"
   end
 

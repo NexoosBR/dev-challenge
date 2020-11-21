@@ -1,9 +1,9 @@
 class MonthlyFeeVerifier
   MONTHLY_FEE_BY_PERIODS = {
-    6  => 0.005,
-    12 => 0.015,
-    24 => 0.03,
-    48 => 0.06,
+    6  => 0.5,
+    12 => 1.5,
+    24 => 3,
+    48 => 6,
   }
   def verify_by_period(period)
     month_fee_by_periods[period.to_i]
