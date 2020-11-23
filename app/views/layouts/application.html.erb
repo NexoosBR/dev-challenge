@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Nexooschallenge</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+
+    <ul class="nav nav-pills">
+      <li class="nav-item">
+        <% if user_signed_in? %>
+          <%= link_to 'Logout', destroy_user_session_path, method: :delete, data: { confirm: 'Are you sure you want to logout?' }, class: 'nav-link btn' %>
+        <% end %>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Companies', companies_path, class: 'nav-link btn'%>
+      </li>
+    </ul>
+    
+    <br>
+    <div class='container'>
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

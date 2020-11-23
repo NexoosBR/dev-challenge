@@ -1,0 +1,30 @@
+<%= form_for(@solicitation, url: company_solicitations_path) do |form| %>
+  <% if solicitation.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(solicitation.errors.count, "error") %> prohibited this solicitation from being saved:</h2>
+
+      <ul>
+        <% solicitation.errors.full_messages.each do |message| %>
+          <li style='color: #000'><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :amount %>
+    <%= form.number_field :amount, class: 'form-control' %>
+  </div>
+    <div class="field">
+    <%= form.label :description %>
+    <%= form.text_field :description, class: 'form-control' %>
+  </div>
+    <div class="field">
+    <%= form.label :installments_number %>
+    <%= form.number_field :installments_number, class: 'form-control' %>
+  </div>
+
+  <div class="actions">
+    <button class='btn btn-success'>Create Solicitation</button>
+  </div>
+<% end %>

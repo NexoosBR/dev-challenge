@@ -1,0 +1,41 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Companies</h1>
+<% if @companies.present? %>
+  <table class='table table-dark table-striped'>
+    <thead class='thead-dark'>
+      <tr>
+        <th>Name</th>
+        <th>Cnpj</th>
+        <th>Address</th>
+        <th>Phone</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @companies.each do |company| %>
+        <tr>
+          <td><%= company.name %></td>
+          <td><%= company.cnpj %></td>
+          <td><%= company.address %></td>
+          <td><%= company.phone %></td>
+          <td class="button-group" >
+            <%= link_to 'Edit', edit_company_path(company), class: 'btn btn-success'%>
+            <%= link_to 'Destroy', company, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+            <%= link_to 'Solicitations', company_solicitations_path(company.id), class: 'btn btn-info' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <br>
+  <div class="alert alert-info" role="alert">
+    <h6>You doesn't have any company yet!</h6>
+  </div>
+<% end %>
+
+<br>
+
+<%= link_to 'New Company', new_company_path, class: 'btn btn-success'%>

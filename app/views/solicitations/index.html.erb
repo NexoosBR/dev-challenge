@@ -1,0 +1,35 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Solicitations</h1>
+<% if @solicitations.present? %>
+  <table class='table table-dark table-striped'>
+    <thead class='thead-dark'>
+      <tr>
+        <th>Amount</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @solicitations.each do |solicitation| %>
+        <tr>
+          <td><%= number_to_currency(solicitation.amount, unit: "R$ ") %></td>
+          <td><%= solicitation.description %></td>
+          <td class='button-group'>
+            <%= link_to 'Destroy', company_solicitation_path(@company, solicitation.id), method: :delete, data: { confirm: 'Are you sure?' }, class:'btn btn-danger' %>
+            <%= link_to 'Installments', company_solicitation_installments_path(@company, solicitation.id), class:'btn btn-info' %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <br>
+  <div class="alert alert-info" role="alert">
+    <h6>You doesn't have any solicitation yet!</h6>
+  </div>
+<% end %>
+<br>
+
+<%= link_to 'New Solicitation', new_company_solicitation_path, class:'btn btn-success' %>

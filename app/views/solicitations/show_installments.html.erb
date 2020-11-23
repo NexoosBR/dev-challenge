@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Installments</h1>
+
+<table class='table table-dark table-striped'>
+  <thead class='thead-dark'>
+    <tr>
+      <th>Amount</th>
+      <th>Expiration</th>
+      <th>Status</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @installments.each do |installment| %>
+      <tr>
+        <td><%= number_to_currency(installment.amount, unit: "R$ ") %></td>
+        <td><%= installment.expiration.strftime('%d/%m/%Y') %></td>
+        <td><%= installment.status.capitalize %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Back', company_solicitations_path, class: 'btn btn-info' %>
