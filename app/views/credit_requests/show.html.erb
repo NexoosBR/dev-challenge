@@ -32,3 +32,15 @@
     </td>
   </tr>
 </table>
+
+<div>
+  <h3>Pagamentos</h3>
+  <table>
+    <% @credit_request.payments.each do |payment| %>
+      <tr>
+        <td><%= payment.amount %></td>
+        <td><%= payment.due_date %></td>
+      </tr>
+    <% end %>
+  </table>
+</div>
