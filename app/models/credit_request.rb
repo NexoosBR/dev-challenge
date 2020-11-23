@@ -1,7 +1,7 @@
 class CreditRequest < ApplicationRecord
   has_many :payments
   belongs_to :company
-  before_save :set_monthly_fee_and_value
+  after_create :update_monthly_fee_and_value # remove from here
 
   enum status: [ :awaiting_approval, :approved, :denied ]
 
@@ -19,9 +19,11 @@ class CreditRequest < ApplicationRecord
 
   private
 
-  def set_monthly_fee_and_value
-    self.monthly_fee = calculate_monthly_fee
-    self.monthly_value = calculate_pmt
+  def update_monthly_fee_and_value
+    self.update(
+      monthly_fee: calculate_monthly_fee,
+      monthly_value: calculate_pmt,
+    )
   end
 
   def calculate_pmt

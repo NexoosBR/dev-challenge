@@ -4,6 +4,6 @@ FactoryBot.define do
     status { 0 }
     amount { 200000 }
     periods { 24 }
-    monthly_fee { 0.010 }
+    monthly_fee { 0.1 }
   end
 end
