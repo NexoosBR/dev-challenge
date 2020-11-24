@@ -26,21 +26,14 @@
     <td>Valor das parcelas:</td>
     <td><%= @credit_request.monthly_value %></td>
   </tr>
-  <tr>
-    <td>
-      <%= link_to 'Aprovar', approve_credit_request_path(@credit_request), method: :put %>
-    </td>
-  </tr>
 </table>
 
-<div>
-  <h3>Pagamentos</h3>
-  <table>
-    <% @credit_request.payments.each do |payment| %>
-      <tr>
-        <td><%= payment.amount %></td>
-        <td><%= payment.due_date %></td>
-      </tr>
-    <% end %>
-  </table>
+<%= show_approve_button_for(@credit_request) %>
+
+<div class="payment-list-title">
+  <h3>Pagamentos:</h3>
+</div>
+
+<div class="payment-list">
+  <%= list_payments(@credit_request) %>
 </div>
