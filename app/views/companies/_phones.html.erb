@@ -1,0 +1,8 @@
+<% @company.phones.each do |phone| %>
+  <table class="table table-striped">
+    <tr>
+      <td>Número</td>
+      <td><%= phone.number %></td>
+    </tr>
+  </table>
+<% end %>

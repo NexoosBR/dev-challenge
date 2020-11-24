@@ -1,20 +1,24 @@
 <% @company.credit_requests.each do |request| %>
-  <table>
-    <tr>
-      <td>
-        <strong> Solicitação: </strong>
-      </td>
-      <td>
-        <%= link_to request.id, credit_request_path(request) %>
-      </td>
-    </tr>
-    <tr>
-      <td>
-        <strong> Valor: </strong>
-      </td>
-      <td>
-        <%= request.amount %>
-      </td>
-    </tr>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th scope="col">Id</th>
+        <th scope="col">Valor</th>
+        <th scope="col">Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          <%= link_to request.id, credit_request_path(request) %>
+        </td>
+        <td>
+          <%= request.amount %>
+        </td>
+        <td>
+          <%= request.status %>
+        </td>
+      </tr>
+    </tbody>
   </table>
 <% end %>

@@ -6,14 +6,26 @@ module CompaniesHelper
   end
 
   def show_company_requests(company)
-    return render_no_credit_requests if company.credit_requests.empty?
+    return render_no_content_found if company.credit_requests.empty?
 
     render('credit_requests')
   end
+
+  def show_addresses(company)
+    return render_no_content_found if company.addresses.empty?
+
+    render('addresses')
+  end
+
+  def show_phones(company)
+    return render_no_content_found if company.phones.empty?
+
+    render('phones')
+  end
   private
 
-  def render_no_credit_requests
-    render('no_credit_request_found')
+  def render_no_content_found
+    render('no_content_found')
   end
 
   def render_no_company

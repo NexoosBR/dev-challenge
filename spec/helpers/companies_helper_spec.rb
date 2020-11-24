@@ -8,13 +8,12 @@ describe CompaniesHelper do
   end
 
   context 'When listing companies with some content' do
-    it 'does return a list of companies correctly' do
-      company = build(:company, name: 'Globo')
-      another_company = build(:company, name: 'Band')
+    it 'does render the right partial' do
+      companies = [ build(:company, name: 'Globo') ]
       fake_partial = '<h1>Fake Content<h2>'
       allow(helper).to receive(:render).with('companies/companies_list').and_return(fake_partial)
 
-      subject = helper.list_companies([company, another_company])
+      subject = helper.list_companies(companies)
 
       expect(subject).to include(fake_partial)
     end
@@ -25,19 +24,49 @@ describe CompaniesHelper do
       company = build(:company)
       subject = helper.show_company_requests(company)
 
-      expect(subject).to include('Esta empresa não possui nenhuma solicitação de crédito.')
+      expect(subject).to include('Nenhum conteúdo encontrado')
     end
   end
 
-  context 'When showing company requests' do
+  context 'When trying to show telephones, but there is not anyone' do
+    it 'does render no credit requests found' do
+      company = build(:company)
+      subject = helper.show_phones(company)
+
+      expect(subject).to include('Nenhum conteúdo encontrado')
+    end
+  end
+
+  context 'When trying to show addresses, but there is not anyone' do
+    it 'does render no credit requests found' do
+      company = build(:company)
+      subject = helper.show_addresses(company)
+
+      expect(subject).to include('Nenhum conteúdo encontrado')
+    end
+  end
+
+  context 'When showing addresses' do
+    it 'does render tha right partial' do
+      company = create(:company)
+      create(:address, company: company)
+      fake_partial = '<h1>Fake Content<h2>'
+      allow(helper).to receive(:render).with('addresses').and_return(fake_partial)
+
+      subject = helper.show_addresses(company)
+
+      expect(subject).to include(fake_partial)
+    end
+  end
+
+  context 'When showing phones' do
     it 'does render a list of requests' do
       company = create(:company)
-      request = create(:credit_request, company: company)
-      another_request = create(:credit_request, company: company)
+      create(:phone, company: company)    
       fake_partial = '<h1>Fake Content<h2>'
-      allow(helper).to receive(:render).with('credit_requests').and_return(fake_partial)
+      allow(helper).to receive(:render).with('phones').and_return(fake_partial)
 
-      subject = helper.show_company_requests(company)
+      subject = helper.show_phones(company)
 
       expect(subject).to include(fake_partial)
     end

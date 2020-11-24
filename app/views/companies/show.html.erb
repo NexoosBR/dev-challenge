@@ -1,8 +1,14 @@
-<h2> <%= @company.name %> </h2>
+<h2> Empresa: <%= @company.name %> </h2>
 
 <div>
   <p> Cnpj: <%= @company.cnpj %> </p>
 </div>
+
+<h3>Endereços</h3>
+<%= show_addresses(@company) %>
+
+<h3>Telefones</h3>
+<%= show_phones(@company) %>
 
 <h3>Solicitações de crédito</h3>
 <%= show_company_requests(@company) %>

@@ -1,0 +1,7 @@
+<% @company.addresses.each do |address| %>
+  <table class="table table-striped">
+    <tr>
+      <td><%= "Rua #{address.street}, Número: #{address.number}" %></td>
+    </tr>
+  </table>
+<% end %>
