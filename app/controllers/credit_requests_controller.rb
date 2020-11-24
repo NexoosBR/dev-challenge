@@ -24,6 +24,14 @@ class CreditRequestsController < ApplicationController
     redirect_to @request
   end
 
+  def deny
+    @request = CreditRequest.find(params[:id])
+    @request.denied!
+    flash[:success] = 'Solicitação reprovada'
+
+    redirect_to @request
+  end
+
   private
 
   def create_credit_request

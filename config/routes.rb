@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :credit_requests, only: [:show, :create] do
     member do
       put 'approve', to: 'credit_requests#approve'
+      put 'deny', to: 'credit_requests#deny'
     end
   end
 
@@ -14,6 +15,11 @@ Rails.application.routes.draw do
   resources :companies, only: [:show, :new, :create] do
     member do
       get 'new_credit_request', to: 'companies#new_credit_request'
+      get 'new_phone', to: 'companies#new_phone'
+      get 'new_address', to: 'companies#new_address'
     end
   end
+
+  resources :addresses, only: [:create]
+  resources :phones, only: [:create]
 end

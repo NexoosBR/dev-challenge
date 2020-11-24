@@ -1,0 +1,13 @@
+<div class='form'>
+  <div class="little-form">
+    <h2>Novo telefone</h2>
+    <%= form_with model: @phone do |f| %>
+    <div class="form-group">
+      <%= f.label :number, 'Número:'%>
+      <%= f.text_field :number, class: 'form-control'%>
+    </div>
+    <%= f.hidden_field :company_id, value: @company.id %>
+    <%= f.submit 'Salvar', class: 'btn btn-primary'%>
+    <% end %>
+  </div>
+</div>

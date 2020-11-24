@@ -13,3 +13,12 @@
   align-items: center;
   justify-content: center;
 }
+
+.approve-buttons{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-bottom: 5%;
+  padding: 1% 15%;
+}

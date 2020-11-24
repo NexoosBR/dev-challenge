@@ -9,12 +9,22 @@ module CreditRequestsHelper
   end
 
   def show_approve_button_for(credit_request)
-    return if credit_request.approved?
+    return unless credit_request.awaiting_approval?
 
     link_to(
       'Aprovar',
       approve_credit_request_path(credit_request),
-      { method: :put, class: 'btn btn-primary' }
+      { method: :put, class: 'btn btn-success' }
+    )
+  end
+
+  def show_deny_button_for(credit_request)
+    return unless credit_request.awaiting_approval?
+
+    link_to(
+      'Reprovar',
+      deny_credit_request_path(credit_request),
+      { method: :put, class: 'btn btn-danger' }
     )
   end
 end

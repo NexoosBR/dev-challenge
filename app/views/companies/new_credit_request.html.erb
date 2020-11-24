@@ -1,6 +1,7 @@
 <div class='form'>
-  <h2>Nova solicitação de crédito</h2>
-  <%= form_with model: @request do |f| %>
+  <div class="little-form">
+    <h2>Nova solicitação de crédito</h2>
+    <%= form_with model: @request do |f| %>
     <div class="form-group">
       <%= f.label :amount, 'Valor:'%>
       <%= f.text_field :amount, {id: 'amount', onchange: "updateData()", class: 'form-control'}%>
@@ -21,10 +22,11 @@
       <%= f.text_field :monthly_value, { readonly: true, id: 'monthly_value', class: 'form-control' } %>
     </div>
 
-      <%= f.hidden_field :company_id, value: @company.id %>
+    <%= f.hidden_field :company_id, value: @company.id %>
 
     <%= f.submit 'Solicitar', class: 'btn btn-primary'%>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 
 <%= javascript_tag do %>

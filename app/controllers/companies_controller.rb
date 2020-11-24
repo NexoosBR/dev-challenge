@@ -25,6 +25,16 @@ class CompaniesController < ApplicationController
     @request = CreditRequest.new
   end
 
+  def new_phone
+    @company = Company.find(params[:id])
+    @phone = Phone.new
+  end
+
+  def new_address
+    @company = Company.find(params[:id])
+    @address = Address.new
+  end
+
   private
 
   def company_params
