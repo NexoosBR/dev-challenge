@@ -1,8 +1,16 @@
-<table>
-  <% @credit_request.payments.each do |payment| %>
+<table class="table table-striped">
+  <thead>
     <tr>
-      <td><%= payment.amount %></td>
-      <td><%= payment.due_date %></td>
+      <th scope="col">Valor</th>
+      <th scope="col">Data de vencimento</th>
     </tr>
-  <% end %>
+  </thead>
+  <tbody>
+    <% @credit_request.payments.each do |payment| %>
+      <tr>
+        <td><%= payment.amount %></td>
+        <td><%= payment.due_date %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>

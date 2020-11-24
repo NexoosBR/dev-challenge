@@ -11,6 +11,10 @@ module CreditRequestsHelper
   def show_approve_button_for(credit_request)
     return if credit_request.approved?
 
-    link_to('Aprovar', approve_credit_request_path(credit_request), method: :put)
+    link_to(
+      'Aprovar',
+      approve_credit_request_path(credit_request),
+      { method: :put, class: 'btn btn-primary' }
+    )
   end
 end
