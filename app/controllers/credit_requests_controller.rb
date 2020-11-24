@@ -6,8 +6,13 @@ class CreditRequestsController < ApplicationController
   end
 
   def create
-    @request = CreditRequest.create(credit_request_params)
-    flash[:success] = 'Solicitação criada com sucesso'
+    @request = create_credit_request
+
+    if @request.persisted?
+      flash[:success] = 'Solicitação criada com sucesso'
+    else
+      flash[:error] = "Ocorreu um erro ao criar a solicitação: #{@request.errors.messages}"
+    end
     redirect_to @request
   end
 
@@ -20,6 +25,14 @@ class CreditRequestsController < ApplicationController
   end
 
   private
+
+  def create_credit_request
+    CreditRequestCreator.new.call(
+      credit_request_params[:amount].to_f,
+      credit_request_params[:periods].to_i,
+      credit_request_params[:company_id].to_f,
+    )
+  end
 
   def create_payments
     PaymentsGenerator.new.generate_for_credit_request(@request)

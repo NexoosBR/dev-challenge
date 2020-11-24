@@ -1,11 +1,11 @@
 module Calculators
   class Generic
-    def initialize(specific_calculator)
-      @specific_calculator = specific_calculator
-    end
-
-    def calculate
-      @specific_calculator.calculate
+    def calculate(amount, monthly_fee, periods, specific_calculator)
+      specific_calculator.calculate(
+        amount,
+        monthly_fee,
+        periods
+      )
     end
   end
 end
