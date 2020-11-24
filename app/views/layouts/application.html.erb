@@ -24,6 +24,9 @@
     </ul>
 
     <div class="container main-content">
+      <% flash.each do |key, value| %>
+        <%= content_tag :div, value, class: "alert alert-primary" %>
+      <% end %>
       <%= yield %>
     </div>
   </body>
