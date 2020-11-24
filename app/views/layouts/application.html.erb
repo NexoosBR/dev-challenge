@@ -10,7 +10,21 @@
   </head>
 
   <body>
-    <%= link_to 'Início', root_path %>
-    <%= yield %>
+    <div id="index-title">
+      <h1>NEXOOS - Empréstimo para o seu negócio</h1>
+    </div>
+
+    <ul class="nav justify-content-center">
+      <li class="nav-item">
+        <%= link_to 'Início', root_path, class: 'nav-link'%>
+      </li>
+      <li class="nav-item">
+        <%= link_to 'Cadastrar empresa', root_path, class: 'nav-link'%>
+      </li>
+    </ul>
+
+    <div class="container main-content">
+      <%= yield %>
+    </div>
   </body>
 </html>
