@@ -25,7 +25,7 @@
 
     <div class="container main-content">
       <% flash.each do |key, value| %>
-        <%= content_tag :div, value, class: "alert alert-primary" %>
+        <%= content_tag :div, value, class: "flash #{flash_class_for(key)}" %>
       <% end %>
       <%= yield %>
     </div>
