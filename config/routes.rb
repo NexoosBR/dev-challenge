@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     get 'calculate_pmt', to: 'credit_requests#calculate_pmt'
   end
 
-  resources :companies, only: [:show] do
+  resources :companies, only: [:show, :new, :create] do
     member do
       get 'new_credit_request', to: 'companies#new_credit_request'
     end

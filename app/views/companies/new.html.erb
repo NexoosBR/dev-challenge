@@ -1,0 +1,16 @@
+<div class='form'>
+  <h3>Nova empresa</h3>
+    <%= form_with model: @company do |f| %>
+      <div class="form-group">
+        <%= f.label :name, 'Razão Social'%>
+        <%= f.text_field :name, class: 'form-control'%>
+      </div>
+
+      <div class="form-group">
+        <%= f.label :cnpj %>
+        <%= f.text_field :cnpj, class: 'form-control'%>
+        </div>
+
+      <%= f.submit 'Cadastrar', class: 'btn btn-primary'%>
+    <% end %>
+</div>

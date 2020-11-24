@@ -1,15 +1,24 @@
-<h2> Empresa: <%= @company.name %> </h2>
+<div class="company-data">
+  <div class="company-title">
+    <h2> Empresa: <%= @company.name %> </h2>
+    <p> Cnpj: <%= @company.cnpj %> </p>
+  </div>
 
-<div>
-  <p> Cnpj: <%= @company.cnpj %> </p>
+  <div class="company-addresses">
+    <h4>Endereços</h4>
+    <%= show_addresses(@company) %>
+  </div>
+
+  <div class="company-phones">
+    <h4>Telefones</h4>
+    <%= show_phones(@company) %>
+  </div>
+
+  <div class="company-credit-requests">
+    <h4>Solicitações de crédito</h4>
+    <%= show_company_requests(@company) %>
+  </div>
+  <div class="create-credit-request-button">
+    <%= link_to 'Criar nova solicitação de crédito', new_credit_request_company_path(@company), class: 'btn btn-primary'%>
+  </div>
 </div>
-
-<h3>Endereços</h3>
-<%= show_addresses(@company) %>
-
-<h3>Telefones</h3>
-<%= show_phones(@company) %>
-
-<h3>Solicitações de crédito</h3>
-<%= show_company_requests(@company) %>
-<%= link_to 'Criar nova solicitação de crédito', new_credit_request_company_path(@company) %>
