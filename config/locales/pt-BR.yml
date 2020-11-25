@@ -1,0 +1,9 @@
+pt-BR:
+  payment_status:
+    pending: Pendente
+    paid: Pago
+    late: Em atraso
+  credit_request_status:
+    awaiting_approval: Aguardando aprovação
+    approved: Aprovado
+    denied: Reprovado

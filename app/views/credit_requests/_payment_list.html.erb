@@ -11,7 +11,7 @@
       <tr>
         <td><%= payment.amount %></td>
         <td><%= payment.due_date %></td>
-        <td><%= payment.status %></td>
+        <td><%= t("payment_status.#{payment.status}") %></td>
       </tr>
     <% end %>
   </tbody>

@@ -17,7 +17,7 @@
             <%= request.amount %>
           </td>
           <td>
-            <%= request.status %>
+            <%= t("credit_request_status.#{request.status}") %>
           </td>
           <td>
             <%= link_to 'Ver detalhes', credit_request_path(request), class: 'btn btn-primary' %>
