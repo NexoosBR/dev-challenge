@@ -1,6 +1,7 @@
 # Nexoos Simulator
 
-It's a simple financial investments platform. You can create companies, request credit, and calculate monthly payments.
+It's a simple financial investments platform. You can create companies, request credit for them, and approve these credit requests.
+When approved, system generate the monthly payments for a credit request.
 There isn't a login feature, because it's only a simulator, so you can do everything.
 
 ## Running
