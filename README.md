@@ -14,10 +14,11 @@ docker-compose up
 ## Running tests
 
 ```bash
-docker exec dev-challenge_app_1 bundle exec rspec 
+docker exec dev-challenge_app_1 bundle exec rspec
 ```
 
 ## Technologies
 
 - Ruby 2.7
 - Postgres 12.1
+- Rails 6.0.3.4
