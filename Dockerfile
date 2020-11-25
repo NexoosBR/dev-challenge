@@ -1,5 +1,5 @@
 FROM ruby:2.7.0-alpine
-ENV BUNDLER_VERSION=2.0.2
+ENV BUNDLER_VERSION=2.1.4
 
 RUN apk add --update --no-cache \
       binutils-gold \
