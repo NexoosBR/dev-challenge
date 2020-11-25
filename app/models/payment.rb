@@ -1,5 +1,5 @@
 class Payment < ApplicationRecord
   belongs_to :credit_request
 
-  enum status: [ :charged, :paid, :late ]
+  enum status: [ :pending, :paid, :late ]
 end

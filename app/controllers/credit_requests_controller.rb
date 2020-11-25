@@ -2,7 +2,9 @@ class CreditRequestsController < ApplicationController
   after_action :create_payments, only: [:approve]
 
   def show
-    @credit_request = CreditRequest.find(params[:id])
+    @credit_request = ::CreditRequestPresenter.new(
+      CreditRequest.find(params[:id])
+    )
   end
 
   def create

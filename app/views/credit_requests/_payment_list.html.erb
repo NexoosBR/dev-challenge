@@ -3,6 +3,7 @@
     <tr>
       <th scope="col">Valor</th>
       <th scope="col">Data de vencimento</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
@@ -10,6 +11,7 @@
       <tr>
         <td><%= payment.amount %></td>
         <td><%= payment.due_date %></td>
+        <td><%= payment.status %></td>
       </tr>
     <% end %>
   </tbody>

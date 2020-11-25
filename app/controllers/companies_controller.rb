@@ -17,7 +17,9 @@ class CompaniesController < ApplicationController
   end
 
   def show
-    @company = Company.find(params[:id])
+    @company = CompanyPresenter.new(
+      Company.find(params[:id])
+    )
   end
 
   def new_credit_request
