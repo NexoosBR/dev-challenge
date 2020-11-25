@@ -4,4 +4,10 @@ class CompanyPresenter < SimpleDelegator
       CreditRequestPresenter.new(request)
     end
   end
+
+  def phones
+    super.map do |phone|
+      PhonePresenter.new(phone)
+    end
+  end
 end

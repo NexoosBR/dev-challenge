@@ -12,10 +12,14 @@ class CreditRequestsController < ApplicationController
 
     if @request.persisted?
       flash[:success] = 'Solicitação criada com sucesso'
+      redirect_to @request
     else
-      flash[:error] = "Ocorreu um erro ao criar a solicitação: #{@request.errors.messages}"
+      flash[:error] = 'Ocorreu um erro:'
+      @request.errors.messages.each do |key, error_message|
+        flash[:error] << " - #{t(key)}: #{error_message.last} "
+      end
+      redirect_to new_credit_request_company_path(@request.company_id)
     end
-    redirect_to @request
   end
 
   def approve

@@ -3,12 +3,12 @@
     <h2>Novo endereço</h2>
     <%= form_with model: @address do |f| %>
       <div class="form-group">
-        <%= f.label :street, 'Rua:'%>
+        <%= f.label :street%>
         <%= f.text_field :street, class: 'form-control'%>
       </div>
 
       <div class="form-group">
-        <%= f.label :number, 'Número:'%>
+        <%= f.label :number%>
         <%= f.number_field :number, class: 'form-control'%>
       </div>
 

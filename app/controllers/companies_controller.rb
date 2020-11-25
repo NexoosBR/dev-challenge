@@ -11,7 +11,10 @@ class CompaniesController < ApplicationController
       flash[:success] = 'Empresa cadastrada com sucesso.'
       redirect_to company
     else
-      flash[:error] = "Ocorreu um erro: #{company.errors.messages}"
+      flash[:error] = 'Ocorreu um erro:'
+      company.errors.messages.each do |key, error_message|
+        flash[:error] << " - #{t("company.#{key}")}: #{error_message.last} "
+      end
       redirect_to new_company_path
     end
   end

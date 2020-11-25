@@ -6,7 +6,10 @@ class PhonesController < ApplicationController
       flash[:success] = 'Telefone adicionado.'
       redirect_to phone.company
     else
-      flash[:error] = "Ocorreu um erro: #{phone.errors.messages}"
+      flash[:error] = 'Ocorreu um erro:'
+      phone.errors.messages.each do |key, error_message|
+        flash[:error] << " - #{t(key)}: #{error_message.last} "
+      end
       redirect_to new_phone_company_path(phone.company_id)
     end
   end

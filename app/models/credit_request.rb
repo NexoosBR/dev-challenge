@@ -5,6 +5,7 @@ class CreditRequest < ApplicationRecord
   validates :amount, presence: true
   validates :periods, presence: true
   validates :status, presence: true
+  validates_with ::Validators::NonZeroValidator
 
   enum status: [ :awaiting_approval, :approved, :denied ]
 end

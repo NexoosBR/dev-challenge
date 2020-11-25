@@ -1,4 +1,43 @@
 pt-BR:
+  activerecord:
+    attributes:
+      company:
+        name: Razão social
+      address:
+        street: Rua
+        number: Número
+      phone:
+        number: Número
+      credit_request:
+        amount: Valor
+        periods: Períodos
+        monthly_fee: Taxa mensal(%)
+        monthly_value: Valor das parcelas
+    errors:
+      models:
+        company:
+          attributes:
+            name:
+              blank: Não pode ficar em branco
+            cnpj:
+              blank: Não pode ficar em branco
+        address:
+          attributes:
+            street:
+              blank: Não pode ficar em branco
+            number:
+              blank: Não pode ficar em branco
+        credit_request:
+          attributes:
+            amount:
+              blank: Não pode ficar em branco
+            periods:
+              blank: Não pode ficar em branco
+        phone:
+          attributes:
+            number:
+              blank: Não pode ficar em branco
+
   payment_status:
     pending: Pendente
     paid: Pago
@@ -7,3 +46,10 @@ pt-BR:
     awaiting_approval: Aguardando aprovação
     approved: Aprovado
     denied: Reprovado
+
+  street: Rua
+  number: Número
+  amount: Valor
+  company:
+    name: Razão Social
+    cnpj: Cnpj
