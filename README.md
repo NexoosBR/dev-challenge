@@ -31,7 +31,7 @@ Construa uma aplicação web, utilizando a linguagem e frameworks de sua prefer�
 
 - O código no repositório público do GitHub;
 - Utilizar Postgres, MySQL ou o banco de dados de sua preferência ;
-- Testes unitários.
+- Testes.
 - Inglês técnico(desejável);
 
 Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
