@@ -16,6 +16,9 @@ class CreateRequesterService {
     /**
      * CNPJ validation
      */
+
+    if (!cnpj) throw new AppError(`Requester's CNPJ must be a string`);
+
     const isCNPJValid = await validateCNPJ(cnpj);
 
     if (!isCNPJValid) throw new AppError(`Requester's CNPJ is invalid.`);

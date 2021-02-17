@@ -17,8 +17,8 @@ class FakeRequestersRepository implements IRequestersRepository {
 
     Object.assign(requester, {
       id: uuid(),
-      created_at: new Date(),
-      updated_at: new Date(),
+      createdAt: new Date(),
+      updatedAt: new Date(),
       address,
       cnpj,
       companyName,
