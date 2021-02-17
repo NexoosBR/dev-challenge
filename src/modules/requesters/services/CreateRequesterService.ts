@@ -1,7 +1,7 @@
 import AppError from '@shared/errors/AppError';
 import validateCNPJ from '@shared/utils/validateCNPJ';
 import ICreateRequesterDTO from '../dtos/ICreateRequesterDTO';
-import Requester from '../models/Requester';
+import Requester from '../infra/typeorm/entities/Requester';
 import IRequestersRepository from '../repositories/IRequestersRepository';
 
 class CreateRequesterService {
@@ -18,11 +18,15 @@ class CreateRequesterService {
      */
     if (!cnpj) throw new AppError(`Requester's CNPJ must be a string`);
 
-    const isCNPJValid = await validateCNPJ(cnpj);
+    const isCNPJValid = validateCNPJ(cnpj);
 
     if (!isCNPJValid) throw new AppError(`Requester's CNPJ is invalid.`);
 
-    const checkCNPJExists = await this.requestersRepository.findByCnpj(cnpj);
+    const formattedCNPJ: string = cnpj.replace(/[^\d]+/g, '');
+
+    const checkCNPJExists = await this.requestersRepository.findByCnpj(
+      formattedCNPJ,
+    );
 
     if (checkCNPJExists)
       throw new AppError(`Requester's CNPJ is already taken.`);
@@ -45,7 +49,7 @@ class CreateRequesterService {
 
     const requester = await this.requestersRepository.createAndSave({
       address,
-      cnpj,
+      cnpj: formattedCNPJ,
       companyName,
       phone,
     });
