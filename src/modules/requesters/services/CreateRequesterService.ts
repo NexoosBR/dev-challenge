@@ -16,7 +16,6 @@ class CreateRequesterService {
     /**
      * CNPJ validation
      */
-
     if (!cnpj) throw new AppError(`Requester's CNPJ must be a string`);
 
     const isCNPJValid = await validateCNPJ(cnpj);
@@ -28,11 +27,20 @@ class CreateRequesterService {
     if (checkCNPJExists)
       throw new AppError(`Requester's CNPJ is already taken.`);
 
+    /**
+     * Address validation
+     */
     if (!address) throw new AppError(`Requester's address must not be empty.`);
 
+    /**
+     * Company name validation
+     */
     if (!companyName)
       throw new AppError(`Requester's company name must not be empty.`);
 
+    /**
+     * Phone validation
+     */
     if (!phone) throw new AppError(`Requester's phone must not be empty.`);
 
     const requester = await this.requestersRepository.createAndSave({

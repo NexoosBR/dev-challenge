@@ -1,4 +1,4 @@
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 
 import ICreateRequesterDTO from '@modules/requesters/dtos/ICreateRequesterDTO';
 import Requester from '@modules/requesters/models/Requester';
@@ -16,7 +16,7 @@ class FakeRequestersRepository implements IRequestersRepository {
     const requester = new Requester();
 
     Object.assign(requester, {
-      id: uuid(),
+      id: uuidv4(),
       createdAt: new Date(),
       updatedAt: new Date(),
       address,

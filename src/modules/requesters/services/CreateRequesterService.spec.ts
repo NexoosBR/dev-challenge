@@ -24,6 +24,17 @@ describe('CreateRequesterService', () => {
     expect(requester).toHaveProperty('id');
   });
 
+  it('should not be able to create a new requester if CNPJ is falsy', async () => {
+    await expect(
+      createRequester.execute({
+        address: 'R. Cláudio Soares, 72 - Pinheiros, São Paulo - SP, 05422-030',
+        cnpj: (undefined as unknown) as string,
+        companyName: 'Nexoos',
+        phone: '1149495929',
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
   it('should not be able to create a new requester with invalid CNPJ', async () => {
     await expect(
       createRequester.execute({
