@@ -1,7 +1,7 @@
 import { v4 as uuidv4 } from 'uuid';
 
 import ICreateRequesterDTO from '@modules/requesters/dtos/ICreateRequesterDTO';
-import Requester from '@modules/requesters/models/Requester';
+import Requester from '@modules/requesters/infra/typeorm/entities/Requester';
 import IRequestersRepository from '../IRequestersRepository';
 
 class FakeRequestersRepository implements IRequestersRepository {

@@ -1,5 +1,5 @@
 import ICreateRequesterDTO from '../dtos/ICreateRequesterDTO';
-import Requester from '../models/Requester';
+import Requester from '../infra/typeorm/entities/Requester';
 
 export default interface IRequestersRepository {
   createAndSave(data: ICreateRequesterDTO): Promise<Requester>;
