@@ -12,11 +12,13 @@ requestersRouter.post(
     [Segments.BODY]: {
       companyName: Joi.string().required(),
       cnpj: Joi.string().required(),
-      address: Joi.string().required(),
-      phone: Joi.string().required(),
+      addresses: Joi.array().items(Joi.string()),
+      phones: Joi.array().items(Joi.string().min(10)),
     },
   }),
   requestersController.create,
 );
+
+requestersRouter.get('/:requesterId', requestersController.find);
 
 export default requestersRouter;

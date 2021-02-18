@@ -8,10 +8,10 @@ class FakeRequestersRepository implements IRequestersRepository {
   private requesters: Requester[] = [];
 
   public async createAndSave({
-    address,
+    addresses,
     cnpj,
     companyName,
-    phone,
+    phones,
   }: ICreateRequesterDTO): Promise<Requester> {
     const requester = new Requester();
 
@@ -19,10 +19,10 @@ class FakeRequestersRepository implements IRequestersRepository {
       id: uuidv4(),
       createdAt: new Date(),
       updatedAt: new Date(),
-      address,
+      addresses,
       cnpj,
       companyName,
-      phone,
+      phones,
     });
 
     this.requesters.push(requester);
@@ -33,6 +33,14 @@ class FakeRequestersRepository implements IRequestersRepository {
   public async findByCnpj(cnpj: string): Promise<Requester | undefined> {
     const requesterFound = this.requesters.find(
       requester => requester.cnpj === cnpj,
+    );
+
+    return requesterFound;
+  }
+
+  public async findById(requesterId: string): Promise<Requester | undefined> {
+    const requesterFound = this.requesters.find(
+      requester => requester.id === requesterId,
     );
 
     return requesterFound;

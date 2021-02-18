@@ -31,6 +31,17 @@ class RequestersRepository implements IRequestersRepository {
 
     return requester;
   }
+
+  public async findById(requesterId: string): Promise<Requester | undefined> {
+    const requester = await this.ormRepository.findOne({
+      relations: ['addresses', 'phones'],
+      where: {
+        id: requesterId,
+      },
+    });
+
+    return requester;
+  }
 }
 
 export default RequestersRepository;

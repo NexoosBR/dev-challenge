@@ -1,11 +1,16 @@
-import { MigrationInterface, QueryRunner, Table } from 'typeorm';
+import {
+  MigrationInterface,
+  QueryRunner,
+  Table,
+  TableForeignKey,
+} from 'typeorm';
 
-export default class CreateRequestersTable1613524278071
+export default class CreateRequesterPhones1613616370370
   implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.createTable(
       new Table({
-        name: 'requesters',
+        name: 'requesters_phones',
         columns: [
           {
             name: 'id',
@@ -16,14 +21,15 @@ export default class CreateRequestersTable1613524278071
             generationStrategy: 'uuid',
           },
           {
-            name: 'companyName',
+            name: 'phone',
             type: 'varchar',
-            length: '150',
+            length: '15',
           },
           {
-            name: 'cnpj',
+            name: 'requesterId',
             type: 'varchar',
-            length: '14',
+            length: '36',
+            isNullable: true,
           },
           {
             name: 'createdAt',
@@ -38,9 +44,22 @@ export default class CreateRequestersTable1613524278071
         ],
       }),
     );
+
+    await queryRunner.createForeignKey(
+      'requesters_phones',
+      new TableForeignKey({
+        name: 'fkRequestersPhones',
+        columnNames: ['requesterId'],
+        referencedColumnNames: ['id'],
+        referencedTableName: 'requesters',
+        onDelete: 'SET NULL',
+        onUpdate: 'CASCADE',
+      }),
+    );
   }
 
   public async down(queryRunner: QueryRunner): Promise<void> {
-    await queryRunner.dropTable('requesters');
+    await queryRunner.dropForeignKey('requesters_phones', 'fkRequestersPhones');
+    await queryRunner.dropTable('requesters_phones');
   }
 }
