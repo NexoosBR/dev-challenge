@@ -1,5 +1,7 @@
 import { addMonths, setDate } from 'date-fns';
 
+import { inject, injectable } from 'tsyringe';
+
 import AppError from '@shared/errors/AppError';
 import LoanInstallment from '../infra/typeorm/entities/LoanInstallment';
 import ILoanRequestsRepository from '../repositories/ILoanRequestsRepository';
@@ -13,9 +15,12 @@ interface IRequest {
   loanRequestId: string;
 }
 
+@injectable()
 class CreateLoanService {
   constructor(
+    @inject('LoanRequestsRepository')
     private loanRequestsRepository: ILoanRequestsRepository,
+    @inject('LoansRepository')
     private loansRepository: ILoansRepository,
   ) {}
 

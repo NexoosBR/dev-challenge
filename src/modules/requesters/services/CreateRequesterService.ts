@@ -1,8 +1,11 @@
+import { injectable, inject } from 'tsyringe';
+
 import AppError from '@shared/errors/AppError';
 import validateCNPJ from '@shared/utils/validateCNPJ';
-import Requester from '../infra/typeorm/entities/Requester';
+
 import RequesterAddress from '../infra/typeorm/entities/RequesterAddress';
 import RequesterPhone from '../infra/typeorm/entities/RequesterPhone';
+import Requester from '../infra/typeorm/entities/Requester';
 import IRequestersRepository from '../repositories/IRequestersRepository';
 
 interface IRequest {
@@ -12,8 +15,12 @@ interface IRequest {
   phones: string[];
 }
 
+@injectable()
 class CreateRequesterService {
-  constructor(private requestersRepository: IRequestersRepository) {}
+  constructor(
+    @inject('RequestersRepository')
+    private requestersRepository: IRequestersRepository,
+  ) {}
 
   public async execute({
     addresses,

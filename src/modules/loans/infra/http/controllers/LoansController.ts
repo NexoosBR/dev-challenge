@@ -1,6 +1,7 @@
-import CreateLoanService from '@modules/loans/services/CreateLoanService';
 import { Request, Response } from 'express';
-import LoanRequestsRepository from '../../typeorm/repositories/LoanRequestsRepository';
+import { container } from 'tsyringe';
+
+import CreateLoanService from '@modules/loans/services/CreateLoanService';
 import LoansRepository from '../../typeorm/repositories/LoansRepository';
 
 export default class LoansController {
@@ -17,13 +18,7 @@ export default class LoansController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { expirationDay, term, interestRate, loanRequestId } = request.body;
 
-    const loanRequestsRepository = new LoanRequestsRepository();
-    const loansRepository = new LoansRepository();
-
-    const createLoan = new CreateLoanService(
-      loanRequestsRepository,
-      loansRepository,
-    );
+    const createLoan = container.resolve(CreateLoanService);
 
     const loan = await createLoan.execute({
       expirationDay,

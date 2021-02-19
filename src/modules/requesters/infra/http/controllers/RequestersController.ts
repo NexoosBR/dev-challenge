@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { container } from 'tsyringe';
 
 import CreateRequesterService from '@modules/requesters/services/CreateRequesterService';
 import RequestersRepository from '../../typeorm/repositories/RequesterRepository';
@@ -7,9 +8,7 @@ export default class RequestersController {
   public async create(request: Request, response: Response): Promise<Response> {
     const { companyName, cnpj, addresses, phones } = request.body;
 
-    const requestersRepository = new RequestersRepository();
-
-    const createRequester = new CreateRequesterService(requestersRepository);
+    const createRequester = container.resolve(CreateRequesterService);
 
     const requester = await createRequester.execute({
       companyName,

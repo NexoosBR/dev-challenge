@@ -1,4 +1,6 @@
 import IRequestersRepository from '@modules/requesters/repositories/IRequestersRepository';
+import { inject, injectable } from 'tsyringe';
+
 import AppError from '@shared/errors/AppError';
 import LoanRequest from '../infra/typeorm/entities/LoanRequest';
 import ILoanRequestsRepository from '../repositories/ILoanRequestsRepository';
@@ -9,10 +11,14 @@ interface IRequest {
   requesterId: string;
 }
 
+@injectable()
 class CreateLoanRequestService {
   constructor(
+    @inject('RequestersRepository')
     private requestersRepository: IRequestersRepository,
+    @inject('LoanRequestsRepository')
     private loanRequestsRepository: ILoanRequestsRepository,
+    @inject('LoanRequestStatusRepository')
     private loanRequestStatusRepository: ILoanRequestStatusRepository,
   ) {}
 

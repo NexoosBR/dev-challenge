@@ -7,7 +7,11 @@ import AppError from '@shared/errors/AppError';
 import { isCelebrateError } from 'celebrate';
 import routes from './routes';
 
+// Init TypeORM
 import '@shared/infra/typeorm';
+
+// Init DI container
+import '@shared/container';
 
 const app = express();
 
@@ -25,7 +29,6 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 
   // Celebrate errors
   if (isCelebrateError(err)) {
-    // console.log('details ->', error.details)
     const queryMessage = err.details.get('query')?.message;
     const bodyMessage = err.details.get('body')?.message;
     return response.status(401).json({
