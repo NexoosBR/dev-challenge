@@ -1,6 +1,7 @@
 import { inject, injectable } from 'tsyringe';
 import AppError from '@shared/errors/AppError';
 import IRequestersRepository from '../repositories/IRequestersRepository';
+import Requester from '../infra/typeorm/entities/Requester';
 
 @injectable()
 class FindRequesterService {
