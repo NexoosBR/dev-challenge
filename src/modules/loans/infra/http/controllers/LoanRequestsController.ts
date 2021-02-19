@@ -2,15 +2,15 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreateLoanRequestService from '@modules/loans/services/CreateLoanRequestService';
-import LoanRequestsRepository from '../../typeorm/repositories/LoanRequestsRepository';
+import FindLoanRequestService from '@modules/loans/services/FindLoanRequestService';
 
 export default class LoanRequestsController {
   public async find(request: Request, response: Response): Promise<Response> {
     const { loanRequestId } = request.params;
 
-    const loanRequestsRepository = new LoanRequestsRepository();
+    const findLoanRequest = container.resolve(FindLoanRequestService);
 
-    const loanRequest = await loanRequestsRepository.findById(loanRequestId);
+    const loanRequest = await findLoanRequest.execute(loanRequestId);
 
     return response.json(loanRequest);
   }

@@ -2,6 +2,7 @@ import { Request, Response } from 'express';
 import { container } from 'tsyringe';
 
 import CreateRequesterService from '@modules/requesters/services/CreateRequesterService';
+import FindRequesterService from '@modules/requesters/services/FindRequesterService';
 import RequestersRepository from '../../typeorm/repositories/RequesterRepository';
 
 export default class RequestersController {
@@ -23,9 +24,9 @@ export default class RequestersController {
   public async find(request: Request, response: Response): Promise<Response> {
     const { requesterId } = request.params;
 
-    const requestersRepository = new RequestersRepository();
+    const findRequester = container.resolve(FindRequesterService);
 
-    const requester = await requestersRepository.findById(requesterId);
+    const requester = await findRequester.execute(requesterId);
 
     return response.json(requester);
   }
