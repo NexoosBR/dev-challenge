@@ -1,0 +1,14 @@
+{
+  "ignore": [
+    ".git",
+    "node_modules"
+  ],
+  "verbose": false,
+  "watch": [
+    "src"
+  ],
+  "execMap": {
+    "ts": "node --inspect=0.0.0.0:9220 -r ts-node/register"
+  },
+  "delay": "250"
+}
