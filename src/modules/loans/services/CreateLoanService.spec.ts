@@ -1,14 +1,16 @@
 import Requester from '@modules/requesters/infra/typeorm/entities/Requester';
-import FakeRequestersRepository from '@modules/requesters/repositories/fakes/FakeRequestersRepository';
 import AppError from '@shared/errors/AppError';
-import LoanRequest from '../infra/typeorm/entities/LoanRequest';
+import FakeRequestersRepository from '@modules/requesters/repositories/fakes/FakeRequestersRepository';
 import FakeLoanRequestsRepository from '../repositories/fakes/FakeLoanRequestsRepository';
+import FakeLoanRequestStatusRepository from '../repositories/fakes/FakeLoanRequestStatusRepository';
 import FakeLoansRepository from '../repositories/fakes/FakeLoansRepository';
 import CreateLoanService from './CreateLoanService';
+import LoanRequest from '../infra/typeorm/entities/LoanRequest';
 
 let fakeLoanRequestsRepository: FakeLoanRequestsRepository;
 let fakeLoansRepository: FakeLoansRepository;
 let fakeRequestersRepository: FakeRequestersRepository;
+let fakeLoanRequestStatusRepository: FakeLoanRequestStatusRepository;
 
 let createLoan: CreateLoanService;
 
@@ -20,6 +22,7 @@ describe('CreateLoanService', () => {
     fakeLoanRequestsRepository = new FakeLoanRequestsRepository();
     fakeLoansRepository = new FakeLoansRepository();
     fakeRequestersRepository = new FakeRequestersRepository();
+    fakeLoanRequestStatusRepository = new FakeLoanRequestStatusRepository();
 
     requester = await fakeRequestersRepository.createAndSave({
       addresses: [],
@@ -28,9 +31,16 @@ describe('CreateLoanService', () => {
       phones: [],
     });
 
+    const pendingStatus = await fakeLoanRequestStatusRepository.findByStatus(
+      'pending',
+    );
+
+    if (!pendingStatus) throw new Error('Pending status not found');
+
     loanRequest = await fakeLoanRequestsRepository.createAndSave({
       requesterId: requester.id,
       value: 100000,
+      loanRequestStatusId: pendingStatus.id,
     });
 
     createLoan = new CreateLoanService(
@@ -74,9 +84,16 @@ describe('CreateLoanService', () => {
   });
 
   it("should not be able to calculate if loan's request value is less or equal 0", async () => {
+    const pendingStatus = await fakeLoanRequestStatusRepository.findByStatus(
+      'pending',
+    );
+
+    if (!pendingStatus) throw new Error('Pending status not found');
+
     loanRequest = await fakeLoanRequestsRepository.createAndSave({
       requesterId: requester.id,
       value: 0,
+      loanRequestStatusId: pendingStatus.id,
     });
 
     await expect(
