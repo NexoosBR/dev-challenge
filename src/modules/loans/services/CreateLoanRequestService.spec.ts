@@ -42,6 +42,25 @@ describe('CreateLoanRequestService', () => {
     expect(loanRequest).toHaveProperty('id');
   });
 
+  it('should not be able to create a new loan if pending status is not found', async () => {
+    fakeLoanRequestStatusRepository = new FakeLoanRequestStatusRepository(
+      false,
+    );
+
+    createLoanRequest = new CreateLoanRequestService(
+      fakeRequestersRepository,
+      fakeLoanRequestsRepository,
+      fakeLoanRequestStatusRepository,
+    );
+
+    await expect(
+      createLoanRequest.execute({
+        requesterId: requester.id,
+        value: 100000.0,
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
   it('should not be able to create a new loan request with value less than 15000', async () => {
     await expect(
       createLoanRequest.execute({

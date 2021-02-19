@@ -6,7 +6,9 @@ import ILoanRequestStatusRepository from '../ILoanRequestStatusRepository';
 class FakeLoanRequestStatusRepository implements ILoanRequestStatusRepository {
   private loanRequestStatus: LoanRequestStatus[] = [];
 
-  constructor() {
+  constructor(startWithSeeds = true) {
+    if (!startWithSeeds) return;
+
     const defaultParams = {
       createdAt: new Date(),
       updatedAt: new Date(),
