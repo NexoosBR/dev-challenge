@@ -37,7 +37,7 @@ Construa uma aplicação web, utilizando a linguagem e frameworks de sua prefer�
 Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
 
 <h3> Apresentação </h3>
-<p>O I Want to Invest é uma API desenvolvida especialmente para assessores de investimentos. A interface fornece ao assessor o controle sobre seus clientes e investimentos através de um sistema autenticado. </p>
+<p>O propósito da aplicação é gerenciar o fluxo de criaço de empréstimos. Primeiramente, um solicitante (Requester) deve ser cadastrado para poder criar uma solicitação de crédito (Loan Request) com o valor desejado. Com o Loan Request criado, um empréstimo (Loan) poderá ser criado ao enviar o ID do Loan Request juntamente com os dados restantes para gerar as parcelas de pagamento do empréstimo.</p>
 
 <h3> Tecnologias e recursos utilizados </h3>
 
@@ -63,7 +63,6 @@ Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
 Os testes de unidade e integração estão disponíveis juntamente com o coverage da aplicação através do comando ``` yarn test ```.
 
 <h3>Utilizando a aplicação</h3>
-<p>O propósito da aplicação é gerenciar o fluxo de criaço de empréstimos. Primeiramente, um solicitante (Requester) deve ser cadastrado para poder criar uma solicitação de crédito (Loan Request) com o valor desejado. Com o Loan Request criado, um empréstimo (Loan) poderá ser criado ao enviar o ID do Loan Request juntamente com os dados restantes para gerar as parcelas de pagamento do empréstimo.</p>
 
 ## Criando um solicitante (requester)
 
