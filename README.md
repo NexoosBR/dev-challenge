@@ -193,7 +193,7 @@ No final será retornado os dados da oferta de empréstimo para, em caso de acei
 }
 ```
 
-Será retornado os dados das parcelas criadas conforme as condições do empréstimo que foram aceitas:
+Será retornado os dados das parcelas criadas conforme as condições do empréstimo que foram aceitas, mostrando o valor e a data de pagamento de cada parcela intercalada de um mês a partir da data da confirmação do empréstimo mantendo o mesmo dia como dia de vencimento em todas as parcelas:
 
 ```
 {
