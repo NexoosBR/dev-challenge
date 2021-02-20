@@ -44,6 +44,7 @@
       "number": 687,
       "cep": "01419001",
       "neighborhood": "Cerqueira César",
+      "complement": "apt 45",
       "city": "São Paulo",
       "state": "SP"
     },
