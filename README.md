@@ -36,8 +36,6 @@ Construa uma aplicação web, utilizando a linguagem e frameworks de sua prefer�
 
 Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
 
-# i-want-to-invest
-
 <h3> Apresentação </h3>
 <p>O I Want to Invest é uma API desenvolvida especialmente para assessores de investimentos. A interface fornece ao assessor o controle sobre seus clientes e investimentos através de um sistema autenticado. </p>
 
