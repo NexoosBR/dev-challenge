@@ -49,7 +49,7 @@ Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
 - [Jest](https://jestjs.io/)
 
 <h3> Configurando o banco de dados </h3>
-<p>Esta aplicação utiliza o MySQL como banco de dandos, então tenha certeza de tê-lo rodando em sua máquina e crie um novo schema com o nome de sua preferência. Configure o arquivo "ormconfig.json" com as credenciais e o nome do schema do seu banco de dados.</p>
+<p>Esta aplicação utiliza o MySQL como banco de dandos, então tenha certeza de tê-lo rodando em sua máquina e crie um novo schema com o nome de sua preferência. Copie o arquivo "ormconfig.example.json" e renomeie-o como "ormconfig.json" e coloque as suas credenciais, junto com o nome do schema do seu banco de dados.</p>
 
 <h3> Iniciando o servidor </h3>
 <p>Com o Yarn instalado, siga os seguintes passos: </p>
