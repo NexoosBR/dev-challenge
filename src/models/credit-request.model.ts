@@ -15,7 +15,7 @@ export class CreditRequestModel {
     @JoinColumn({ name: 'companyId', referencedColumnName: 'companyId' })
     company?: CompanyModel
 
-    @Column('float', { precision: 8, scale: 2 })
+    @Column('float', { precision: 16, scale: 2 })
     value: number
 
     @Column('varchar', { length: 30 })

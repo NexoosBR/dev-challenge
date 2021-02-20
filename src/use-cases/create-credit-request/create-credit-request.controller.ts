@@ -1,5 +1,6 @@
 import { Request, Response } from 'express'
 import { CreditRequestModel } from '../../models/credit-request.model'
+import { CommonError } from '../../services/errors/common-error'
 import { ICreateCreditRequestDTO } from './create-credit-request.dto'
 import { CreateCreditRequestUseCase } from './create-credit-request.use-case'
 
@@ -14,11 +15,21 @@ export class CreateCreditRequestController {
 
       const result: CreditRequestModel = await this.createCreditRequestUseCase.execute(requestData)
 
-      return response.status(200).json({ error: false, result: result })
+      return response.status(200).json({
+        error: false,
+        result: result,
+        message: 'Congratulations! your credit request has been approved and you can now check our loan offer'
+      })
     } catch (error) {
+      if (error instanceof CommonError) {
+        return response.status(error.statusCode).json({
+          message: error.message
+        })
+      }
       return response.status(400).json({
-        message: `Error - ${error.message}` || 'Unexpected Error in Create Credit Request UseCase'
+        message: 'Unexpected Error in Create Credit UseCase'
       })
     }
   }
 }
+

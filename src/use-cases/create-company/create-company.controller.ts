@@ -26,7 +26,7 @@ export class CreateCompanyController {
         })
       }
       return response.status(400).json({
-        message: 'Unexpected Error in Create Credit UseCase'
+        message: 'Unexpected Error in Create Company UseCase'
       })
     }
   }
