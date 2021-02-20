@@ -9,7 +9,7 @@ export interface CompanyWithAddressAndTelephone {
 }
 
 export interface FormattedLoan {
-    loadId: string
+    loanId: string
     loanValue: string
     finalValue: string
     interestRate: string

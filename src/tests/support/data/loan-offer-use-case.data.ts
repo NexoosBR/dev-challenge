@@ -31,7 +31,7 @@ export const savedLoan: LoanModel = {
 }
 
 export const formattedLoan: FormattedLoan = {
-  loadId: savedLoan.loanId as string,
+  loanId: savedLoan.loanId as string,
   loanValue: new Intl.NumberFormat([], { style: 'currency', currency: 'BRL' }).format(creditRequestFound.value),
   finalValue: new Intl.NumberFormat([], { style: 'currency', currency: 'BRL' }).format(finalValue),
   interestRate: `${interestRate * 100}%`,

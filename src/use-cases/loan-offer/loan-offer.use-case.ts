@@ -40,7 +40,7 @@ export class LoanOfferUseCase {
     const savedLoan = await this.loanRepository.save(loan)
 
     const formattedLoan: FormattedLoan = {
-      loadId: savedLoan.loanId as string,
+      loanId: savedLoan.loanId as string,
       loanValue: new Intl.NumberFormat([], { style: 'currency', currency: 'BRL' }).format(creditRequest.value),
       finalValue: new Intl.NumberFormat([], { style: 'currency', currency: 'BRL' }).format(finalValue),
       interestRate: `${interestRate * 100}%`,
