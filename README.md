@@ -258,7 +258,7 @@ Agora, você também pode consultar o empréstimo a partir da seguinte rota:
 
 ## Simulação de empréstimo
 
-<p>Nesta rota, você pode calcular diretamente as parcelas de um empréstimo sem passar pelo fluxo da aplicação. Basta enviar todos os dados para que o retorno das parcelas no sejam persistidos na base de dados, a partir de uma simulação em tempo real.</p>
+<p>Nesta rota, você pode calcular diretamente as parcelas de um empréstimo sem passar pelo fluxo da aplicação. Basta enviar todos os dados para que o retorno das parcelas não seja persistido na base de dados, a partir de uma simulação em tempo real.</p>
 
 - **`POST /loan-simulation`**: A rota deve receber `expirationDay` (number - dia de vencimento da parcela), `term` (number - número de períodos), `interestRate` (double - taxa de juros), `loanRequestId` (string) e o `value` (double - valor do empréstimo):
 
