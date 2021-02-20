@@ -1,7 +1,7 @@
 # Desafio Dev-Challenge
 
 <h3> Sobre o Projeto </h3>
-<p>O Neste desafio foi desenvolvida uma API simulando um dos fluxos da lógica de negócio da Nexoos, em que uma empresa poderá realizar uma solicitação de crédito que será analisada e em caso de aprovação mostrará uma proposta com as condições do empréstimo (número de parcelas, valor das parcelas e taxa de juros). Caso a empresa soliciante aprove as condições, o empréstimo será concedido e assim serão geradas todas as parcelas de pagamento.  </p>
+<p>Neste desafio foi desenvolvida uma API simulando um dos fluxos da lógica de negócio da Nexoos, em que uma empresa poderá realizar uma solicitação de crédito que será analisada e em caso de aprovação mostrará uma proposta com as condições do empréstimo (número de parcelas, valor das parcelas e taxa de juros). Caso a empresa soliciante aprove as condições, o empréstimo será concedido e assim serão geradas todas as parcelas de pagamento.  </p>
 
 <h3> Feito com </h3>
 
