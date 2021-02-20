@@ -62,8 +62,6 @@ Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
 
 Os testes de unidade e integração estão disponíveis juntamente com o coverage da aplicação através do comando ``` yarn test ```.
 
-<h3>Utilizando a aplicação</h3>
-
 ## Criando um solicitante (requester)
 
 - **`POST /requester`**: A rota deve receber o `cnpj` (string), `companyName` - (string - razão social), `addresses` (array de string) e `phones` (array de string) dentro do corpo da requisição (em formato JSON):
