@@ -8,7 +8,7 @@
     "src"
   ],
   "execMap": {
-    "ts": "node --inspect=0.0.0.0:9220 -r ts-node/register"
+    "ts": "node --inspect=0.0.0.0:9220 -r ts-node/register  -r dotenv/config"
   },
   "delay": "250"
 }
