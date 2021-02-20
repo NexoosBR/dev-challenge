@@ -5,13 +5,14 @@ import 'express-async-errors';
 import AppError from '@shared/errors/AppError';
 
 import { isCelebrateError } from 'celebrate';
+import connect from '@shared/infra/typeorm';
 import routes from './routes';
-
-// Init TypeORM
-import '@shared/infra/typeorm';
 
 // Init DI container
 import '@shared/container';
+
+// Init TypeORM
+connect();
 
 const app = express();
 
@@ -32,7 +33,7 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
     const queryMessage = err.details.get('query')?.message;
     const bodyMessage = err.details.get('body')?.message;
     return response.status(401).json({
-      error: true,
+      status: 'error',
       message: queryMessage || bodyMessage,
     });
   }
@@ -48,3 +49,5 @@ app.use((err: Error, request: Request, response: Response, _: NextFunction) => {
 
 // eslint-disable-next-line no-console
 app.listen(3333, () => console.log('Server listening on port: 3333'));
+
+export default app;
