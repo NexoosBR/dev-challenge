@@ -37,7 +37,7 @@ Construa uma aplicação web, utilizando a linguagem e frameworks de sua prefer�
 Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
 
 <h3> Apresentação </h3>
-<p>O propósito da aplicação é gerenciar o fluxo de criaço de empréstimos. Primeiramente, um solicitante (Requester) deve ser cadastrado para poder criar uma solicitação de crédito (Loan Request) com o valor desejado. Com o Loan Request criado, um empréstimo (Loan) poderá ser criado ao enviar o ID do Loan Request juntamente com os dados restantes para gerar as parcelas de pagamento do empréstimo.</p>
+<p>O propósito da aplicação é gerenciar o fluxo de criação de empréstimos. Primeiramente, um solicitante (Requester) deve ser cadastrado para poder criar uma solicitação de crédito (Loan Request) com o valor desejado. Com o Loan Request criado, um empréstimo (Loan) poderá ser criado ao enviar o ID do Loan Request juntamente com os dados restantes para gerar as parcelas de pagamento do empréstimo.</p>
 
 <h3> Tecnologias e recursos utilizados </h3>
 
