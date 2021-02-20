@@ -36,7 +36,7 @@
 - **`POST /v1/create-company`**: A rota deve receber os dados da empresa dentro do corpo da requisição, sendo que fullAddress é um array e telephone também (em formato JSON):
 ```
 {
-  "companyName": "Matheus Bottini LTDA.",
+  "companyName": "Skadi Company LTDA.",
   "cnpj": "56983168000119",
   "fullAddress": [
     {
@@ -44,16 +44,17 @@
       "number": 687,
       "cep": "01419001",
       "neighborhood": "Cerqueira César",
+      "complement": "apt 45",
       "city": "São Paulo",
       "state": "SP"
     },
     {
-      "address": "Alameda Santos 2",
+      "address": "Av Paulista",
       "number": 6872,
       "cep": "01419002",
-      "neighborhood": "Cerqueira César 2",
-      "city": "São Paulo 2",
-      "state": "S2"
+      "neighborhood": "Jardim Paulista",
+      "city": "São Paulo",
+      "state": "SP"
     }
   ],
   "telephone": [
@@ -74,7 +75,7 @@ Será retornado os dados da empresa com telefone e endereço cadastrado junto co
   "error": false,
   "result": {
     "company": {
-      "companyName": "Matheus Bottini LTDA.",
+      "companyName": "Skadi Company LTDA.",
       "cnpj": "56983168000119",
       "companyId": "2d2169b3-3a9b-4908-83fa-a05c9c8e3cbb",
       "created": "2021-02-20T03:54:27.668Z",
@@ -98,13 +99,13 @@ Será retornado os dados da empresa com telefone e endereço cadastrado junto co
       },
       {
         "companyId": "2d2169b3-3a9b-4908-83fa-a05c9c8e3cbb",
-        "address": "Alameda Santos 2",
+        "address": "Av Paulista",
         "number": 6872,
         "complement": "",
         "cep": "01419002",
-        "neighborhood": "Cerqueira César 2",
-        "city": "São Paulo 2",
-        "state": "S2",
+        "neighborhood": "Jardim Paulista",
+        "city": "São Paulo",
+        "state": "SP",
         "companyAddressId": "a110f652-77da-495c-a0e3-4b31f7309b34",
         "created": "2021-02-20T03:54:27.694Z",
         "updated": "2021-02-20T03:54:27.694Z",
