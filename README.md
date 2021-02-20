@@ -33,37 +33,37 @@
 
 ## Cadastrando uma nova Empresa
 
-- **`POST /v1/create-company`**: A rota deve receber os dados da empresa dentro do corpo da requisição (em formato JSON):
+- **`POST /v1/create-company`**: A rota deve receber os dados da empresa dentro do corpo da requisição, sendo que fullAddress é um array e telephone também (em formato JSON):
 ```
 {
-	"companyName": "Matheus Bottini LTDA.",
-	"cnpj": "56983168000119",
-	"fullAddress": [
-		{
-		"address": "Alameda Santos",
-		"number": 687,
-		"cep": "01419001",
-		"neighborhood": "Cerqueira César",
-		"city": "São Paulo",
-		"state": "SP"
-	},
-		{
-		"address": "Alameda Santos 2",
-		"number": 6872,
-		"cep": "01419002",
-		"neighborhood": "Cerqueira César 2",
-		"city": "São Paulo 2",
-		"state": "S2"
-	}
-	],
-	"telephone": [
-		{
-			"telephoneNumber": "954542610"
-		},
-		{
-			"telephoneNumber": "923236718"
-		}
-	]
+  "companyName": "Matheus Bottini LTDA.",
+  "cnpj": "56983168000119",
+  "fullAddress": [
+    {
+      "address": "Alameda Santos",
+      "number": 687,
+      "cep": "01419001",
+      "neighborhood": "Cerqueira César",
+      "city": "São Paulo",
+      "state": "SP"
+    },
+    {
+      "address": "Alameda Santos 2",
+      "number": 6872,
+      "cep": "01419002",
+      "neighborhood": "Cerqueira César 2",
+      "city": "São Paulo 2",
+      "state": "S2"
+    }
+  ],
+  "telephone": [
+    {
+      "telephoneNumber": "954542610"
+    },
+    {
+      "telephoneNumber": "923236718"
+    }
+  ]
 }
 ```
 
@@ -135,16 +135,16 @@ Será retornado os dados da empresa com telefone e endereço cadastrado junto co
 
 ## Criando uma solicitação de crédito
 
-- **`POST /v1/create-credit-request`**: A rota deve receber `companyId` e `value` dentro do corpo da requisição (em formato JSON):
+- **`POST /v1/create-credit-request`**: A rota deve receber `companyId` de uma empresa cadastrada e `value` dentro da faixa de valor de R$15.000,00 a R$1.800.000,00, no corpo da requisição (em formato JSON):
 
 ```
 {
-	"companyId": "2d2169b3-3a9b-4908-83fa-a05c9c8e3cbb",
-	"value": "1700000"
+  "companyId": "2d2169b3-3a9b-4908-83fa-a05c9c8e3cbb",
+  "value": "1700000"
 }
 ```
 
-Será retornado os dados da solicitação de crédito e uma mensagem contando se a solicitação foi aprovada para receber a oferta de empréstimo mediante o creditRequestId:
+Será retornado os dados da solicitação de crédito e uma mensagem contando se a solicitação foi aprovada (se estiver dentro da faixa de valor acima mencionada) para receber a oferta de empréstimo mediante o creditRequestId:
 
 ```
 {
@@ -185,12 +185,11 @@ No final será retornado os dados da oferta de empréstimo para, em caso de acei
 
 ## Confirmando a oferta de empréstimo
 
-- **`POST /v1/make-loan`**: A rota deve receber `loanId` dentro do corpo da requisição (em formato JSON):
+- **`POST /v1/make-loan`**: A rota deve receber `loanId` de uma oferta de empréstimo recebida, dentro do corpo da requisição (em formato JSON):
 
 ```
 {
-	"companyId": "2d2169b3-3a9b-4908-83fa-a05c9c8e3cbb",
-	"value": "1700000"
+  "loanId": "5ca32e13-502f-40b7-bdeb-84e5bebd3484"
 }
 ```
 
