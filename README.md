@@ -10,14 +10,14 @@
 - [TypeScript](https://www.typescriptlang.org/)
 - [TypeORM](https://typeorm.io/)
 
-<h3> Começandos </h3>
+<h3> Começando </h3>
 <p>Para conseguir utilizar a aplicação siga os passos abaixo. </p>
 
-<h2> Pré-requisitos </h2>
+<h3> Pré-requisitos </h3>
 
 <p> É necessário ter em sua máquina um banco de dados Mysql rodando corretamente e deverá ser criado um novo schema com o nome de sua escolha </p>
 
-<h2> Próximos passos: </h2>
+<h3> Próximos passos: </h3>
 
 1. Clone o repositório com o comando `git clone https://github.com/matbottini/dev-challenge.git`.
 2. No diretório do repositório clonado, execute o comando `npm i` para a instalação das dependências.
@@ -26,7 +26,6 @@
 5. Utilize o comando `npm run migrate` para executar a migration criada e assim gerar as tabelas.
 6. Por fim, execute `npm run start` para iniciar o servidor.
 
-<br>
 
 <h3>Utilizando a aplicação</h3>
 <p>Nesta aplicação inicialmente cadastraremos uma empresa, sendo que esta poderá criar uma solicitação de crédito vinculada a seu cadastro e estando dentro da faixa de valor irá permitir a criação da oferta do emprésimo. Estando a empresa solicitante de acordo com as condições, poderá efetuar o emprésimo e assim receber os dados das parcelas pactuadas com seu devido valor e data de vencimento. </p>
