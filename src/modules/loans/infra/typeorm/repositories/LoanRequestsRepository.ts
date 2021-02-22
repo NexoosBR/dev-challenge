@@ -20,15 +20,40 @@ class LoanRequestsRepository implements ILoanRequestsRepository {
     return loanRequest;
   }
 
-  public async findById(loanId: string): Promise<LoanRequest | undefined> {
+  public async findById(
+    loanRequestId: string,
+  ): Promise<LoanRequest | undefined> {
     const loanRequest = await this.ormRepository.findOne({
       relations: ['loanRequestStatus'],
       where: {
-        id: loanId,
+        id: loanRequestId,
       },
     });
 
     return loanRequest;
+  }
+
+  public async save(
+    loanRequest: LoanRequest,
+  ): Promise<LoanRequest | undefined> {
+    if (!loanRequest.id) return undefined;
+
+    const loanRequestFound = await this.ormRepository.findOne({
+      where: {
+        id: loanRequest.id,
+      },
+    });
+
+    if (!loanRequest) return undefined;
+
+    Object.assign(loanRequest, {
+      createdAt: loanRequest.createdAt,
+      updatedAt: new Date(),
+    });
+
+    await this.ormRepository.save(loanRequest);
+
+    return loanRequestFound;
   }
 }
 

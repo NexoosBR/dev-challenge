@@ -41,6 +41,16 @@ class FakeLoansRepository implements ILoansRepository {
 
     return loanFound;
   }
+
+  public async findByLoanRequestId(
+    loanRequestId: string,
+  ): Promise<Loan | undefined> {
+    const loanFound = this.loans.find(
+      loan => loan.loanRequestId === loanRequestId,
+    );
+
+    return loanFound;
+  }
 }
 
 export default FakeLoansRepository;

@@ -6,6 +6,7 @@ import AppError from '@shared/errors/AppError';
 import LoanInstallment from '../infra/typeorm/entities/LoanInstallment';
 import ILoanRequestsRepository from '../repositories/ILoanRequestsRepository';
 import ILoansRepository from '../repositories/ILoansRepository';
+import ILoanRequestStatusRepository from '../repositories/ILoanRequestStatusRepository';
 import Loan from '../infra/typeorm/entities/Loan';
 
 interface IRequest {
@@ -22,6 +23,8 @@ class CreateLoanService {
     private loanRequestsRepository: ILoanRequestsRepository,
     @inject('LoansRepository')
     private loansRepository: ILoansRepository,
+    @inject('LoanRequestStatusRepository')
+    private loanRequestStatusRepository: ILoanRequestStatusRepository,
   ) {}
 
   public async execute({
@@ -58,6 +61,16 @@ class CreateLoanService {
      */
     if (interestRate <= 0)
       throw new AppError("Loan's interest rate must be greater than 0");
+
+    /**
+     * Validates if loan's request was already used
+     */
+    const checkLoanRequestUsed = await this.loansRepository.findByLoanRequestId(
+      loanRequestId,
+    );
+
+    if (checkLoanRequestUsed)
+      throw new AppError("Loan's request was already used in another loan.");
 
     const dividedInteresRate = interestRate / 100;
 
@@ -96,6 +109,19 @@ class CreateLoanService {
       loanRequestId,
       term,
     });
+
+    // Updates Loan's request status
+    const loanRequestStatus = await this.loanRequestStatusRepository.findByStatus(
+      'approved',
+    );
+
+    if (!loanRequestStatus)
+      throw new AppError('Approved status not found to update loan request.');
+
+    loanRequest.loanRequestStatusId = loanRequestStatus.id;
+    loanRequest.loanRequestStatus = loanRequestStatus;
+
+    await this.loanRequestsRepository.save(loanRequest);
 
     return loan;
   }

@@ -46,6 +46,7 @@ describe('CreateLoanService', () => {
     createLoan = new CreateLoanService(
       fakeLoanRequestsRepository,
       fakeLoansRepository,
+      fakeLoanRequestStatusRepository,
     );
   });
 
@@ -70,6 +71,24 @@ describe('CreateLoanService', () => {
     });
 
     expect(loan.loanInstallments[0].value).toBe(9167.999290622945);
+  });
+
+  it("should not be able to create a new loan if loan's request was already used in another loan", async () => {
+    await createLoan.execute({
+      expirationDay: 5,
+      interestRate: 1.5,
+      loanRequestId: loanRequest.id,
+      term: 12,
+    });
+
+    await expect(
+      createLoan.execute({
+        expirationDay: 5,
+        interestRate: 1.5,
+        loanRequestId: loanRequest.id,
+        term: 12,
+      }),
+    ).rejects.toBeInstanceOf(AppError);
   });
 
   it("should not be able to create a new loan if loan's request is not registered", async () => {
@@ -122,6 +141,27 @@ describe('CreateLoanService', () => {
       createLoan.execute({
         expirationDay: 5,
         interestRate: 0,
+        loanRequestId: loanRequest.id,
+        term: 12,
+      }),
+    ).rejects.toBeInstanceOf(AppError);
+  });
+
+  it('should not be able to update loan request if approved status is not found', async () => {
+    fakeLoanRequestStatusRepository = new FakeLoanRequestStatusRepository(
+      false,
+    );
+
+    createLoan = new CreateLoanService(
+      fakeLoanRequestsRepository,
+      fakeLoansRepository,
+      fakeLoanRequestStatusRepository,
+    );
+
+    await expect(
+      createLoan.execute({
+        expirationDay: 5,
+        interestRate: 12,
         loanRequestId: loanRequest.id,
         term: 12,
       }),

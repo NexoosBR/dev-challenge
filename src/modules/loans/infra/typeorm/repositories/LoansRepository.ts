@@ -28,6 +28,18 @@ class LoansRepository implements ILoansRepository {
 
     return loan;
   }
+
+  public async findByLoanRequestId(
+    loanRequestId: string,
+  ): Promise<Loan | undefined> {
+    const loan = await this.ormRepository.findOne({
+      where: {
+        loanRequestId,
+      },
+    });
+
+    return loan;
+  }
 }
 
 export default LoansRepository;

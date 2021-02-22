@@ -36,6 +36,29 @@ class FakeLoanRequestsRepository implements ILoanRequestsRepository {
 
     return loanRequestFound;
   }
+
+  public async save(
+    loanRequest: LoanRequest,
+  ): Promise<LoanRequest | undefined> {
+    if (!loanRequest.id) return undefined;
+
+    const loanRequestFoundIdx = this.loanRequests.findIndex(
+      loanR => loanR.id === loanRequest.id,
+    );
+
+    if (loanRequestFoundIdx < 0) return undefined;
+
+    const loanRequestFound = this.loanRequests[loanRequestFoundIdx];
+
+    Object.assign(loanRequestFound, {
+      loanRequest,
+      updatedAt: new Date(),
+    });
+
+    this.loanRequests.splice(loanRequestFoundIdx, 1, loanRequestFound);
+
+    return loanRequestFound;
+  }
 }
 
 export default FakeLoanRequestsRepository;

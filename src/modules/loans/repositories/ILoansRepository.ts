@@ -4,4 +4,5 @@ import Loan from '../infra/typeorm/entities/Loan';
 export default interface ILoansRepository {
   createAndSave(loanData: ICreateLoanDTO): Promise<Loan>;
   findById(id: string): Promise<Loan | undefined>;
+  findByLoanRequestId(loanRequestId: string): Promise<Loan | undefined>;
 }
