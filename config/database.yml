@@ -2,13 +2,20 @@ default: &default
   adapter: postgresql
   encoding: unicode
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  timeout: 5000
+  username: <%= ENV.fetch("DB_USERNAME") %>
+  password: <%= ENV.fetch("DB_PASSWORD") %>
+  host: <%= ENV.fetch("DB_HOST") %>
+  port: <%= ENV.fetch("DB_PORT") %>
 
 development:
   <<: *default
-  database: nexoos_dev_challenge_development
+  database: nexoos_challenge_development
+
+test:
+  <<: *default
+  database: nexoos_challenge_test
 
 production:
   <<: *default
-  database: nexoos_dev_challenge_production
-  username: nexoos_dev_challenge
-  password: <%= ENV['NEXOOS_DEV_CHALLENGE_DATABASE_PASSWORD'] %>
+  database: nexoos_challenge_production
