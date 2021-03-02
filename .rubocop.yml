@@ -1,0 +1,21 @@
+require: rubocop-rails
+Style/Documentation:
+  Enabled: false
+Style/FrozenStringLiteralComment:
+  Enabled: false
+Layout/LineLength:
+  Max: 120
+AllCops:
+  NewCops: disable
+  TargetRubyVersion: 3.0
+  Exclude:
+    - "**/Rakefile"
+    - "**/spec_helper.rb"
+    - "bin/**/*"
+    - "node_modules/**/*"
+    - "vendor/**/*"
+    - "db/**/*"
+    - "config/**/*"
+    - "script/**/*"
+Metrics/BlockLength:
+  ExcludedMethods: ["describe", "context", "feature", "scenario", "let", "it"]

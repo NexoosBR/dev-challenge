@@ -1,0 +1,14 @@
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+
+development:
+  <<: *default
+  database: nexoos_dev_challenge_development
+
+production:
+  <<: *default
+  database: nexoos_dev_challenge_production
+  username: nexoos_dev_challenge
+  password: <%= ENV['NEXOOS_DEV_CHALLENGE_DATABASE_PASSWORD'] %>
