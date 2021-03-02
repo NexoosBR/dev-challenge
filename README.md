@@ -106,11 +106,11 @@ Será retornado o solicitante cadastrado junto com o codigo (ID) para utilizaç�
 }
 ```
 
-Você tambm pode consultar um solicitante pela seguinte requisição:
+Você também pode consultar um solicitante pela seguinte requisição:
 
 - **`GET /requester/id-do-requester`**
 
-## Criando uma solicitaço de crédito (loan request)
+## Criando uma solicitação de crédito (loan request)
 
 - **`POST /loan-requests`**: A rota deve receber `value` (double) e `requesterId` (string - id do solicitante cadastrado) dentro do corpo da requisição (em formato JSON):
 ```
@@ -141,7 +141,7 @@ Agora a solicitação poderá ser consultada através da URL:
 
 <p>Com a solicitação de crédito criada, podemos efetivar um empréstimo passando os parâmetros restantes.</p>
 
-- **`POST /loans`**: A rota deve receber `expirationDay` (number - dia de vencimento da parcela), `term` (number - número de períodos), `interestRate` (double - taxa de juros), e o `loanRequestId` (string) de uma solicitação de crédito já cadastrada, dentro do corpo da requisição (em formato JSON). O valor do empréstimos será o mesmo do valor da solicitaço de crédito:
+- **`POST /loans`**: A rota deve receber `expirationDay` (number - dia de vencimento da parcela), `term` (number - número de períodos), `interestRate` (double - taxa de juros), e o `loanRequestId` (string) de uma solicitação de crédito já cadastrada, dentro do corpo da requisição (em formato JSON). O valor do empréstimos será o mesmo do valor da solicitação de crédito:
 
 ```
 {
