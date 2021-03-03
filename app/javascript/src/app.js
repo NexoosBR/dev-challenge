@@ -1,20 +1,21 @@
 import React from "react";
-import ReactDOM from "react-dom";
-import PropTypes from "prop-types";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import Home from "./components/pages/Home";
+import SignUp from "./components/pages/SignUp";
+import * as S from "./style";
+import "~/styles/global.css";
 
-const Hello = (props) => <div>Hello {props.name}!</div>;
-
-Hello.defaultProps = {
-  name: "David",
-};
-
-Hello.propTypes = {
-  name: PropTypes.string,
-};
-
-document.addEventListener("DOMContentLoaded", () => {
-  ReactDOM.render(
-    <Hello name="React" />,
-    document.getElementById("react-mount-point")
+const App = () => {
+  return (
+    <S.Container>
+      <Router>
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route path="/cadastro" component={SignUp} />
+        </Switch>
+      </Router>
+    </S.Container>
   );
-});
+};
+
+export default App;
