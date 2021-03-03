@@ -48,8 +48,19 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
+
+  # rspec-rails is a testing framework for Rails 5+.
+  gem 'rspec-rails', '~> 4.0.2'
+  # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
+  gem 'faker', '~> 2.16'
+  # factory_bot_rails provides integration between factory_bot and rails 4.2 or newer
+  gem 'factory_bot_rails', '~> 6.1'
 end
 
+group :test do
+  # Strategies for cleaning databases using ActiveRecord. Can be used to ensure a clean state for testing.
+  gem 'database_cleaner-active_record', '~> 2.0.0'
+end
 
 # Windows does not include zoneinfo files, so bundle the tzinfo-data gem
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
