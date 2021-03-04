@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_014116) do
+ActiveRecord::Schema.define(version: 2021_03_04_143922) do
+
+  create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "address", null: false
+    t.string "neighborhood", null: false
+    t.string "city", null: false
+    t.integer "fed_unit", default: 0
+    t.string "zipcode", null: false
+    t.bigint "loan_applicant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_applicant_id"], name: "index_addresses_on_loan_applicant_id"
+  end
 
   create_table "loan_applicants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name", null: false
@@ -19,4 +31,5 @@ ActiveRecord::Schema.define(version: 2021_03_04_014116) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "addresses", "loan_applicants"
 end
