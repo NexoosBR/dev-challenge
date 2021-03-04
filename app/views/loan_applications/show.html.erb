@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Number installments:</strong>
+  <%= @loan_application.number_installments %>
+</p>
+
+<p>
+  <strong>Interest rate:</strong>
+  <%= @loan_application.interest_rate %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @loan_application.status %>
+</p>
+
+<p>
+  <strong>Loan applicant:</strong>
+  <%= @loan_application.loan_applicant %>
+</p>
+
+<%= link_to 'Edit', edit_loan_application_path(@loan_application) %> |
+<%= link_to 'Back', loan_applications_path %>

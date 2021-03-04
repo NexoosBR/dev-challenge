@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_202352) do
+ActiveRecord::Schema.define(version: 2021_03_04_210644) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address", null: false
@@ -31,6 +31,16 @@ ActiveRecord::Schema.define(version: 2021_03_04_202352) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "loan_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "number_installments", default: 1, null: false
+    t.decimal "interest_rate", precision: 10, null: false
+    t.integer "status", default: 0
+    t.bigint "loan_applicant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_applicant_id"], name: "index_loan_applications_on_loan_applicant_id"
+  end
+
   create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "area_code", null: false
     t.integer "phone_type", default: 0
@@ -43,5 +53,6 @@ ActiveRecord::Schema.define(version: 2021_03_04_202352) do
   end
 
   add_foreign_key "addresses", "loan_applicants"
+  add_foreign_key "loan_applications", "loan_applicants"
   add_foreign_key "telephones", "loan_applicants"
 end
