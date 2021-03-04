@@ -39,6 +39,12 @@ gem 'bootsnap', '>= 1.1.0', require: false
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  # rspec-rails is a testing framework for Rails 5+.
+  gem 'rspec-rails', '~> 4.0.2'
+  # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
+  gem 'faker', '~> 2.16'
+  # factory_bot_rails provides integration between factory_bot and rails 4.2 or newer
+  gem 'factory_bot_rails', '~> 6.1'
 end
 
 group :development do
@@ -49,12 +55,8 @@ group :development do
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
 
-  # rspec-rails is a testing framework for Rails 5+.
-  gem 'rspec-rails', '~> 4.0.2'
-  # Faker, a port of Data::Faker from Perl, is used to easily generate fake data: names, addresses, phone numbers, etc.
-  gem 'faker', '~> 2.16'
-  # factory_bot_rails provides integration between factory_bot and rails 4.2 or newer
-  gem 'factory_bot_rails', '~> 6.1'
+  # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
+  gem 'rubocop', '~> 0.42.0', require: false
 end
 
 group :test do
