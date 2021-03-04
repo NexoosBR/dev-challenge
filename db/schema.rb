@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_143922) do
+ActiveRecord::Schema.define(version: 2021_03_04_202352) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address", null: false
@@ -31,5 +31,17 @@ ActiveRecord::Schema.define(version: 2021_03_04_143922) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.string "area_code", null: false
+    t.integer "phone_type", default: 0
+    t.string "phone_number", null: false
+    t.bigint "loan_applicant_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["loan_applicant_id"], name: "index_telephones_on_loan_applicant_id"
+    t.index ["phone_number"], name: "index_telephones_on_phone_number"
+  end
+
   add_foreign_key "addresses", "loan_applicants"
+  add_foreign_key "telephones", "loan_applicants"
 end
