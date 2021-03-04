@@ -3,6 +3,13 @@
 A Nexoos é uma plataforma online sem burocracia e sem taxas abusivas que conecta empresas
 que necessitam de empréstimos a investidores pessoa Física tornando este processo mais rápido, eficiente e justo no modelo marketplace lending.
 
+## Tarefas futuras
+
+- [ ] Adicionar tema para front end
+- [ ] Adicionar autenticação JWT
+- [ ] Adicionar Webmock
+- [ ] Adicionar Internacionalização
+
 ## Desafio
 
 Cenário: Na Nexoos, um empréstimo de R$ 100.000,00 pode ser financiado por até 200 pessoas e cada um recebe uma fatia proporcional das parcelas pagas.

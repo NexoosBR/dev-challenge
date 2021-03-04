@@ -1,8 +1,10 @@
 import React, { useReducer, useState } from "react";
+import { Link } from "react-router-dom";
+import Button from "~/components/common/Button";
+import { createClient } from "~/requests/client";
 import Address from "./Address";
-import FormField from "./FormField";
+import { FormFieldProvider, FormField } from "~/components/common/FormField";
 import {
-  SignUpContext,
   signUpReducer,
   fieldsReducer,
   initialSignUpState,
@@ -15,6 +17,7 @@ const SignUp = () => {
     fieldsReducer,
     formFieldsInitialState
   );
+  const [message, setMessage] = useState("");
 
   const addAddress = (e) => {
     e.preventDefault();
@@ -42,13 +45,14 @@ const SignUp = () => {
     dispatchFields({ type: "removePhone", payload: { name: name } });
   };
 
-  const postForm = (e) => {
+  const postForm = async (e) => {
     e.preventDefault();
-    console.log(state);
+    const resp = await createClient(state);
+    resp.status === 201 ? setMessage("success") : setMessage("error");
   };
 
   return (
-    <SignUpContext.Provider value={{ state, dispatch }}>
+    <FormFieldProvider value={{ state, dispatch }}>
       <h1>Cadastro</h1>
 
       <form>
@@ -57,32 +61,44 @@ const SignUp = () => {
         <FormField {...fields.cnpj} />
 
         {fields.addresses.map((address, index) => (
-          <React.Fragment key={address.cep.input.name}>
+          <div key={address.cep.input.name}>
             <Address {...address} />
             {index > 0 && (
-              <button onClick={(e) => removeAddress(e, address.cep.input.name)}>
+              <Button
+                type="cancel"
+                onClick={(e) => removeAddress(e, address.cep.input.name)}
+              >
                 Remover Endereço
-              </button>
+              </Button>
             )}
-          </React.Fragment>
+          </div>
         ))}
-        <button onClick={addAddress}>Adicionar Endereço</button>
+        <Button onClick={addAddress}>Adicionar Outro Endereço</Button>
 
         {fields.phones.map((phone, index) => (
-          <React.Fragment key={phone.input.name}>
+          <div key={phone.input.name}>
             <FormField {...phone} />
             {index > 0 && (
-              <button onClick={(e) => removePhone(e, phone.input.name)}>
+              <Button
+                type="cancel"
+                onClick={(e) => removePhone(e, phone.input.name)}
+              >
                 Remover Telefone
-              </button>
+              </Button>
             )}
-          </React.Fragment>
+          </div>
         ))}
 
-        <button onClick={addPhone}>Adicionar Telefone</button>
-        <button onClick={postForm}>Cadastrar</button>
+        <Button onClick={addPhone}>Adicionar Outro Telefone</Button>
+        <br />
+        <Link to="/">
+          <Button>Voltar</Button>
+        </Link>
+        <Button onClick={postForm}>Cadastrar</Button>
       </form>
-    </SignUpContext.Provider>
+      {message === "success" && "Participante cadastrado com sucesso"}
+      {message === "error" && "Ocorreu um erro, tente novamente"}
+    </FormFieldProvider>
   );
 };
 

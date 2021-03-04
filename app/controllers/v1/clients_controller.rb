@@ -1,8 +1,7 @@
 module V1
   class ClientsController < ApiController
     def create
-      client = Client.new(permitted_params)
-      client.save!
+      client = Client.create!(permitted_params)
       render json: client, status: :created
     end
 

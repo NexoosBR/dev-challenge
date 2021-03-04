@@ -1,12 +1,12 @@
 import React, { useContext } from "react";
 import PropTypes from "prop-types";
 import Label from "~/components/common/Label";
-import { SignUpContext } from "../state";
 import { cepFormat } from "~/structs/cep";
 import { phoneFormat } from "~/structs/phone";
 import { textFormat } from "~/structs/text";
 import { getNestedValue } from "~/utils/formFunctions";
 import { cnpjFormat } from "~/structs/cnpj";
+import { FormFieldContext } from "./context";
 
 const formats = {
   text: textFormat,
@@ -16,7 +16,7 @@ const formats = {
 };
 
 const FormField = ({ label, input }) => {
-  const { state, dispatch } = useContext(SignUpContext);
+  const { state, dispatch } = useContext(FormFieldContext);
 
   const { action, mask, unmask, isValid, Component, onBlur } = formats[
     input.type

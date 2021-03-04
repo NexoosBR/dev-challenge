@@ -4,11 +4,11 @@ import { Link } from "react-router-dom";
 const Home = () => {
   return (
     <>
-      <h1>Bem vindo a Nexoos</h1>
+      <h1>Painel administrativo da Nexoos</h1>
       <ul>
-        <Link to="/cadastro">
-          <li>Cadastrar um participante</li>
-        </Link>
+        <li>
+          <Link to="/cadastro">Cadastrar um cliente</Link>
+        </li>
       </ul>
     </>
   );

@@ -1,5 +1,5 @@
 import React from "react";
-import FormField from "../FormField";
+import { FormField } from "~/components/common/FormField";
 
 const Address = ({ cep, street, state, city, number, complement }) => {
   return (
