@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Loan Applicants</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Company name</th>
+      <th>Company number</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @loan_applicants.each do |loan_applicant| %>
+      <tr>
+        <td><%= loan_applicant.company_name %></td>
+        <td><%= loan_applicant.company_number %></td>
+        <td><%= link_to 'Show', loan_applicant %></td>
+        <td><%= link_to 'Edit', edit_loan_applicant_path(loan_applicant) %></td>
+        <td><%= link_to 'Destroy', loan_applicant, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Loan Applicant', new_loan_applicant_path %>
