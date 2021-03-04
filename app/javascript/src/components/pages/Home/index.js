@@ -9,6 +9,9 @@ const Home = () => {
         <li>
           <Link to="/cadastro">Cadastrar um cliente</Link>
         </li>
+        <li>
+          <Link to="/solicitacao">Criar uma solicitação de crédito</Link>
+        </li>
       </ul>
     </>
   );

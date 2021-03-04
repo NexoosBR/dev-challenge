@@ -49,4 +49,28 @@ describe V1::ClientsController do
       end
     end
   end
+
+  describe 'GET /v1/clients/:id_or_cnpj' do
+    context 'with an existing client' do
+      let(:client) { create(:client, name: 'Empresa Existente', cnpj: '12345678000109') }
+
+      before { get v1_client_path(client.cnpj) }
+
+      it 'return the client' do
+        json_response = JSON.parse(response.body, symbolize_names: true)
+
+        expect(response).to have_http_status(:ok)
+        expect(json_response[:name]).to eq('Empresa Existente')
+        expect(json_response[:cnpj]).to eq('12345678000109')
+      end
+    end
+
+    context 'with an inexistent client' do
+      before { get v1_client_path('-1') }
+
+      it 'returns an not found error' do
+        expect(response).to have_http_status(:not_found)
+      end
+    end
+  end
 end

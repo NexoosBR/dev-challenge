@@ -6,5 +6,4 @@ export const textFormat = {
   mask: (value) => value,
   unmask: (value) => value,
   isValid: () => true,
-  onBlur: () => {},
 };

@@ -12,5 +12,4 @@ export const phoneFormat = {
   mask: (value) => mask(value, PHONE_MASK),
   unmask: (value) => unmask(value),
   isValid: isValid,
-  onBlur: (_value, _event, _dispatch) => {},
 };

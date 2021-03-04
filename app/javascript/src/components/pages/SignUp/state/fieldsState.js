@@ -1,3 +1,5 @@
+import { cepOnBlur } from "~/structs/cep";
+
 export const addPhoneField = (nesting) => ({
   label: { title: "Telefone" },
   input: {
@@ -14,6 +16,7 @@ export const addAddressField = (nesting) => ({
       type: "cep",
       name: `addresses${nesting}.cep`,
       placeholder: "Ex: 00000-000",
+      onBlur: cepOnBlur,
     },
   },
   street: {

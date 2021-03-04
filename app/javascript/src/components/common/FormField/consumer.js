@@ -18,9 +18,7 @@ const formats = {
 const FormField = ({ label, input }) => {
   const { state, dispatch } = useContext(FormFieldContext);
 
-  const { action, mask, unmask, isValid, Component, onBlur } = formats[
-    input.type
-  ];
+  const { action, mask, unmask, isValid, Component } = formats[input.type];
 
   const handleChange = (event) => {
     const payload = event.target;
@@ -35,7 +33,7 @@ const FormField = ({ label, input }) => {
   const handleBlur = (event) => {
     const rawValue = unmask(event.target.value);
 
-    onBlur(rawValue, event, dispatch);
+    if (input.onBlur) input.onBlur(rawValue, event, dispatch);
   };
 
   const { name } = input;

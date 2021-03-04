@@ -1,18 +1,13 @@
-import { getNestedName } from "~/utils/formFunctions";
 import TextInput from "~/components/common/TextInput";
+import { getNestedName } from "~/utils/formFunctions";
 import { mask, unmask } from "~/utils/inputMask";
 
 const CEP_SIZE = 8;
 const CEP_MASK = "99999-999";
 
-const maskFunction = {
-  mask: (value) => mask(value, CEP_MASK),
-  unmask: (value) => unmask(value),
-};
-
 const isValid = (value) => value.length <= CEP_SIZE;
 
-const onBlur = (value, event, dispatch) => {
+export const cepOnBlur = (value, event, dispatch) => {
   if (value.length != CEP_SIZE) return;
 
   const { parentName, index } = getNestedName(event.target.name);
@@ -37,5 +32,4 @@ export const cepFormat = {
   mask: (value) => mask(value, CEP_MASK),
   unmask: (value) => unmask(value),
   isValid: isValid,
-  onBlur: onBlur,
 };

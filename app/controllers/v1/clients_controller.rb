@@ -5,6 +5,11 @@ module V1
       render json: client, status: :created
     end
 
+    def show
+      client = Client.find_id_or_cnpj!(params[:id])
+      render json: client, status: :ok
+    end
+
     private
 
     def permitted_params
