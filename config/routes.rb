@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :installments
   resources :loan_applications
   resources :telephones
   resources :addresses

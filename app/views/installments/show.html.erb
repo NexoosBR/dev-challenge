@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Installment value:</strong>
+  <%= @installment.installment_value %>
+</p>
+
+<p>
+  <strong>Due at:</strong>
+  <%= @installment.due_at %>
+</p>
+
+<p>
+  <strong>Loan application:</strong>
+  <%= @installment.loan_application %>
+</p>
+
+<%= link_to 'Edit', edit_installment_path(@installment) %> |
+<%= link_to 'Back', installments_path %>

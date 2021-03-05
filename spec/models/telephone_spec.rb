@@ -26,4 +26,9 @@ RSpec.describe Telephone, type: :model do
     telephone2 = build(:telephone, area_code: Faker::Number.number(digits: 10))
     expect(telephone2).to_not be_valid
   end
+
+  it "Should not be valid. loan_applicant cannot be nil" do
+    telephone2 = build(:telephone, loan_applicant: nil)
+    expect(telephone2).to_not be_valid
+  end
 end
