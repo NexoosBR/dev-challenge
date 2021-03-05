@@ -1,0 +1,24 @@
+default: &default
+  adapter: postgresql
+  host: <%= ENV['DATABASE_HOST'] %>
+  username: <%= ENV['DATABASE_USERNAME'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
+  encoding: unicode
+  database: <%= ENV['DATABASE_NAME'] %>
+  pool: <%= ENV.fetch("DATABASE_POOL") { 5 } %>
+
+development:
+  <<: *default
+  min_messages: warning
+  database: credit_request_dev
+  url: <%= ENV['DATABASE_URL'] %>
+
+test:
+  <<: *default
+  min_messages: warning
+  database: credit_request_test
+  url: <%= ENV['DATABASE_URL'] %>
+
+production:
+  <<: *default
+  url: <%= ENV['DATABASE_URL'] %>

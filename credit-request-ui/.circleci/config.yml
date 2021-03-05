@@ -1,0 +1,45 @@
+version: 2.1
+jobs:
+  build:
+    shell: /bin/bash --login
+    docker:
+      - image: buildpack-deps:trusty
+    steps:
+      - checkout
+      - run:
+          name: 'Update Node.js and npm'
+          command: |
+            curl -sSL "https://nodejs.org/dist/v14.15.0/node-v14.15.0-linux-x64.tar.xz" | sudo tar --strip-components=2 -xJ -C /usr/local/bin/ node-v14.15.0-linux-x64/bin/node
+            curl https://www.npmjs.com/install.sh | sudo bash
+      - run: npm install
+      - run:
+          name: 'Starting linter check'
+          command: npm run lint
+
+  production:
+    docker:
+      - image: buildpack-deps:trusty
+    environment:
+      HEROKU_APP_NAME: credit-request-ui
+    steps:
+      - checkout
+      - run:
+          name: Installing Heroku CLI
+          command: curl https://cli-assets.heroku.com/install.sh | sh
+      - run: "[[ ! -s \"$(git rev-parse --git-dir)/shallow\" ]] || git fetch --unshallow"
+      - run:
+          name: Deploy Master to credit-request-ui
+          command: git push -f https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git $CIRCLE_BRANCH
+      - run: heroku restart --app $HEROKU_APP_NAME
+
+workflows:
+  version: 2
+  deployment:
+    jobs:
+      - build
+      - production:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master

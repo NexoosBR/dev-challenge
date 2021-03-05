@@ -1,0 +1,9 @@
+/.bundle
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+/public/assets
+.byebug_history
+/config/master.key
+.env

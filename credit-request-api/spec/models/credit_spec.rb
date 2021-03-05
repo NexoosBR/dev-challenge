@@ -1,0 +1,20 @@
+require 'rails_helper'
+
+describe Credit, type: :model do
+  context 'associations' do
+    it { is_expected.to belong_to(:client) }
+    it { is_expected.to have_many(:loans) }
+  end
+
+  context 'validations' do
+    it do
+      is_expected.to validate_numericality_of(:value).is_greater_than(0)
+    end
+  end
+
+  context 'factory' do
+    subject { build(:credit) }
+
+    it { is_expected.to be_valid }
+  end
+end
