@@ -18,51 +18,54 @@ ActiveRecord::Schema.define(version: 2021_03_04_221038) do
     t.string "city", null: false
     t.integer "fed_unit", default: 0
     t.string "zipcode", null: false
-    t.bigint "loan_applicant_id"
+    t.bigint "borrower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["loan_applicant_id"], name: "index_addresses_on_loan_applicant_id"
+    t.index ["borrower_id"], name: "index_addresses_on_borrower_id"
   end
 
-  create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "installment_value", precision: 10, null: false
-    t.datetime "due_at", null: false
-    t.bigint "loan_application_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["loan_application_id"], name: "index_installments_on_loan_application_id"
-  end
-
-  create_table "loan_applicants", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "borrowers", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "company_name", null: false
     t.string "company_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "loan_applications", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.integer "number_installments", default: 1, null: false
+  create_table "borrowings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "installment_plan", default: 1, null: false
     t.decimal "interest_rate", precision: 10, null: false
     t.integer "status", default: 0
-    t.bigint "loan_applicant_id"
+    t.decimal "amount", precision: 10, null: false
+    t.decimal "total", precision: 10, null: false
+    t.bigint "borrower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["loan_applicant_id"], name: "index_loan_applications_on_loan_applicant_id"
+    t.index ["borrower_id"], name: "index_borrowings_on_borrower_id"
   end
 
-  create_table "telephones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.integer "number", null: false
+    t.decimal "amount", precision: 10, null: false
+    t.datetime "due_at", null: false
+    t.bigint "borrowing_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["borrowing_id"], name: "index_installments_on_borrowing_id"
+  end
+
+  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "area_code", null: false
     t.integer "phone_type", default: 0
     t.string "phone_number", null: false
-    t.bigint "loan_applicant_id"
+    t.bigint "borrower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["loan_applicant_id"], name: "index_telephones_on_loan_applicant_id"
-    t.index ["phone_number"], name: "index_telephones_on_phone_number"
+    t.index ["borrower_id"], name: "index_phones_on_borrower_id"
+    t.index ["phone_number"], name: "index_phones_on_phone_number"
   end
 
-  add_foreign_key "addresses", "loan_applicants"
-  add_foreign_key "installments", "loan_applications"
-  add_foreign_key "loan_applications", "loan_applicants"
-  add_foreign_key "telephones", "loan_applicants"
+  add_foreign_key "addresses", "borrowers"
+  add_foreign_key "borrowings", "borrowers"
+  add_foreign_key "installments", "borrowings"
+  add_foreign_key "phones", "borrowers"
 end

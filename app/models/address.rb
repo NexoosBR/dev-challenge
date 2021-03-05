@@ -4,7 +4,7 @@ class Address < ApplicationRecord
   validates :city, { presence: true }
   validates :zipcode, { presence: true }
 
-  belongs_to :loan_applicant
+  belongs_to :borrower
 
   alias_attribute :company_address, :address
 

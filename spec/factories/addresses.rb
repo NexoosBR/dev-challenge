@@ -5,6 +5,6 @@ FactoryBot.define do
     city { Faker::Address.city }
     fed_unit { 0 }
     zipcode { Faker::Address.zip_code }
-    loan_applicant
+    borrower
   end
 end

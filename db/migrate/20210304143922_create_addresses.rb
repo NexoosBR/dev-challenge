@@ -6,7 +6,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :city, null: false
       t.integer :fed_unit, default: 0
       t.string :zipcode, null: false
-      t.references :loan_applicant, foreign_key: true
+      t.references :borrower, foreign_key: true
 
       t.timestamps
     end

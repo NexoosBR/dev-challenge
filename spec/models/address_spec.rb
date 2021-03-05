@@ -28,7 +28,7 @@ RSpec.describe Address, type: :model do
   end
 
   it "Should not be valid. loan_applicant cannot be nil" do
-    address2 = build(:address, loan_applicant: nil)
+    address2 = build(:address, borrower: nil)
     expect(address2).to_not be_valid
   end
 end

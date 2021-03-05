@@ -7,8 +7,13 @@ RSpec.describe Installment, type: :model do
     expect(installment1).to be_valid
   end
 
-  it "Should not be valid, installment_value is nil" do
-    installment2 = build(:installment, installment_value: nil)
+  it "Should not be valid, number is nil" do
+    installment2 = build(:installment, number: nil)
+    expect(installment2).to_not be_valid
+  end
+
+  it "Should not be valid, amount is nil" do
+    installment2 = build(:installment, amount: nil)
     expect(installment2).to_not be_valid
   end
 
@@ -17,8 +22,8 @@ RSpec.describe Installment, type: :model do
     expect(installment2).to_not be_valid
   end
 
-  it "Should not be valid, loan_application is nil" do
-    installment2 = build(:installment, loan_application: nil)
+  it "Should not be valid, borrowing is nil" do
+    installment2 = build(:installment, borrowing: nil)
     expect(installment2).to_not be_valid
   end
 end
