@@ -11,16 +11,21 @@ class Api::V1::LoansControllerTest < ActionDispatch::IntegrationTest
     )
   end
 
-  test 'can create a loan through a loan request' do
+  test 'can create a loan through a loan request, generating installments' do
     loan_params = {
       loan_request_id: @loan_request.id,
       interest: Faker::Number.decimal(l_digits: 2, r_digits: 2),
-      installments: Faker::Number.number(digits: 2)
+      installment_count: Faker::Number.number(digits: 2)
     }
 
     assert_difference ['Loan.count', '@applicant.loans.count', '@loan_request.loans.count'], 1 do
       post api_v1_loans_path, params: loan_params
     end
     assert_response :created
+
+    loan = Loan.last
+    pmt = @loan_request.value * ((((1 + loan_params[:interest]) ** loan_params[:installment_count]) * loan_params[:interest]) / (((1 + loan_params[:interest]) ** loan_params[:installment_count]) - 1))
+    assert loan.installments.count == loan_params[:installment_count]
+    assert loan.installments.first.value = pmt
   end
 end

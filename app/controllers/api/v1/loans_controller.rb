@@ -13,6 +13,6 @@ class Api::V1::LoansController < ApplicationController
   private
 
   def loan_params
-    params.permit :loan_request_id, :interest, :installments
+    params.permit :loan_request_id, :interest, :installment_count
   end
 end
