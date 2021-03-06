@@ -5,7 +5,6 @@ class Loan < ApplicationRecord
   after_create :generate_installments
 
   def generate_installments
-    puts 'test'
     pmt = value * ((((1 + interest) ** installment_count) * interest) / (((1 + interest) ** installment_count) - 1))
     today = Date.today
     installment_count.times do |i|
