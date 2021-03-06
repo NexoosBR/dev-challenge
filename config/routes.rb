@@ -6,6 +6,8 @@ Rails.application.routes.draw do
       post :addresses, to: 'addresses#create'
 
       post :phones, to: 'phones#create'
+
+      post :loan_requests, to: 'loan_requests#create'
     end
   end
 end
