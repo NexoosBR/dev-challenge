@@ -37,4 +37,3 @@ Construa uma aplicação web, utilizando a linguagem e frameworks de sua prefer�
 - Inglês técnico(desejável);
 
 Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
->>>>>>> 2b6e0ad13de45b20ad93299d08f10a16e135930f
