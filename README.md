@@ -1,24 +1,40 @@
-# README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+=======
+# Nexoos Challenge
 
-Things you may want to cover:
+A Nexoos é uma plataforma online sem burocracia e sem taxas abusivas que conecta empresas
+que necessitam de empréstimos a investidores pessoa Física tornando este processo mais rápido, eficiente e justo no modelo marketplace lending.
 
-* Ruby version
+## Desafio
 
-* System dependencies
+Cenário: Na Nexoos, um empréstimo de R$ 100.000,00 pode ser financiado por até 200 pessoas e cada um recebe uma fatia proporcional das parcelas pagas.
 
-* Configuration
+Simulando uma taxa de 1.5% a.m. em 12x, teríamos 12 parcelas de R$ 9.168,00.
 
-* Database creation
+O valor da parcela é calculado usando a fórmula `pmt`:
 
-* Database initialization
+```
+pmt = valor_presente * ((((1 + taxa) ** numero_de_periodos) * taxa) / (((1 + taxa) ** numero_de_periodos) - 1))
+```
 
-* How to run the test suite
+Exemplo:
 
-* Services (job queues, cache servers, search engines, etc.)
+```
+100000 * ((((1.015) ** 12) * 0.015) / (((1.015) ** 12) - 1)) = 9167.999290622945
+```
 
-* Deployment instructions
+Construa uma aplicação web, utilizando a linguagem e frameworks de sua preferência, que seja capaz de:
+- Cadastrar um solicitante(razão social, cnpj, endereço(s) e telefone(s));
+- Criar uma solicitação de crédito(valor);
+- Pedir um empréstimo informando valor, prazo e taxa de juros.
+- Gerar automaticamente as respectivas parcelas com intervalos regulares de um mês entre os vencimentos. 
 
-* ...
+## Requisitos:
+
+- O código no repositório público do GitHub;
+- Utilizar Postgres, MySQL ou o banco de dados de sua preferência ;
+- Testes.
+- Inglês técnico(desejável);
+
+Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
+>>>>>>> 2b6e0ad13de45b20ad93299d08f10a16e135930f
