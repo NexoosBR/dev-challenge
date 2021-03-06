@@ -1,0 +1,9 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_name: MyString
+  cnpj: MyString
+
+two:
+  company_name: MyString
+  cnpj: MyString
