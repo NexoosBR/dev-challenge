@@ -14,7 +14,7 @@ class Api::V1::LoansControllerTest < ActionDispatch::IntegrationTest
   test 'can create a loan through a loan request, generating installments' do
     loan_params = {
       loan_request_id: @loan_request.id,
-      interest: Faker::Number.decimal(l_digits: 2, r_digits: 2),
+      interest: Faker::Number.decimal(l_digits: 0, r_digits: 3),
       installment_count: Faker::Number.number(digits: 2)
     }
 
