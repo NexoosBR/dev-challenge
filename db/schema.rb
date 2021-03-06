@@ -50,7 +50,7 @@ ActiveRecord::Schema.define(version: 2021_03_06_212148) do
   create_table "loans", force: :cascade do |t|
     t.decimal "value", precision: 8, scale: 2
     t.integer "installment_count"
-    t.decimal "interest", precision: 4, scale: 2
+    t.decimal "interest", precision: 4, scale: 3
     t.integer "loan_request_id"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
