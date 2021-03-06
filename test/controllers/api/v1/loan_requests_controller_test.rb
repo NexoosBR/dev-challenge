@@ -11,7 +11,7 @@ class Api::V1::LoanRequestsControllerTest < ActionDispatch::IntegrationTest
   test 'an applicant can create a loan request' do
     loan_request_params = {
       applicant_id: @applicant.id,
-      value: Faker::Number.decimal(l_digits: 8, r_digits: 2)
+      value: Faker::Number.decimal(l_digits: 6, r_digits: 2)
     }
 
     assert_difference ['LoanRequest.count', '@applicant.loan_requests.count'], 1 do
