@@ -7,12 +7,16 @@ import { textFormat } from "~/structs/text";
 import { getNestedValue } from "~/utils/formFunctions";
 import { cnpjFormat } from "~/structs/cnpj";
 import { FormFieldContext } from "./context";
+import { moneyFormat } from "~/structs/money";
+import { percentageFormat } from "~/structs/percentage";
 
 const formats = {
   text: textFormat,
   cep: cepFormat,
   cnpj: cnpjFormat,
   phone: phoneFormat,
+  money: moneyFormat,
+  percentage: percentageFormat,
 };
 
 const FormField = ({ label, input }) => {

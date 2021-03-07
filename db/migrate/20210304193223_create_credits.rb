@@ -2,6 +2,7 @@ class CreateCredits < ActiveRecord::Migration[6.1]
   def change
     create_table :credits do |t|
       t.integer :amount
+      t.float :interest
       t.belongs_to :client, null: false, foreign_key: true
 
       t.timestamps

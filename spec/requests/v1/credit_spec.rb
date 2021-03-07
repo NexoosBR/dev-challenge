@@ -20,4 +20,19 @@ describe V1::CreditsController do
       end
     end
   end
+
+  describe 'POST /v1/clients/:id/credit/calculate' do
+    context 'with a positive amount' do
+      let(:client) { create(:client) }
+      let(:params) { { credit: { amount: 100_000_00, interest: 1.5, installments: 12 } } }
+
+      before { post calculate_v1_client_credits_path(client.cnpj), params: params }
+
+      it 'creates a new credit application' do
+        json_response = JSON.parse(response.body, symbolize_names: true)
+
+        expect(json_response[:parcel_amount]).to eq(9168.0)
+      end
+    end
+  end
 end
