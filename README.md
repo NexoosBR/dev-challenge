@@ -3,12 +3,48 @@
 A Nexoos é uma plataforma online sem burocracia e sem taxas abusivas que conecta empresas
 que necessitam de empréstimos a investidores pessoa Física tornando este processo mais rápido, eficiente e justo no modelo marketplace lending.
 
-## Tarefas futuras
+## Prerequisites
 
-- [ ] Adicionar tema para front end
-- [ ] Adicionar autenticação JWT
-- [ ] Adicionar Webmock
-- [ ] Adicionar Internacionalização
+- Docker
+
+- docker-compose
+
+## Application Setup
+
+1. `git clone git@github.com:andrecego/dev-challenge.git`
+2. `cd dev-challenge`
+3. `docker-compose build`
+4. `docker-compose run --rm web bin/setup`
+5. `docker-compose up`
+6. The application should be running at [http://localhost:3000/](http://localhost:3000/)
+
+## Development Environment
+
+For the development environment I think it is better to have at least 2 splits,
+one for the server and the other for the webpacker, in order to do so:
+
+- First split:
+
+  1. `docker-compose run --rm --service-ports web bash`
+  2. `rails s -b 0.0.0.0`
+
+- Second split:
+  1. Get the copntainer id: `docker ps -q -f name=web`
+  2. Connect to the running container in a different tty: `docker exec -it ID bash`
+  3. Run the Webpacker Dev Server: `bin/webpack-dev-server`
+
+## Running Tests
+
+```sh
+docker-compose run web rspec
+```
+## Next tasks
+
+- [ ] Add aplication theme
+- [ ] Add JWT authentication
+- [ ] Add Webmock gem
+- [ ] Add internacionalization
+- [ ] Add unhappy pathes 
 
 ## Desafio
 
