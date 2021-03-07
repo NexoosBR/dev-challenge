@@ -6,6 +6,8 @@ import { calculateLoan, confirmLoan } from "~/requests/credit";
 import { unmask } from "~/utils/inputMask";
 import { creditReducer, fieldsState, initialState } from "./state";
 
+import * as S from "./style";
+
 const CreditApplication = () => {
   const [state, dispatch] = useReducer(creditReducer, initialState);
   const [message, setMessage] = useState("");
@@ -35,7 +37,9 @@ const CreditApplication = () => {
     setIsQuoted(true);
   };
 
-  const confirm = async () => {
+  const confirm = async (e) => {
+    e.preventDefault();
+
     const cnpj = unmask(state.cnpj);
     const payload = {
       credit: {
@@ -61,48 +65,51 @@ const CreditApplication = () => {
   const renderClientFound = () => {
     if (!state.company_name) return "";
 
-    return `Razão Social: ${state.company_name}`;
+    return <FormField {...fieldsState.company_name} />;
   };
 
-  const renderLoan = () => (
-    <>
-      <FormField {...fieldsState.loan_parcel} />
-      <Button onClick={confirm}>Confirmar empréstimo</Button>
-    </>
-  );
-
   return (
-    <div>
-      <h1>Solicitação de crédito</h1>
+    <>
+      <S.Container>
+        <S.Title>Solicitação de crédito</S.Title>
 
-      <FormFieldProvider value={{ state, dispatch }}>
-        <form>
-          <FormField {...fieldsState.cnpj} />
-          <div>
-            <p>
-              {isClientNotFound ? renderClientNotFound() : renderClientFound()}
-            </p>
-            <br />
-          </div>
+        <FormFieldProvider value={{ state, dispatch }}>
+          <S.Form>
+            <S.FormGroup>
+              <S.Subtitle>Empresa</S.Subtitle>
 
-          {state.company_name && (
-            <>
-              <FormField {...fieldsState.credit} />
-              <FormField {...fieldsState.interest} />
-              <FormField {...fieldsState.installments} />
-              <Button onClick={priceQuote}>Solicitar Cotação</Button>
-            </>
-          )}
-        </form>
-        {isQuoted && renderLoan()}
-        {message && message}
-      </FormFieldProvider>
+              <FormField {...fieldsState.cnpj} />
+              <p>
+                {isClientNotFound
+                  ? renderClientNotFound()
+                  : renderClientFound()}
+              </p>
+            </S.FormGroup>
 
-      <br />
+            {state.company_name && (
+              <S.FormGroup>
+                <S.Subtitle>Simular Empréstimo</S.Subtitle>
+
+                <FormField {...fieldsState.credit} />
+                <FormField {...fieldsState.interest} />
+                <FormField {...fieldsState.installments} />
+                {isQuoted && <FormField {...fieldsState.loan_parcel} />}
+                <Button onClick={priceQuote}>Solicitar Cotação</Button>
+                {isQuoted && (
+                  <Button onClick={confirm}>Confirmar empréstimo</Button>
+                )}
+              </S.FormGroup>
+            )}
+          </S.Form>
+          {message && message}
+        </FormFieldProvider>
+
+        <br />
+      </S.Container>
       <Link to="/">
         <Button>Voltar</Button>
       </Link>
-    </div>
+    </>
   );
 };
 

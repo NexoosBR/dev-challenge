@@ -31,9 +31,15 @@ footer, header, hgroup, menu, nav, section {
 body {
 	line-height: 1;
   font-size: 16px;
+  background-color: #ededed;
+	font-family: 'Lato', sans-serif;
 }
 ol, ul {
 	list-style: none;
+}
+a {
+	text-decoration: none;
+	color: inherit;
 }
 blockquote, q {
 	quotes: none;

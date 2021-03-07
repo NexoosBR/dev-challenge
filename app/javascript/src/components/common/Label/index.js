@@ -4,7 +4,7 @@ import * as S from "./style";
 const Label = ({ title, children }) => {
   return (
     <S.Label>
-      {title}
+      <S.LabelText>{title}</S.LabelText>
       {children}
     </S.Label>
   );

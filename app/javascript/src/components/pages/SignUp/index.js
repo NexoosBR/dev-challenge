@@ -10,6 +10,7 @@ import {
   initialSignUpState,
   formFieldsInitialState,
 } from "./state";
+import * as S from "./style";
 
 const SignUp = () => {
   const [state, dispatch] = useReducer(signUpReducer, initialSignUpState);
@@ -51,53 +52,78 @@ const SignUp = () => {
     resp.status === 201 ? setMessage("success") : setMessage("error");
   };
 
+  const renderAddress = (address, index) => {
+    const key = address.cep.input.name;
+
+    return (
+      <S.FormGroup key={key}>
+        {index === 0 ? (
+          <>
+            <S.Subtitle>Endereço</S.Subtitle>
+            <Address {...address} />
+          </>
+        ) : (
+          <>
+            <Address {...address} />
+            <Button type="cancel" onClick={(e) => removeAddress(e, key)}>
+              Remover Endereço
+            </Button>
+          </>
+        )}
+      </S.FormGroup>
+    );
+  };
+
+  const renderPhone = (phone, index) => {
+    const key = phone.input.name;
+
+    return (
+      <S.FormGroup key={key}>
+        {index === 0 ? (
+          <>
+            <S.Subtitle>Contato</S.Subtitle>
+            <FormField {...phone} />
+          </>
+        ) : (
+          <>
+            <FormField {...phone} />
+            <Button type="cancel" onClick={(e) => removePhone(e, key)}>
+              Remover Telefone
+            </Button>
+          </>
+        )}
+      </S.FormGroup>
+    );
+  };
+
   return (
     <FormFieldProvider value={{ state, dispatch }}>
-      <h1>Cadastro</h1>
+      <S.Container>
+        <S.Title>Cadastro</S.Title>
 
-      <form>
-        <FormField {...fields.company_name} />
+        <S.Form>
+          <S.FormGroup>
+            <S.Subtitle>Empresa</S.Subtitle>
+            <FormField {...fields.company_name} />
+            <FormField {...fields.cnpj} />
+          </S.FormGroup>
 
-        <FormField {...fields.cnpj} />
+          {fields.addresses.map(renderAddress)}
+          <Button onClick={addAddress}>Adicionar Outro Endereço</Button>
 
-        {fields.addresses.map((address, index) => (
-          <div key={address.cep.input.name}>
-            <Address {...address} />
-            {index > 0 && (
-              <Button
-                type="cancel"
-                onClick={(e) => removeAddress(e, address.cep.input.name)}
-              >
-                Remover Endereço
-              </Button>
-            )}
-          </div>
-        ))}
-        <Button onClick={addAddress}>Adicionar Outro Endereço</Button>
+          {fields.phones.map(renderPhone)}
+          <Button onClick={addPhone}>Adicionar Outro Telefone</Button>
 
-        {fields.phones.map((phone, index) => (
-          <div key={phone.input.name}>
-            <FormField {...phone} />
-            {index > 0 && (
-              <Button
-                type="cancel"
-                onClick={(e) => removePhone(e, phone.input.name)}
-              >
-                Remover Telefone
-              </Button>
-            )}
-          </div>
-        ))}
-
-        <Button onClick={addPhone}>Adicionar Outro Telefone</Button>
-        <br />
-        <Link to="/">
-          <Button>Voltar</Button>
-        </Link>
-        <Button onClick={postForm}>Cadastrar</Button>
-      </form>
-      {message === "success" && "Participante cadastrado com sucesso"}
-      {message === "error" && "Ocorreu um erro, tente novamente"}
+          <Button onClick={postForm} type="accept">
+            Cadastrar
+          </Button>
+        </S.Form>
+        {message === "success" && "Participante cadastrado com sucesso"}
+        {message === "error" && "Ocorreu um erro, tente novamente"}
+      </S.Container>
+      <Link to="/">
+        <Button>Voltar</Button>
+      </Link>
     </FormFieldProvider>
   );
 };

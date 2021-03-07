@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Input = styled.input`
-  width: 100%;
-  border-radius: 1rem;
+  width: fill-available;
+  border-radius: 5px;
   padding: 0.5rem 1rem;
   outline: 0;
   transition: all 0.15s ease-in-out;
@@ -17,5 +17,7 @@ export const Input = styled.input`
   &:disabled {
     box-shadow: 0 0;
     border: 1px solid #dddddd;
+    background-color: #cccccc;
+    cursor: not-allowed;
   }
 `;

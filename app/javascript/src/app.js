@@ -7,18 +7,28 @@ import CreditApplication from "./components/pages/CreditApplication";
 
 import * as S from "./style";
 import "~/styles/global.css";
+import Header from "./components/common/Header";
+import Footer from "./components/common/Footer";
+import GlobalStyles from "./styles/GlobalStyles";
+import { ThemeProvider } from "styled-components";
+import { theme } from "./styles/theme";
 
 const App = () => {
   return (
-    <S.Container>
-      <Router>
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/cadastro" component={SignUp} />
-          <Route path="/solicitacao" component={CreditApplication} />
-        </Switch>
-      </Router>
-    </S.Container>
+    <ThemeProvider theme={theme}>
+      <GlobalStyles />
+      <Header />
+      <S.Container>
+        <Router>
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/cadastro" component={SignUp} />
+            <Route path="/solicitacao" component={CreditApplication} />
+          </Switch>
+        </Router>
+      </S.Container>
+      <Footer />
+    </ThemeProvider>
   );
 };
 

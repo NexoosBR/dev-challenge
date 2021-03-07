@@ -43,7 +43,7 @@ docker-compose run web rspec
 - [ ] Add aplication theme
 - [ ] Add JWT authentication
 - [ ] Add Webmock gem
-- [ ] Add internacionalization
+- [ ] Add internationalization
 - [ ] Add unhappy pathes 
 
 ## Desafio

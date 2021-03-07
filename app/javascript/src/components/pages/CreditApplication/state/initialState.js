@@ -27,6 +27,14 @@ export const fieldsState = {
       placeholder: "Ex: R$: 1.000,00",
     },
   },
+  company_name: {
+    label: { title: "Razão Social" },
+    input: {
+      type: "text",
+      name: "company_name",
+      disabled: true,
+    },
+  },
   interest: {
     label: { title: "Taxa de Juros (%)" },
     input: {
