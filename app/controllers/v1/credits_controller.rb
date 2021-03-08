@@ -2,8 +2,8 @@ module V1
   class CreditsController < ApiController
     def create
       client = Client.find_id_or_cnpj!(params[:client_id])
-      credits = Loan::Creator.call(client, permitted_params)
-      render json: credits, status: :created
+      credit = Loan::Creator.call(client, permitted_params)
+      render json: credit, status: :created
     end
 
     def calculate

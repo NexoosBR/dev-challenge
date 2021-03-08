@@ -1,0 +1,8 @@
+pt-BR:
+  activerecord:
+    attributes:
+      installment:
+        statuses:
+          pending: Pendente
+          overdue: Vencido
+          paid: Pago

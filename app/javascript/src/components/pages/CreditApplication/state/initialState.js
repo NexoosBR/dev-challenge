@@ -9,6 +9,14 @@ export const initialState = {
   loan_parcel: "",
 };
 
+export const loanInitialState = {
+  isLoaded: false,
+  amount: 0.0,
+  installments: [
+    { parcel: 0, amount: 0.0, status: "Pendente", due_date: "2021-01-01" },
+  ],
+};
+
 export const fieldsState = {
   cnpj: {
     label: { title: "CNPJ" },

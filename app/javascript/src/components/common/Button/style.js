@@ -23,9 +23,17 @@ export const Button = styled.button`
   }
 
   ${({ type }) => {
-    if (type === "cancel") return cancelType;
     if (type === "accept") return acceptType;
+    if (type === "cancel") return cancelType;
+    if (type === "secondary") return secondaryType;
   }}
+`;
+
+const acceptType = css`
+  background-color: ${({ theme }) => theme.colors.success};
+  :hover {
+    background-color: ${({ theme }) => theme.colors.successDark};
+  }
 `;
 
 const cancelType = css`
@@ -35,9 +43,9 @@ const cancelType = css`
   }
 `;
 
-const acceptType = css`
-  background-color: ${({ theme }) => theme.colors.success};
+const secondaryType = css`
+  background-color: ${({ theme }) => theme.colors.secondary};
   :hover {
-    background-color: ${({ theme }) => theme.colors.successDark};
+    background-color: ${({ theme }) => theme.colors.secondaryDark};
   }
 `;

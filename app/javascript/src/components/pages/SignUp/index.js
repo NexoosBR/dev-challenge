@@ -122,7 +122,7 @@ const SignUp = () => {
         {message === "error" && "Ocorreu um erro, tente novamente"}
       </S.Container>
       <Link to="/">
-        <Button>Voltar</Button>
+        <Button type="secondary">Voltar</Button>
       </Link>
     </FormFieldProvider>
   );

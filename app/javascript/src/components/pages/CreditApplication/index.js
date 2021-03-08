@@ -3,15 +3,21 @@ import { Link } from "react-router-dom";
 import Button from "~/components/common/Button";
 import { FormField, FormFieldProvider } from "~/components/common/FormField";
 import { calculateLoan, confirmLoan } from "~/requests/credit";
-import { unmask } from "~/utils/inputMask";
-import { creditReducer, fieldsState, initialState } from "./state";
+import { moneyMask, unmask } from "~/utils/inputMask";
+import LoanTable from "./LoanTable";
+import {
+  creditReducer,
+  fieldsState,
+  initialState,
+  loanInitialState,
+} from "./state";
 
 import * as S from "./style";
 
 const CreditApplication = () => {
   const [state, dispatch] = useReducer(creditReducer, initialState);
-  const [message, setMessage] = useState("");
   const [isQuoted, setIsQuoted] = useState(false);
+  const [loan, setLoan] = useState(loanInitialState);
 
   const isClientNotFound = state.company_name === null;
 
@@ -32,7 +38,10 @@ const CreditApplication = () => {
     const data = await resp.json();
     dispatch({
       type: "handleChange",
-      payload: { name: "loan_parcel", value: data.parcel_amount },
+      payload: {
+        name: "loan_parcel",
+        value: moneyMask(String(data.parcel_amount)),
+      },
     });
     setIsQuoted(true);
   };
@@ -49,17 +58,14 @@ const CreditApplication = () => {
       },
     };
     const resp = await confirmLoan(cnpj, payload);
-
-    if (resp.status !== 201)
-      return setMessage("Algo deu errado, tente novamente");
-
-    setMessage("Empréstimo confirmado!");
+    const data = await resp.json();
+    setLoan({ ...data, isLoaded: true });
   };
 
   const renderClientNotFound = () => (
-    <>
+    <p>
       Cliente não encontrado - <Link to="/cadastro">cadastrar um cliente</Link>
-    </>
+    </p>
   );
 
   const renderClientFound = () => {
@@ -79,11 +85,7 @@ const CreditApplication = () => {
               <S.Subtitle>Empresa</S.Subtitle>
 
               <FormField {...fieldsState.cnpj} />
-              <p>
-                {isClientNotFound
-                  ? renderClientNotFound()
-                  : renderClientFound()}
-              </p>
+              {isClientNotFound ? renderClientNotFound() : renderClientFound()}
             </S.FormGroup>
 
             {state.company_name && (
@@ -101,13 +103,13 @@ const CreditApplication = () => {
               </S.FormGroup>
             )}
           </S.Form>
-          {message && message}
+          {loan.isLoaded && <LoanTable installments={loan.installments} />}
         </FormFieldProvider>
 
         <br />
       </S.Container>
       <Link to="/">
-        <Button>Voltar</Button>
+        <Button type="secondary">Voltar</Button>
       </Link>
     </>
   );
