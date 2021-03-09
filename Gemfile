@@ -57,6 +57,9 @@ group :development do
 
   # Automatic Ruby code style checking tool. Aims to enforce the community-driven Ruby Style Guide.
   gem 'rubocop', '~> 0.42.0', require: false
+
+  # Great Ruby debugging companion: pretty print Ruby objects to visualize their structure. Supports custom object formatting via plugins
+  gem 'awesome_print', '~> 1.9', '>= 1.9.2'
 end
 
 group :test do
