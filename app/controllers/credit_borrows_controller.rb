@@ -1,9 +1,10 @@
 class CreditBorrowsController < ApplicationController
   before_action :set_credit_borrow, only: %i[ show edit update destroy ]
+  before_action :set_borrower, only: %i[ index new create ]
 
   # GET /credit_borrows or /credit_borrows.json
   def index
-    @credit_borrows = CreditBorrow.all
+    @credit_borrows = @borrower.credit_borrows
   end
 
   # GET /credit_borrows/1 or /credit_borrows/1.json
@@ -21,7 +22,7 @@ class CreditBorrowsController < ApplicationController
 
   # POST /credit_borrows or /credit_borrows.json
   def create
-    @credit_borrow = CreditBorrow.new(credit_borrow_params)
+    @credit_borrow = @borrower.credit_borrows.build(credit_borrow_params)
 
     respond_to do |format|
       if @credit_borrow.save
@@ -60,6 +61,10 @@ class CreditBorrowsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_credit_borrow
       @credit_borrow = CreditBorrow.find(params[:id])
+    end
+
+    def set_borrower
+      @borrower = Borrower.find(params[:borrower_id])
     end
 
     # Only allow a list of trusted parameters through.

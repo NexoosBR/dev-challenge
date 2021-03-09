@@ -9,6 +9,8 @@ class Borrower < ApplicationRecord
   length: { minimum: 8, maximum: 11 }
 
   has_many :borrowings, dependent: :destroy
+
+  has_many :credit_borrows, dependent: :destroy
   
   has_many :addresses, dependent: :destroy
   accepts_nested_attributes_for :addresses, allow_destroy: true

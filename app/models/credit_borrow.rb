@@ -11,4 +11,8 @@ class CreditBorrow < ApplicationRecord
     closed: 3,
     processing: 4
   }
+
+  before_validation do |credit_borrow|
+    credit_borrow.status = :opened
+  end
 end

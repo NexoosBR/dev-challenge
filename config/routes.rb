@@ -1,8 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :credit_borrows
   resources :borrowers do
     resources :borrowings, shallow: true
+    resources :credit_borrows, shallow: true
   end
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
 end

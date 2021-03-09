@@ -26,7 +26,6 @@ class BorrowersController < ApplicationController
   # POST /borrowers or /borrowers.json
   def create
     @borrower = Borrower.new(borrower_params)
-    ap @borrower.addresses
     respond_to do |format|
       if @borrower.save
         format.html { redirect_to @borrower, notice: "Borrower was successfully created." }

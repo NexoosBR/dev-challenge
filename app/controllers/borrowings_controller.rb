@@ -23,10 +23,7 @@ class BorrowingsController < ApplicationController
   # POST /borrowings or /borrowings.json
   def create
     @borrowing = @borrower.borrowings.build(borrowing_params)
-
-    # installment_amount = BorrowingService.new(borrowing_params).call
-    # @borrowing.installment_amount = installment_amount
-
+    
     respond_to do |format|
       if @borrowing.save
         format.html { redirect_to @borrowing, notice: "Borrowing was successfully created." }
