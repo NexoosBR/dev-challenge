@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Amount:</strong>
+  <%= @credit_borrow.amount %>
+</p>
+
+<p>
+  <strong>Status:</strong>
+  <%= @credit_borrow.status %>
+</p>
+
+<p>
+  <strong>Borrower:</strong>
+  <%= @credit_borrow.borrower %>
+</p>
+
+<%= link_to 'Edit', edit_credit_borrow_path(@credit_borrow) %> |
+<%= link_to 'Back', credit_borrows_path %>
