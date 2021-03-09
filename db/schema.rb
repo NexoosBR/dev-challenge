@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_04_221038) do
+ActiveRecord::Schema.define(version: 2021_03_09_200105) do
 
   create_table "addresses", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "address", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 2021_03_04_221038) do
     t.bigint "borrower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "kind", default: 0
     t.index ["borrower_id"], name: "index_addresses_on_borrower_id"
   end
 
@@ -29,18 +30,30 @@ ActiveRecord::Schema.define(version: 2021_03_04_221038) do
     t.string "company_number", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "company_phone", null: false
+    t.string "owner_phone", null: false
+    t.index ["company_number"], name: "index_borrowers_on_company_number"
   end
 
   create_table "borrowings", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "installment_plan", default: 1, null: false
-    t.decimal "interest_rate", precision: 10, null: false
+    t.decimal "interest_rate", precision: 10, scale: 3, null: false
     t.integer "status", default: 0
-    t.decimal "amount", precision: 10, null: false
-    t.decimal "total", precision: 10, null: false
+    t.decimal "amount", precision: 15, scale: 2, null: false
+    t.decimal "total", precision: 15, scale: 2, null: false
     t.bigint "borrower_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["borrower_id"], name: "index_borrowings_on_borrower_id"
+  end
+
+  create_table "credit_borrows", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.decimal "amount", precision: 10
+    t.integer "status"
+    t.bigint "borrower_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["borrower_id"], name: "index_credit_borrows_on_borrower_id"
   end
 
   create_table "installments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
@@ -53,19 +66,8 @@ ActiveRecord::Schema.define(version: 2021_03_04_221038) do
     t.index ["borrowing_id"], name: "index_installments_on_borrowing_id"
   end
 
-  create_table "phones", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.string "area_code", null: false
-    t.integer "phone_type", default: 0
-    t.string "phone_number", null: false
-    t.bigint "borrower_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["borrower_id"], name: "index_phones_on_borrower_id"
-    t.index ["phone_number"], name: "index_phones_on_phone_number"
-  end
-
   add_foreign_key "addresses", "borrowers"
   add_foreign_key "borrowings", "borrowers"
+  add_foreign_key "credit_borrows", "borrowers"
   add_foreign_key "installments", "borrowings"
-  add_foreign_key "phones", "borrowers"
 end

@@ -13,6 +13,10 @@ class BorrowersController < ApplicationController
   # GET /borrowers/new
   def new
     @borrower = Borrower.new
+    
+    Address.kinds.map do
+      @borrower.addresses.build
+    end   
   end
 
   # GET /borrowers/1/edit
@@ -22,7 +26,7 @@ class BorrowersController < ApplicationController
   # POST /borrowers or /borrowers.json
   def create
     @borrower = Borrower.new(borrower_params)
-
+    ap @borrower.addresses
     respond_to do |format|
       if @borrower.save
         format.html { redirect_to @borrower, notice: "Borrower was successfully created." }
@@ -64,6 +68,9 @@ class BorrowersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def borrower_params
-      params.require(:borrower).permit(:company_name, :company_number)
+      params.require(:borrower).permit(:company_name, :company_number, 
+        :company_phone, :owner_phone, addresses_attributes: [
+          :kind, :address, :neighborhood, :city, :fed_unit, :zipcode
+        ])
     end
 end

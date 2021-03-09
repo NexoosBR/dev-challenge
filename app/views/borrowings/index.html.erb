@@ -1,28 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Loan Applications</h1>
-
+<h1>Simulação de Empréstimo</h1>
+<h2><%= @borrower.company_name %></h2>
 <table>
   <thead>
     <tr>
-      <th>Number installments</th>
+      <th>Installment plan</th>
       <th>Interest rate</th>
       <th>Status</th>
-      <th>Loan applicant</th>
+      <th>Amount</th>
+      <th>Total</th>
       <th colspan="3"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @loan_applications.each do |loan_application| %>
+    <% @borrowings.each do |borrowing| %>
       <tr>
-        <td><%= loan_application.number_installments %></td>
-        <td><%= loan_application.interest_rate %></td>
-        <td><%= loan_application.status %></td>
-        <td><%= loan_application.loan_applicant %></td>
-        <td><%= link_to 'Show', loan_application %></td>
-        <td><%= link_to 'Edit', edit_loan_application_path(loan_application) %></td>
-        <td><%= link_to 'Destroy', loan_application, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= borrowing.installment_plan %></td>
+        <td><%= borrowing.interest_rate %></td>
+        <td><%= borrowing.status %></td>
+        <td><%= borrowing.amount %></td>
+        <td><%= borrowing.status %></td>
+        <td><%= link_to 'Show', borrowing %></td>
+        <td><%= link_to 'Edit', edit_borrowing_path(borrowing) %></td>
+        <td><%= link_to 'Destroy', borrowing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -30,4 +32,4 @@
 
 <br>
 
-<%= link_to 'New Loan Application', new_loan_application_path %>
+<%= link_to 'New Borrowing', new_borrower_borrowing_path %>

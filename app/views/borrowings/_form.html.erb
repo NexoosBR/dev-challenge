@@ -1,19 +1,19 @@
-<%= form_with(model: loan_application, local: true) do |form| %>
-  <% if loan_application.errors.any? %>
+<%= form_with(model: borrowing, url: @borrowing.new_record? ? borrower_borrowings_path : borrower_borrowings_path(@borrowing)) do |form| %>
+  <% if borrowing.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(loan_application.errors.count, "error") %> prohibited this loan_application from being saved:</h2>
+      <h2><%= pluralize(borrowing.errors.count, "error") %> prohibited this borrowing from being saved:</h2>
 
       <ul>
-      <% loan_application.errors.full_messages.each do |message| %>
+      <% borrowing.errors.full_messages.each do |message| %>
         <li><%= message %></li>
       <% end %>
       </ul>
-    </div>
+    </div>h
   <% end %>
 
   <div class="field">
-    <%= form.label :number_installments %>
-    <%= form.text_field :number_installments %>
+    <%= form.label :installment_plan %>
+    <%= form.number_field :installment_plan, {in: 1...120} %>
   </div>
 
   <div class="field">
@@ -22,13 +22,8 @@
   </div>
 
   <div class="field">
-    <%= form.label :status %>
-    <%= form.number_field :status %>
-  </div>
-
-  <div class="field">
-    <%= form.label :loan_applicant_id %>
-    <%= form.text_field :loan_applicant_id %>
+    <%= form.label :amount %>
+    <%= form.text_field :amount %>
   </div>
 
   <div class="actions">

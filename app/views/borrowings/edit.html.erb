@@ -1,6 +1,6 @@
-<h1>Editing Loan Application</h1>
+<h1>Editing Borrowing</h1>
 
-<%= render 'form', loan_application: @loan_application %>
+<%= render 'form', borrowing: @borrowing %>
 
-<%= link_to 'Show', @loan_application %> |
-<%= link_to 'Back', loan_applications_path %>
+<%= link_to 'Show', @borrowing %> |
+<%= link_to 'Back', borrower_borrowings_path(@borrowing) %>

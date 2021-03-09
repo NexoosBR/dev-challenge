@@ -41,4 +41,14 @@ RSpec.describe Borrower, type: :model do
     borrower2 = build(:borrower, company_number: Faker::Company.brazilian_company_number(formatted: true))
     expect(borrower2).to_not be_valid
   end
+
+  it "Should not be valid, company_phone is nil" do
+    borrower2 = build(:borrower, company_phone: nil)
+    expect(borrower2).to_not be_valid
+  end
+
+  it "Should not be valid, owner_phone is nil" do
+    borrower2 = build(:borrower, owner_phone: nil)
+    expect(borrower2).to_not be_valid
+  end
 end

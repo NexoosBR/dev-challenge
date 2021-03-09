@@ -7,9 +7,17 @@ RSpec.describe Borrowing, type: :model do
     expect(borrowing1).to be_valid
   end
 
+  it "Should be valid and create installments" do
+    expect(borrowing1.installments.size).to eql(borrowing1.installment_plan)
+  end
+
   it "Should not be valid, installment_plan is nil" do
     borrowing2 = build(:borrowing, installment_plan: nil)
     expect(borrowing2).to_not be_valid
+  end
+
+  it "Should not be valid. installment_plan is less than 1" do
+    expect { create(:borrowing, installment_plan: 0) }.to raise_error(/Installment plan must be greater than 0/)
   end
 
   it "Should not be valid, interest_rate is nil" do
@@ -17,14 +25,17 @@ RSpec.describe Borrowing, type: :model do
     expect(borrowing2).to_not be_valid
   end
 
+  it "Should not be valid. interest_rate is less than 0" do
+    expect { create(:borrowing, interest_rate: -1) }.to raise_error(/Interest rate must be greater than 0/)
+  end
+
   it "Should not be valid, amount is nil" do
     borrowing2 = build(:borrowing, amount: nil)
     expect(borrowing2).to_not be_valid
   end
 
-  it "Should not be valid, total is nil" do
-    borrowing2 = build(:borrowing, total: nil)
-    expect(borrowing2).to_not be_valid
+  it "Should not be valid. amount is less than 1" do
+    expect { create(:borrowing, amount: 0) }.to raise_error(/Amount must be greater than 0/)
   end
 
   it "Should not be valid, borrower is nil" do

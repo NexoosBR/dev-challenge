@@ -6,7 +6,12 @@ class Address < ApplicationRecord
 
   belongs_to :borrower
 
-  alias_attribute :company_address, :address
+  # alias_attribute :company_address, :address
+
+  enum kind: {
+    company: 0,
+    owner: 1
+  }
 
   enum fed_unit: {
     ES: 0, AC: 1, AL: 2, AP: 3, AM: 4, BA: 5, CE: 6,

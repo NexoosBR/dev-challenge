@@ -2,23 +2,33 @@
 
 <p>
   <strong>Number installments:</strong>
-  <%= @loan_application.number_installments %>
+  <%= @borrowing.installment_plan %>
 </p>
 
 <p>
   <strong>Interest rate:</strong>
-  <%= @loan_application.interest_rate %>
+  <%= @borrowing.interest_rate %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @loan_application.status %>
+  <%= @borrowing.status %>
 </p>
 
 <p>
-  <strong>Loan applicant:</strong>
-  <%= @loan_application.loan_applicant %>
+  <strong>Amount:</strong>
+  <%= @borrowing.amount %>
 </p>
 
-<%= link_to 'Edit', edit_loan_application_path(@loan_application) %> |
-<%= link_to 'Back', loan_applications_path %>
+<p>
+  <strong>Total:</strong>
+  <%= @borrowing.total %>
+</p>
+
+<p>
+  <strong>Borrower:</strong>
+  <%= @borrowing.borrower %>
+</p>
+
+<%= link_to 'Edit', edit_borrowing_path(@borrowing) %> |
+<%= link_to 'Back', borrower_borrowings_path(@borrowing) %>

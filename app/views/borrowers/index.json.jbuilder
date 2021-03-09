@@ -1,1 +1,1 @@
-json.array! @loan_applicants, partial: "loan_applicants/loan_applicant", as: :loan_applicant
+json.array! @borrowers, partial: "borrowers/borrower", as: :borrower

@@ -1,9 +1,10 @@
 class BorrowingsController < ApplicationController
   before_action :set_borrowing, only: %i[ show edit update destroy ]
+  before_action :set_borrower, only: %i[ index new create ]
 
   # GET /borrowings or /borrowings.json
   def index
-    @borrowings = Borrowing.all
+    @borrowings = @borrower.borrowings
   end
 
   # GET /borrowings/1 or /borrowings/1.json
@@ -21,7 +22,10 @@ class BorrowingsController < ApplicationController
 
   # POST /borrowings or /borrowings.json
   def create
-    @borrowing = Borrowing.new(borrowing_params)
+    @borrowing = @borrower.borrowings.build(borrowing_params)
+
+    # installment_amount = BorrowingService.new(borrowing_params).call
+    # @borrowing.installment_amount = installment_amount
 
     respond_to do |format|
       if @borrowing.save
@@ -62,8 +66,12 @@ class BorrowingsController < ApplicationController
       @borrowing = Borrowing.find(params[:id])
     end
 
+    def set_borrower
+      @borrower = Borrower.find(params[:borrower_id])
+    end
+
     # Only allow a list of trusted parameters through.
     def borrowing_params
-      params.require(:borrowing).permit(:installment_plan, :interest_rate, :status, :amount, :total, :borrower_id)
+      params.require(:borrowing).permit(:installment_plan, :interest_rate, :status, :amount, :borrower_id)
     end
 end
