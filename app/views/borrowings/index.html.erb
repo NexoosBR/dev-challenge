@@ -1,15 +1,19 @@
+<header>
+  <div class="header-xxlarge-wrap ">
+    <div><h1>Solicitações de Empréstimo</h1></div>
+    <div><%= link_to 'Nova Solicitação', new_borrower_borrowing_path, class: 'button' %></div>
+  </div>
+</header>
+<main>
 <p id="notice"><%= notice %></p>
-
-<h1>Simulação de Empréstimo</h1>
-<h2><%= @borrower.company_name %></h2>
 <table>
   <thead>
     <tr>
-      <th>Installment plan</th>
-      <th>Interest rate</th>
+      <th>Taxa de juros</th>
       <th>Status</th>
-      <th>Amount</th>
-      <th>Total</th>
+      <th>Valor Solicitado</th>
+      <th>Valor da Parcela</th>
+      <th>Parcelas</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -17,19 +21,16 @@
   <tbody>
     <% @borrowings.each do |borrowing| %>
       <tr>
-        <td><%= borrowing.installment_plan %></td>
-        <td><%= borrowing.interest_rate %></td>
-        <td><%= borrowing.status %></td>
-        <td><%= borrowing.amount %></td>
-        <td><%= borrowing.status %></td>
-        <td><%= link_to 'Show', borrowing %></td>
-        <td><%= link_to 'Edit', edit_borrowing_path(borrowing) %></td>
-        <td><%= link_to 'Destroy', borrowing, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= borrowing.interest_rate %>%</td>
+        <td><%= enum_i18n(Borrowing, :status, borrowing.status) %></td>
+        <td><%= number_to_currency_br(borrowing.amount) %></td>
+        <td><%= number_to_currency_br(borrowing.total) %></td>
+        <td><%= borrowing.installment_plan %>x</td>
+        <td><%= link_to 'Mostrar', borrowing %></td>
+        <td><%= link_to 'Editar', edit_borrowing_path(borrowing) %></td>
+        <td><%= link_to 'Deletar', borrowing, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Borrowing', new_borrower_borrowing_path %>
+</main>

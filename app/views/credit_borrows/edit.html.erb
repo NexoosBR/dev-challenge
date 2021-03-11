@@ -1,6 +1,17 @@
-<h1>Editing Credit Borrow</h1>
+<header>
+  <div class="header-xlarge-wrap">
+    <div>
+      <h1>Editar Solicitação</h1>
+    </div>
+    <div>
+      <ul>
+        <li><%= link_to 'Voltar', borrower_credit_borrows_path(@credit_borrow) %></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main>
+  <p id="notice"><%= notice %></p>
+  <%= render 'form', credit_borrow: @credit_borrow %>
+</main>
 
-<%= render 'form', credit_borrow: @credit_borrow %>
-
-<%= link_to 'Show', @credit_borrow %> |
-<%= link_to 'Back', credit_borrows_path %>

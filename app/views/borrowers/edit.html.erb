@@ -1,6 +1,12 @@
-<h1>Editing Borrower</h1>
+<header>
+  <div class="header-xlarge-wrap">
+    <div class="left-corner">
+      <h1>Editar Solicitante</h1>
+    </div>
+  </div>
+</header>
+<main>
+  <%= render 'form', borrower: @borrower %>
+</main>
 
-<%= render 'form', borrower: @borrower %>
 
-<%= link_to 'Show', @borrower %> |
-<%= link_to 'Back', borrowers_path %>

@@ -12,11 +12,6 @@ RSpec.describe CreditBorrow, type: :model do
     expect(credit_borrow2).to_not be_valid
   end
 
-  it "Should not be valid, status is nil" do
-    credit_borrow2 = build(:credit_borrow, status: nil)
-    expect(credit_borrow2).to_not be_valid
-  end
-
   it "Should not be valid, borrower is nil" do
     installment2 = build(:credit_borrow, borrower: nil)
     expect(installment2).to_not be_valid

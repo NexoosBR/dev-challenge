@@ -1,6 +1,16 @@
-<h1>Editing Borrowing</h1>
-
-<%= render 'form', borrowing: @borrowing %>
-
-<%= link_to 'Show', @borrowing %> |
-<%= link_to 'Back', borrower_borrowings_path(@borrowing) %>
+<header>
+  <div class="header-xlarge-wrap">
+    <div class="left-corner">
+      <h1>Editar Solicitação</h1>
+    </div>
+    <div>
+      <ul>
+        <li><%= link_to 'Voltar', borrower_borrowings_path(@borrowing) %></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main>
+  <p id="notice"><%= notice %></p>
+  <%= render 'form', borrowing: @borrowing %>
+</main>

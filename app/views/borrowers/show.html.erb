@@ -1,23 +1,49 @@
-<p id="notice"><%= notice %></p>
-
+<header>
+  <div class="header-xxlarge-wrap">
+    <div class="left-corner">
+      <h1>Dados do Solicitante</h1> 
+    </div>
+    <div class="right-corner">
+      <ul>
+        <li><%= link_to 'Empréstimos', borrower_borrowings_path(@borrower) %></li>
+        <li><%= link_to 'Créditos', borrower_credit_borrows_path(@borrower) %></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="info">
+    <p id="notice"><%= notice %></p>
 <p>
-  <strong>Company name:</strong>
+  <strong>Nome da Empresa:</strong>
   <%= @borrower.company_name %>
 </p>
 
 <p>
-  <strong>Company number:</strong>
+  <strong>Documento:</strong>
   <%= @borrower.company_number %>
 </p>
 
 <p>
-  <strong>Addresses:</strong>
-  <% @borrower.addresses.each do |address| %>
-    <p><%= address.kind %> Address</p>
-    <p><%= full_address(address) %></p>
-  <% end %>
+  <strong>Telefone da Empresa:</strong>
+  <%= @borrower.company_phone %>
 </p>
 
-<%= link_to 'Edit', edit_borrower_path(@borrower) %> |
-<%= link_to 'Back', borrowers_path %>
-<%= link_to 'Borrower list', borrower_borrowings_path(@borrower) %>
+<p>
+  <strong>Telefone do Sócio:</strong>
+  <%= @borrower.owner_phone %>
+</p>
+
+<p>
+  <strong>Endere&ccedil;os:</strong>
+  <% if @borrower.addresses.any? %>
+    <% @borrower.addresses.each do |address| %>
+      <p class="address-kind"><%= enum_i18n(Address, :kind, address.kind) %></p>
+      <p class="full-address"><%= full_address(address) %></p>
+    <% end %>
+  <% else %>
+    <p>Nenhum endereço cadastrado.</p>
+  <% end %>
+</p>
+  </div>
+</main>

@@ -1,5 +1,16 @@
-<h1>New Borrowing</h1>
-<p id="notice"><%= notice %></p>
-<%= render 'form', borrowing: @borrowing %>
-
-<%= link_to 'Back', borrower_borrowings_path %>
+<header>
+  <div class="header-xlarge-wrap">
+    <div class="left-corner">
+      <h2>Solicitação de Empréstimo</h2>
+    </div>
+    <div>
+      <ul>
+        <li><%= link_to 'Voltar', borrower_borrowings_path(@borrower) %></li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main>
+  <p id="notice"><%= notice %></p>
+  <%= render 'form', borrowing: @borrowing %>
+</main>

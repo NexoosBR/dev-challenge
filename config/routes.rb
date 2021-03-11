@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  root to: 'home#index'
+  
   resources :borrowers do
     resources :borrowings, shallow: true
     resources :credit_borrows, shallow: true

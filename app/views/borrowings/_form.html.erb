@@ -11,22 +11,23 @@
     </div>h
   <% end %>
 
-  <div class="field">
-    <%= form.label :installment_plan %>
-    <%= form.number_field :installment_plan, {in: 1...120} %>
-  </div>
+  <%= form.label :installment_plan do %>
+    <span><%= I18n.t('activerecord.attributes.borrowing.installment_plan') %></span>
+    <%= form.select :installment_plan, 1...120, {}, { class: "input-medium textfield" } %>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :interest_rate %>
-    <%= form.text_field :interest_rate %>
-  </div>
 
-  <div class="field">
-    <%= form.label :amount %>
-    <%= form.text_field :amount %>
-  </div>
+  <%= form.label :interest_rate do %>
+    <span><%= I18n.t('activerecord.attributes.borrowing.interest_rate') %></span>
+    <%= form.text_field :interest_rate, { placeholder: I18n.t('activerecord.attributes.borrowing.interest_rate'), class: "input-medium textfield" } %>
+  <% end %>
+
+  <%= form.label :amount do %>
+    <span><%= I18n.t('activerecord.attributes.borrowing.amount') %></span>
+    <%= form.text_field :amount, { placeholder: I18n.t('activerecord.attributes.borrowing.amount'), class: "input-xlarge textfield" } %>
+  <% end %>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button 'Salvar', { type: :submit, class: 'button-save' } %>
   </div>
 <% end %>

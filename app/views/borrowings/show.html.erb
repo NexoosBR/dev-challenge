@@ -1,34 +1,69 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Number installments:</strong>
-  <%= @borrowing.installment_plan %>
+<header>
+  <div class="header-xxlarge-wrap">
+    <div class="left-corner">
+      <h1>Dados da Solicitação</h1> 
+    </div>
+    <div class="right-corner">
+      <ul>
+        <li><%= link_to 'Voltar', borrower_borrowings_path(@borrowing.borrower) %></li>
+        <li><%= link_to 'Atualizar', edit_borrowing_path(@borrowing) %> </li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main>
+  <div class="info">
+    <p>
+      <strong>Solicitante:</strong>
+      <%= @borrowing.borrower.company_name %>
 </p>
 
 <p>
-  <strong>Interest rate:</strong>
-  <%= @borrowing.interest_rate %>
+  <strong>Juros:</strong>
+  <%= @borrowing.interest_rate %>%
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @borrowing.status %>
+  <%= enum_i18n(Borrowing, :status, @borrowing.status) %>
 </p>
 
 <p>
-  <strong>Amount:</strong>
-  <%= @borrowing.amount %>
+  <strong>Valor Solicitado:</strong>
+  <%= number_to_currency_br(@borrowing.amount) %>
 </p>
 
 <p>
-  <strong>Total:</strong>
-  <%= @borrowing.total %>
+  <strong>Valor da Parcela:</strong>
+  <%= number_to_currency_br(@borrowing.total) %>
 </p>
-
 <p>
-  <strong>Borrower:</strong>
-  <%= @borrowing.borrower %>
+  <strong>Total a pagar:</strong>
+  <%= number_to_currency_br(@borrowing.total * @borrowing.installment_plan) %>
 </p>
+<p>
+  <strong>Parcelas:</strong>
+  <%= @borrowing.installment_plan %>x
 
-<%= link_to 'Edit', edit_borrowing_path(@borrowing) %> |
-<%= link_to 'Back', borrower_borrowings_path(@borrowing) %>
+<table>
+  <thead>
+    <tr>
+      <th>N&uacute;mero</th>
+      <th>Valor da Parcela</th>
+      <th>Vencimento</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @borrowing.installments.each do |installment| %>
+      <tr>
+        <td>#<%= installment.number %></td>
+        <td><%= number_to_currency_br(installment.amount) %></td>
+        <td><%= installment.due_at.strftime("%d/%m/%Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+</p>
+</div>
+</main>

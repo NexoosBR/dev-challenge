@@ -10,62 +10,62 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= form.label :company_name %>
-    <%= form.text_field :company_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :company_number %>
-    <%= form.text_field :company_number %>
-  </div>
-
-  <div class="field">
-    <%= form.label :company_phone %>
-    <%= form.text_field :company_phone %>
-  </div>
-
-  <div class="field">
-    <%= form.label :owner_phone %>
-    <%= form.text_field :owner_phone %>
-  </div>
-  
-  <%= form.fields_for :addresses do |addresses_form| %>
-  <fieldset>
-      <div class="field">
-        <%= addresses_form.label :kind %>
-        <%= addresses_form.select :kind, Address.kinds.map{ |key, value| [key, key] } %>
-      </div>
-      <div class="field">
-        <%= addresses_form.label :address %>
-        <%= addresses_form.text_field :address %>
-      </div>
-
-      <div class="field">
-        <%= addresses_form.label :neighborhood %>
-        <%= addresses_form.text_field :neighborhood %>
-      </div>
-
-      <div class="field">
-        <%= addresses_form.label :city %>
-        <%= addresses_form.text_field :city %>
-      </div>
-
-      <div class="field">
-        <%= addresses_form.label :fed_unit %>
-        <%= addresses_form.select :fed_unit, Address.fed_units.map{ |key, value| [key, key] } %>
-      </div>
-
-      <div class="field">
-        <%= addresses_form.label :zipcode %>
-        <%= addresses_form.text_field :zipcode %>
-      </div>
-  </fieldset>
+  <div class="borrow-title">Dados do Solicitante</div>
+  <%= form.label :company_name do %>
+    <span><%= I18n.t('activerecord.attributes.borrower.company_name') %></span>
+    <%= form.text_field :company_name, { placeholder: I18n.t('activerecord.attributes.borrower.company_name'), class: "input-xlarge textfield" } %>
   <% end %>
 
-  
+  <%= form.label :company_number do %>
+    <span><%= I18n.t('activerecord.attributes.borrower.company_number') %></span>
+    <%= form.text_field :company_number, { placeholder: I18n.t('activerecord.attributes.borrower.company_number'), class: "input-xlarge textfield" } %>
+  <% end %>
+
+  <%= form.label :company_phone do %>
+    <span><%= I18n.t('activerecord.attributes.borrower.company_phone') %></span>
+    <%= form.text_field :company_phone, { placeholder: I18n.t('activerecord.attributes.borrower.company_phone'), class: "input-medium textfield" } %>
+  <% end %>
+
+  <%= form.label :owner_phone do %>
+    <span><%= I18n.t('activerecord.attributes.borrower.owner_phone') %></span>
+    <%= form.text_field :owner_phone, { placeholder: I18n.t('activerecord.attributes.borrower.owner_phone'), class: "input-medium textfield" } %>
+  <% end %>
+    <div class="address-title">Endere&ccedil;os</div>
+    <%= form.fields_for :addresses do |addresses_form| %>
+    <div class="address-form">
+      <%= form.label :kind do %>
+        <span><%= I18n.t('activerecord.attributes.address.kind') %></span>
+        <%= addresses_form.select :kind, enum_options_for_select(Address, :kind).to_a, { include_blank: I18n.t('activerecord.attributes.address.kind') }, { class: "address-input-xlarge" } %>
+      <% end %>
+
+      <%= form.label :address do %>
+        <span><%= I18n.t('activerecord.attributes.address.address') %></span>
+        <%= addresses_form.text_field :address, { placeholder: I18n.t('activerecord.attributes.address.address'), class: "address-input-xlarge textfield" } %>
+      <% end %>
+
+      <%= addresses_form.label :neighborhood do %>
+        <span><%= I18n.t('activerecord.attributes.address.neighborhood') %></span>
+        <%= addresses_form.text_field :neighborhood, { placeholder: I18n.t('activerecord.attributes.address.neighborhood'), class: "address-input-medium textfield" } %>
+      <% end %>
+
+      <%= addresses_form.label :city do %>
+        <span><%= I18n.t('activerecord.attributes.address.city') %></span>
+        <%= addresses_form.text_field :city, { placeholder: I18n.t('activerecord.attributes.address.city'), class: "address-input-medium textfield" } %>
+      <% end %>
+
+      <%= addresses_form.label :fed_unit do %>
+        <span><%= I18n.t('activerecord.attributes.address.fed_unit') %></span>
+        <%= addresses_form.select :fed_unit, enum_options_for_select(Address, :fed_unit).to_a, 
+        { include_blank: I18n.t('activerecord.attributes.address.fed_unit') }, { class: "address-input-medium" } %>
+      <% end %>
+
+      <%= addresses_form.label :zipcode do %>
+        <span><%= I18n.t('activerecord.attributes.address.zipcode') %></span>
+        <%= addresses_form.text_field :zipcode, { placeholder: I18n.t('activerecord.attributes.address.zipcode'), class: "address-input-medium textfield" } %>
+      <% end %>
+    </div>
+    <% end %>
   <div class="actions">
-    <%= form.submit %>
+    <%= form.button 'Salvar', { type: :submit, class: 'button-save' } %>
   </div>
 <% end %>

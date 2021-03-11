@@ -3,11 +3,11 @@ require "rails_helper"
 RSpec.describe CreditBorrowsController, type: :routing do
   describe "routing" do
     it "routes to #index" do
-      expect(get: "/credit_borrows").to route_to("credit_borrows#index")
+      expect(get: "/borrowers/1/credit_borrows").to route_to("credit_borrows#index", borrower_id: "1")
     end
 
     it "routes to #new" do
-      expect(get: "/credit_borrows/new").to route_to("credit_borrows#new")
+      expect(get: "/borrowers/1/credit_borrows/new").to route_to("credit_borrows#new", borrower_id: "1")
     end
 
     it "routes to #show" do
@@ -20,7 +20,7 @@ RSpec.describe CreditBorrowsController, type: :routing do
 
 
     it "routes to #create" do
-      expect(post: "/credit_borrows").to route_to("credit_borrows#create")
+      expect(post: "/borrowers/1/credit_borrows").to route_to("credit_borrows#create", borrower_id: "1")
     end
 
     it "routes to #update via PUT" do

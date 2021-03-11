@@ -17,7 +17,7 @@ RSpec.describe Borrowing, type: :model do
   end
 
   it "Should not be valid. installment_plan is less than 1" do
-    expect { create(:borrowing, installment_plan: 0) }.to raise_error(/Installment plan must be greater than 0/)
+    expect { create(:borrowing, installment_plan: 0) }.to raise_error(/Parcelas deve ser maior que 0/)
   end
 
   it "Should not be valid, interest_rate is nil" do
@@ -26,7 +26,7 @@ RSpec.describe Borrowing, type: :model do
   end
 
   it "Should not be valid. interest_rate is less than 0" do
-    expect { create(:borrowing, interest_rate: -1) }.to raise_error(/Interest rate must be greater than 0/)
+    expect { create(:borrowing, interest_rate: -1) }.to raise_error(/Taxa de Juros deve ser maior que 0.0/)
   end
 
   it "Should not be valid, amount is nil" do
@@ -35,7 +35,7 @@ RSpec.describe Borrowing, type: :model do
   end
 
   it "Should not be valid. amount is less than 1" do
-    expect { create(:borrowing, amount: 0) }.to raise_error(/Amount must be greater than 0/)
+    expect { create(:borrowing, amount: 0) }.to raise_error(/Valor Solicitado deve ser maior que 0/)
   end
 
   it "Should not be valid, borrower is nil" do

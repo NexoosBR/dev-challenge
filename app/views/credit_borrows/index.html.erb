@@ -1,13 +1,18 @@
+<header>
+  <div class="header-xxlarge-wrap ">
+    <div><h1>Solicitações de Crédito</h1></div>
+    <div><%= link_to 'Nova Solicitação', new_borrower_credit_borrow_path, class: 'button' %>
+    </div>
+  </div>
+</header>
+<main>
 <p id="notice"><%= notice %></p>
-
-<h1>Credit Borrows</h1>
-
 <table>
   <thead>
     <tr>
-      <th>Amount</th>
+       <th>Solicitante</th>
+      <th>Valor Solicitado</th>
       <th>Status</th>
-      <th>Borrower</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -15,17 +20,14 @@
   <tbody>
     <% @credit_borrows.each do |credit_borrow| %>
       <tr>
-        <td><%= credit_borrow.amount %></td>
-        <td><%= credit_borrow.status %></td>
-        <td><%= credit_borrow.borrower %></td>
-        <td><%= link_to 'Show', credit_borrow %></td>
-        <td><%= link_to 'Edit', edit_credit_borrow_path(credit_borrow) %></td>
-        <td><%= link_to 'Destroy', credit_borrow, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= credit_borrow.borrower.company_name %></td>
+        <td><%= number_to_currency_br(credit_borrow.amount) %></td>
+        <td><%= enum_i18n(CreditBorrow, :status, credit_borrow.status) %></td>
+        <td><%= link_to 'Mostrar', credit_borrow %></td>
+        <td><%= link_to 'Editar', edit_credit_borrow_path(credit_borrow) %></td>
+        <td><%= link_to 'Remover', credit_borrow, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Credit Borrow', new_borrower_credit_borrow_path %>
+</main>

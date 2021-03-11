@@ -1,12 +1,16 @@
+<header>
+  <div class="header-xxlarge-wrap ">
+    <div><h1>Solicitantes</h1></div>
+    <div><%= link_to 'Novo Solicitante', new_borrower_path, class: 'button' %></div>
+  </div>
+</header>
+<main>
 <p id="notice"><%= notice %></p>
-
-<h1>Borrowers</h1>
-
 <table>
   <thead>
     <tr>
-      <th>Company name</th>
-      <th>Company number</th>
+      <th>Nome</th>
+      <th>Documento</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -16,14 +20,11 @@
       <tr>
         <td><%= borrower.company_name %></td>
         <td><%= borrower.company_number %></td>
-        <td><%= link_to 'Show', borrower %></td>
-        <td><%= link_to 'Edit', edit_borrower_path(borrower) %></td>
-        <td><%= link_to 'Destroy', borrower, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Mostrar', borrower %></td>
+        <td><%= link_to 'Editar', edit_borrower_path(borrower) %></td>
+        <td><%= link_to 'Remover', borrower, method: :delete, data: { confirm: 'Tem certeza?' } %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<%= link_to 'New Borrower', new_borrower_path %>
+</main>

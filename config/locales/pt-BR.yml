@@ -1,0 +1,128 @@
+pt-BR:
+  activerecord:
+    errors:
+      messages:
+        record_invalid: "A validação falhou: %{errors}"
+        restrict_dependent_destroy:
+          has_one: Não é possível excluir o registro pois existe um %{record} dependente
+          has_many: Não é possível excluir o registro pois existem %{record} dependentes
+    enums:
+      address:
+        kinds:
+          company: "Endereço Empresarial"
+          owner: "Endereço Sócio"
+        fed_units:
+          AC: "Acre"
+          AL: "Alagoas"
+          AP: "Amapá"
+          AM: "Amazonas"
+          BA: "Bahia"
+          CE: "Ceará"
+          DF: Distrito Federal
+          ES: "Espiríto Santo"
+          GO: "Goiás"
+          MA: "Maranhão"
+          MT: "Mato Grosso"
+          MS: "Mato Grosso do Sul"
+          MG: "Minas Gerais"
+          PA: "Pará"
+          PB: "Paraíba"
+          PR: "Paraná"
+          PE: "Pernambuco"
+          PI: "Piauí"
+          RJ: "Rio de Janeiro"
+          RN: "Rio Grande do Norte"
+          RS: "Rio Grande do Sul"
+          RO: "Rondônia"
+          RR: "Roraima"
+          SC: "Santa Catarina"
+          SP: "São Paulo"
+          SE: "Sergipe"
+          TO: "Tocantis"
+      borrowing:
+        statuses:
+          denied: "Negado"
+          opened: "Aberto"
+          granted: "Aprovado"
+          closed: "Fechado"
+          processing: "Processando"
+      credit_borrow:
+        statuses:
+          denied: "Negado"
+          opened: "Aberto"
+          granted: "Aprovado"
+          closed: "Fechado"
+          processing: "Processando"
+    models:
+      borrower: "Solicitante"
+      borrowing: "Solicitação de Empréstimo"
+      address: "Endereço"
+      credit_borrow: "Solicitação de Crédito"
+      installment: "Parcela"
+    attributes:
+      borrower:
+        company_name: "Nome da Empresa"
+        company_number: "Documento da Empresa"
+        company_phone: "Telefone da Empresa"
+        owner_phone: "Telefone do Sócio"
+      borrowing:
+        installment_plan: "Parcelas"
+        interest_rate: "Taxa de Juros"
+        status: "Status"
+        amount: "Valor Solicitado"
+        total: "Total"
+        borrower: "Solicitante"
+      installment:
+        number: "Número da Parcela"
+        amount: "Valor da Parcela"
+        due_at: "Vencimeto"
+        borrowing: "Solicitação"
+      credit_borrow:
+        amount: "Valor de Crédito"
+        status: "Status"
+        borrower: "Solicitante"
+      address:
+        kind: "Tipo de Endereço"
+        address: "Rua/Av/Logradouro"
+        neighborhood: "Bairro"
+        city: "Cidade"
+        fed_unit: "Estado"
+        zipcode: "Cep"
+  errors:
+    format: "%{attribute} %{message}"
+    messages:
+      accepted: deve ser aceito
+      blank: não pode ficar em branco
+      confirmation: não é igual a %{attribute}
+      empty: não pode ficar vazio
+      equal_to: deve ser igual a %{count}
+      even: deve ser par
+      exclusion: não está disponível
+      greater_than: deve ser maior que %{count}
+      greater_than_or_equal_to: deve ser maior ou igual a %{count}
+      inclusion: não está incluído na lista
+      invalid: não é válido
+      less_than: deve ser menor que %{count}
+      less_than_or_equal_to: deve ser menor ou igual a %{count}
+      model_invalid: "A validação falhou: %{errors}"
+      not_a_number: não é um número
+      not_an_integer: não é um número inteiro
+      odd: deve ser ímpar
+      other_than: deve ser diferente de %{count}
+      present: deve ficar em branco
+      required: é obrigatório(a)
+      taken: já está em uso
+      too_long:
+        one: "é muito longo (máximo: 1 caracter)"
+        other: "é muito longo (máximo: %{count} caracteres)"
+      too_short:
+        one: "é muito curto (mínimo: 1 caracter)"
+        other: "é muito curto (mínimo: %{count} caracteres)"
+      wrong_length:
+        one: não possui o tamanho esperado (1 caracter)
+        other: não possui o tamanho esperado (%{count} caracteres)
+    template:
+      body: "Por favor, verifique o(s) seguinte(s) campo(s):"
+      header:
+        one: "Não foi possível gravar %{model}: 1 erro"
+        other: "Não foi possível gravar %{model}: %{count} erros"

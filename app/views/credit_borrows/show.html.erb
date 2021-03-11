@@ -1,19 +1,30 @@
-<p id="notice"><%= notice %></p>
-
+<header>
+  <div class="header-xxlarge-wrap">
+    <div class="left-corner">
+      <h1>Dados do Solicitante</h1> 
+    </div>
+    <div class="right-corner">
+      <ul>
+        <li><%= link_to 'Voltar', borrower_credit_borrows_path(@credit_borrow.borrower) %></li>
+        <li><%= link_to 'Editar', edit_credit_borrow_path(@credit_borrow) %> </li>
+      </ul>
+    </div>
+  </div>
+</header>
+<main>
+<div class="info">
 <p>
-  <strong>Amount:</strong>
-  <%= @credit_borrow.amount %>
+  <strong>Solicitante:</strong>
+  <%= @credit_borrow.borrower.company_name %>
+</p>
+<p>
+  <strong>Crédito Solicitado:</strong>
+  <%= number_to_currency_br(@credit_borrow.amount) %>
 </p>
 
 <p>
   <strong>Status:</strong>
-  <%= @credit_borrow.status %>
+  <%= enum_i18n(CreditBorrow, :status, @credit_borrow.status) %>
 </p>
-
-<p>
-  <strong>Borrower:</strong>
-  <%= @credit_borrow.borrower %>
-</p>
-
-<%= link_to 'Edit', edit_credit_borrow_path(@credit_borrow) %> |
-<%= link_to 'Back', borrower_credit_borrows_path(@credit_borrow) %>
+</div>
+</main>

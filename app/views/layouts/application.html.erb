@@ -10,6 +10,16 @@
   </head>
 
   <body>
-    <%= yield %>
+    <div class="container">
+      <nav>
+        <ul>
+          <li><%= link_to "Inicio", root_path %></li>
+          <li><%= link_to "Solicitantes", borrowers_path %></li>
+          <li><a href="#">Aprovações</a></li>
+          <li><a href="#">Relatórios</a></li>
+        </ul>
+      </nav>
+      <%= yield %>
+    </div>
   </body>
 </html>
