@@ -3,6 +3,7 @@ class BorrowersController < ApplicationController
 
   # GET /borrowers or /borrowers.json
   def index
+    Borrower.all.name
     @borrowers = Borrower.all
   end
 
