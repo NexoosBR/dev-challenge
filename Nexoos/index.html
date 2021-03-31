@@ -1,0 +1,56 @@
+
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">   
+    <title>Desafio Nexoos</title>
+
+    <link rel="stylesheet" href="css/estilo.css">
+</head>
+<body>
+    <!-- Início -->
+    <img src="img/pexels-karolina-grabowska-4386321.jpg" alt="imagem de dinheiro" class="imagemfundo">
+    <!-- Formulário -->
+    <section class="container">
+        <h1>Simulador de empréstimos</h1>
+        <div class="solicitantes">
+            <ul id="lista">
+               <li>Razão Social:<input id="RazaoSocial" type="text" placeholder="informe a Razão Social"></li><br>
+               
+               <li> CNPJ:<input id="cnpj" type="number" placeholder="ex. 06.990.590/0001-23"></li><br>
+                
+               <li>Endereço:<input id="endereco" type="text" placeholder="informe Endereço"></li><br>
+
+               <li> Telefone:<input id="telefone" type="number" placeholder="Informe um nº de telefone"></li><br>
+
+               <li> Valor R$:<input id="valorS" type="number" placeholder="ex. 15000  (15 mil)"></li><br>
+                
+               <li>Parcelas:<input id="parcelas" type="number" placeholder="informe as parcelas"></li><br>
+
+               <!-- Solicitação do empréstimo -->
+ 
+              >>>> <button  class="btnSolicitarValor" id="solicitarValor" type="button" onclick="solicitarValor() ; insert() ;"><b>Fazer simulação</b></button> <<<<
+                
+                <br>
+               
+            </ul>
+
+        </div>
+        <div id="resultados">
+            <h1> Valor das Parcelas:R$</h1>
+            <input id="valorParcelas" class="resultado" readonly>
+           <p>
+                Com um juros de 1.5% ao mês 
+           </p><br>
+            <h2>Valor dos Juros:R$</h2>
+            <h3 id="valorTotal" class="resultado"></h3>
+        </div>
+        
+    </section>
+
+
+    <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <script src="js/ajax_reqs.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>
