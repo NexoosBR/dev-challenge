@@ -25,5 +25,8 @@ React roda na porta: 3000.
 ### Implementação para as proximas versões:
 - Mudar para um banco relacional.
 - Implementar melhorias no sistema de autenticação
+- Gerar tokens que expiram
+- salvar senhas criptografadas
+- Reorganizar os nomes dos endpoints 
 
 
