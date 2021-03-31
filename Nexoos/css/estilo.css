@@ -1,0 +1,65 @@
+*{
+    margin: 0;
+    padding: 5px;
+    
+    
+
+}
+body {
+    font-family: sans-serif;
+    background-color:#d4d9dd
+    
+}
+a {
+    text-decoration: none;
+    color: black;
+
+}
+
+.container{
+    margin-top: 40px;
+    display: block;
+    text-align: right;
+    width: 65%;
+    position: absolute;
+    align-items: right;
+    
+    
+    
+    
+
+}
+#lista {
+    list-style: none;
+    
+    
+    
+
+}
+#lista2 {
+    list-style: none;
+    display: flex;
+    display: block;
+
+    
+    
+
+}
+.opcoesDeCredito{
+    display: flex;
+}
+
+ .resultado{
+    border: 1px solid ;
+    background-color: white;
+    text-align: right;
+    margin-left: 66%;
+    height: 18px;
+    padding: 10px;
+
+}
+.imagemfundo{
+    width: 40%;
+    position:absolute;
+
+}
