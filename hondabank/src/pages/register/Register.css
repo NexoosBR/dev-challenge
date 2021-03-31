@@ -1,0 +1,164 @@
+@import url('https://fonts.googleapis.com/css?family=Muli:400,900&display=swap');
+body{
+	padding: 0px;
+	margin: 0px;
+	font-family: 'Muli', sans-serif;
+}
+
+.container{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	background-color: #ecf0f1;
+	height: 100vh;
+    margin-bottom: 1rem;
+}
+
+.menu{
+	color: black;
+	border-radius: 10px;
+	display: grid;
+	width: 60%;
+	height: 60%;
+	background-color: #A9A9A9;
+	justify-content: center;
+	align-items: center;
+}
+
+.menu h1{
+	margin-top: -20px;
+	padding-left: 50px;
+	text-transform: uppercase;
+}
+.menu p{
+	margin-top: -50px;
+}
+.menu img{
+	margin-left: 50px;
+	margin-top: 20px;
+	max-width:300px;
+    max-height:150px;
+    width: auto;
+    height: auto;
+}
+.menu button{
+	border-radius: 35px;
+	text-transform: uppercase;
+	color: black;
+	font-size: 10px;
+	cursor: pointer;
+	border: 1px solid black;
+	height: 30px;
+	width: 50%;
+	margin-left: 95px;
+
+}
+.menu button:hover{
+	color: white;
+	background-color: #f9b233;
+	border: 1px solid black;
+}
+
+.form button{
+	border-radius: 35px;
+	text-transform: uppercase;
+	color: black;
+	font-size: 10px;
+	cursor: pointer;
+	border: 1px solid black;
+	height: 30px;
+	width: 50%;
+	margin-left: 80px;
+	margin-top: 20px;
+
+}
+.form button:hover{
+	color: white;
+	background-color: #f9b233;
+	border: 1px solid black;
+}
+
+.form{
+	color: black;
+	border-radius: 10px;
+	display: grid;
+	width: 60%;
+	background-color: #A9A9A9;
+	justify-content: center;
+	align-items: center;
+	animation-name: fade;
+	animation-duration: 2s;
+	overflow: hidden;
+}
+.form select{
+	border-radius: 3px;
+	width: 250px;
+	border: 1px solid #A9A9A9;;
+	background-color: #A9A9A9;
+}
+.infoPessoal{
+	display: flex;
+}
+#iName, #iSName,#iTel{
+	width: 250px;
+	height: 25px;
+	background-color: transparent;
+	border-top: 0px solid black;
+	border-left: 0px solid black;
+	border-right: 0px solid black;
+	border-bottom: 2px solid black;
+	outline: none;
+
+}
+img{
+	margin-left: 30px;
+	margin-top: 20px;
+	max-width:300px;
+    max-height:200px;
+	margin-bottom: -30px;
+    width: auto;
+    height: auto;
+}
+
+#NameError, #SNameError, #TelError{
+	color: #ff0000;
+	font-size: 13px;
+}
+#NameError, #SNameError{
+	margin-bottom: -20px;
+	margin-top: -10px;
+}
+#TelError{
+	margin-top: -10px;
+}
+
+.form #img, #iName, #iTel,#iSName ,#btnSend{
+    margin-bottom: 1rem;
+	animation-name:	moove;
+	animation-duration: 2s;
+}
+
+@keyframes fade{
+	from{
+		opacity: 0;
+		transform: scale(0.9);
+	}
+	to{
+		opacity: 1;
+		transform: scale(1);
+	}
+}
+
+@keyframes moove{
+	0%{
+		opacity: 0;
+		transform: translateX(-450%);
+	}
+	75%{
+		transform: translateX(10%);
+	}
+	100%{
+		opacity: 1;
+		transform: translateX(0%);
+	}
+}

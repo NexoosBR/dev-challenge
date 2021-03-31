@@ -1,0 +1,15 @@
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/domain/Requester.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/repository/RequesterRepository.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/ApibankApplication.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/api/dto/response/CreditRequestResponse.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/config/CorsConfig.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/service/spec/RequesterService.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/api/dto/response/LoanResponse.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/api/impl/RequesterControllerImpl.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/api/dto/response/LoanRequestResponse.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/service/impl/RequesterServiceImpl.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/repository/LoanRepository.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/domain/Loan.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/repository/CreditRequestRepository.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/repository/LoanRequestRepository.java
+/home/honda/Área de Trabalho/projeto02/Apibank/src/main/java/com/bank/Apibank/api/spec/RequesterController.java

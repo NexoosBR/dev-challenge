@@ -1,37 +1,34 @@
-# Nexoos Challenge
+ # Honda_Bank
+ Neste repositório criei uma aplicação WEB usando react e springboot.
 
-A Nexoos é uma plataforma online sem burocracia e sem taxas abusivas que conecta empresas
-que necessitam de empréstimos a investidores pessoa Física tornando este processo mais rápido, eficiente e justo no modelo marketplace lending.
+### Como rodar.
 
-## Desafio
+#### API
+Na pasta /ApiBank rode o seguinte comando:
+*mvn clean  package* 
+para buildar. e para rodar o programa use o comando:
+*java -jar Apibank-0.0.1-SNAPSHOT.jar*
+na pasta /ApiBank/target
 
-Cenário: Na Nexoos, um empréstimo de R$ 100.000,00 pode ser financiado por até 200 pessoas e cada um recebe uma fatia proporcional das parcelas pagas.
+#### React
+na pasta /hondabank rode o seguinte comando para rodar a aplicação:
+*npm start*
+para rodar o servidor de testes.
 
-Simulando uma taxa de 1.5% a.m. em 12x, teríamos 12 parcelas de R$ 9.168,00.
 
-O valor da parcela é calculado usando a fórmula `pmt`:
+### Portas.
+API roda na porta: :8080.
+React roda na porta: 3000.
 
-```
-pmt = valor_presente * ((((1 + taxa) ** numero_de_periodos) * taxa) / (((1 + taxa) ** numero_de_periodos) - 1))
-```
+### Banco
 
-Exemplo:
+Foi usado um MONGODB nessa aplicação. Ele roda na nuvem pelo Atlas.
 
-```
-100000 * ((((1.015) ** 12) * 0.015) / (((1.015) ** 12) - 1)) = 9167.999290622945
-```
+### Implementação para as proximas versões:
+- Mudar para um banco relacional.
+- Implementar melhorias no sistema de autenticação
+- Gerar tokens que expiram
+- salvar senhas criptografadas
+- Reorganizar os nomes dos endpoints 
 
-Construa uma aplicação web, utilizando a linguagem e frameworks de sua preferência, que seja capaz de:
-- Cadastrar um solicitante(razão social, cnpj, endereço(s) e telefone(s));
-- Criar uma solicitação de crédito(valor);
-- Pedir um empréstimo informando valor, prazo e taxa de juros.
-- Gerar automaticamente as respectivas parcelas com intervalos regulares de um mês entre os vencimentos. 
 
-## Requisitos:
-
-- O código no repositório público do GitHub;
-- Utilizar Postgres, MySQL ou o banco de dados de sua preferência ;
-- Testes.
-- Inglês técnico(desejável);
-
-Ao finalizar, faça um Pull Request neste repositório e avise-nos por email.
