@@ -16,11 +16,13 @@ na pasta /hondabank rode o seguinte comando para rodar a aplicação:
 para rodar o servidor de testes.
 
 
-
-
 ### Portas.
 API roda na porta: :8080.
 React roda na porta: 3000.
+
+### Banco
+
+Foi usado um MONGODB nessa aplicação. Ele roda na nuvem pelo Atlas.
 
 ### Implementação para as proximas versões:
 - Mudar para um banco relacional.
